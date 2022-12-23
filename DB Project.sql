@@ -58,7 +58,7 @@ INSERT INTO worker VALUES
 ('WorkerID01', 'Petros', 'Giorgos', 568.1, 1),
 ('WorkerID02', 'Mario', 'Luigi', 874.7, 2),
 ('WorkerID03', 'Andreas', 'Oikonomou', 1233.2, 3),
-('WorkerID04', 'Ektoras', 'Samouil', 344.6, 4),
+('WorkerID04', 'Ektoras', 'Samouil', 820.6, 4),
 ('WorkerID05', 'Konstantinos', 'Kostantinou', 889.1, 5),
 ('WorkerID06', 'Iasonas', 'Pavlopoulos', 776.2, 6),
 ('WorkerID07', 'Andreas', 'Andreadis', 1500.32, 7),
@@ -70,9 +70,9 @@ INSERT INTO worker VALUES
 ('WorkerID12', 'Prigkipissa', 'Vasilissa', 655.2, 3),
 ('WorkerID13', 'Katerina', 'Papaflessa', 836.44, 4),
 ('WorkerID14', 'Eleni', 'Oikonomakou', 988.2, 5),
-('WorkerID15', 'Maritimi', 'Petroula', 475.21, 5),
+('WorkerID15', 'Maritimi', 'Petroula', 2500.21, 5),
 ('WorkerID16', 'Sevi', 'Papadopoulou', 547.2, 6),
-('WorkerID17', 'Vasiliki', 'Malama', 584.5, 8),
+('WorkerID17', 'Vasiliki', 'Malama', 766.5, 8),
 ('WorkerID18', 'Danae', 'Kathariou', 1923.9, 7),
 ('WorkerID19', 'Anastasia', 'Petropoulou', 957.2, 1),
 ('WorkerID20', 'Paris', 'Pettas', 1120.1, 9),
@@ -97,11 +97,14 @@ CREATE TABLE driver(
 INSERT INTO driver VALUES
 ('WorkerID01', 'C', 'LOCAL', 12),
 ('WorkerID11', 'B', 'LOCAL', 11),
-('0987654321', 'C', 'ABROAD', 30),
-('2109876543', 'D', 'LOCAL', 50),
-('5678901234', 'A', 'LOCAL', 1),
-('8765432109', 'B', 'ABROAD', 2),
-('4321098765', 'C', 'ABROAD', 7);
+('WorkerID24', 'C', 'ABROAD', 28),
+('WorkerID07', 'D', 'LOCAL', 43),
+('WorkerID12', 'A', 'LOCAL', 1),
+('WorkerID25', 'B', 'ABROAD', 2),
+('WorkerID04', 'C', 'ABROAD', 7),
+('WorkerID27', 'D', 'ABROAD', 32),
+('WorkerID09', 'C', 'LOCAL', 15),
+('WorkerID10', 'D', 'LOCAL', 23);
 
 CREATE TABLE admin(
     adm_AT CHAR(10) NOT NULL,
