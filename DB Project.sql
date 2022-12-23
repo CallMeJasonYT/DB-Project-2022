@@ -60,7 +60,7 @@ INSERT INTO worker VALUES
 ('WorkerID03', 'Andreas', 'Oikonomou', 1233.2, 3),
 ('WorkerID04', 'Ektoras', 'Samouil', 820.6, 4),
 ('WorkerID05', 'Konstantinos', 'Kostantinou', 889.1, 5),
-('WorkerID06', 'Iasonas', 'Pavlopoulos', 776.2, 6),
+('WorkerID06', 'Iasonas', 'Pavlopoulos', 1776.2, 6),
 ('WorkerID07', 'Andreas', 'Andreadis', 1500.32, 7),
 ('WorkerID08', 'Meletios', 'Polidouris', 1222.44, 8),
 ('WorkerID09', 'Loukas', 'Ramakis', 1000.1, 9),
@@ -70,7 +70,7 @@ INSERT INTO worker VALUES
 ('WorkerID13', 'Prigkipissa', 'Vasilissa', 655.2, 3),
 ('WorkerID14', 'Katerina', 'Papaflessa', 836.44, 4),
 ('WorkerID15', 'Eleni', 'Oikonomakou', 988.2, 5),
-('WorkerID16', 'Maritimi', 'Petroula', 2500.21, 5),
+('WorkerID16', 'Maritini', 'Petroula', 2500.21, 5),
 ('WorkerID17', 'Sevi', 'Papadopoulou', 547.2, 6),
 ('WorkerID18', 'Vasiliki', 'Malama', 766.5, 8),
 ('WorkerID19', 'Danae', 'Kathariou', 1923.9, 7),
@@ -82,7 +82,14 @@ INSERT INTO worker VALUES
 ('WorkerID25', 'Declan', 'Kelly', 1024.82, 5),
 ('WorkerID26', 'Donavan', 'Osborn', 845.9, 6),
 ('WorkerID27', 'Rashad', 'Noble', 911.6, 7),
-('WorkerID28', 'Krista', 'Romero', 1422.61, 8);
+('WorkerID28', 'Eleni', 'Papadaki', 1422.61, 1),
+('WorkerID29', 'Dionissis', 'Trivizas', 873.21, 2),
+('WorkerID30', 'Xristos', 'Petropoulos', 965.22, 3),
+('WorkerID31', 'Xaralampos', 'Xristidis', 743.1, 9),
+('WorkerID32', 'Andreas', 'Protopsaltis', 1247.91, 8),
+('WorkerID33', 'Aggeliki', 'Reka', 998.91, 10),
+('WorkerID34', 'Zaxarias', 'Michalainas', 1123.9, 7),
+('WorkerID35', 'Maria', 'Neokosmidi', 1273.85, 10);
 
 CREATE TABLE driver(
     drv_AT CHAR(10) NOT NULL,
@@ -95,14 +102,14 @@ CREATE TABLE driver(
 );
 
 INSERT INTO driver VALUES
-('WorkerID01', 'C', 'LOCAL', 12),
+('WorkerID28', 'C', 'LOCAL', 12),
 ('WorkerID12', 'B', 'LOCAL', 11),
 ('WorkerID25', 'C', 'ABROAD', 28),
 ('WorkerID07', 'D', 'LOCAL', 43),
 ('WorkerID13', 'A', 'LOCAL', 1),
 ('WorkerID26', 'B', 'ABROAD', 2),
 ('WorkerID04', 'C', 'ABROAD', 7),
-('WorkerID28', 'D', 'ABROAD', 32),
+('WorkerID32', 'D', 'ABROAD', 32),
 ('WorkerID09', 'C', 'LOCAL', 15),
 ('WorkerID10', 'D', 'LOCAL', 23);
 
@@ -116,17 +123,21 @@ CREATE TABLE admin(
 );
 
 INSERT INTO admin VALUES
-('1234567890', 'LOGISTICS', 'Logistics Diploma'),
-('6789012345', 'LOGISTICS', 'Economics Diploma'),
-('1098765432', 'LOGISTICS', 'Economics Diploma'),
-('2104319253', 'ADMINISTRATIVE', 'Computer Engineer Diploma'),
-('9876543210', 'ADMINISTRATIVE', 'Mechanical Engineer Diploma'),
-('9012345678', 'ADMINISTRATIVE', 'Chemical Engineer Diploma'),
-('9012345678', 'ADMINISTRATIVE', 'Chemical Engineer Diploma'),
-('9012345678', 'ADMINISTRATIVE', 'Chemical Engineer Diploma'),
-('9012345678', 'ADMINISTRATIVE', 'Chemical Engineer Diploma'),
-('9012345678', 'ADMINISTRATIVE', 'Chemical Engineer Diploma'),
-('7890123456', 'ADMINISTRATIVE', 'Computer Engineer Diploma');
+('WorkerID20', 'LOGISTICS', 'Logistics Diploma'),
+('WorkerID05', 'LOGISTICS', 'Economics Diploma'),
+('WorkerID23', 'ACCOUNTING', 'Mathematical Engineer Diploma Diploma'),
+('WorkerID34', 'LOGISTICS', 'Logistics Diploma'),
+('WorkerID35', 'ACCOUNTING', 'Economics Diploma'),
+('WorkerID11', 'ADMINISTRATIVE', 'Computer Engineer Diploma'),
+('WorkerID02', 'ADMINISTRATIVE', 'Mechanical Engineer Diploma'),
+('WorkerID03', 'ADMINISTRATIVE', 'Chemical Engineer Diploma'),
+('WorkerID24', 'ADMINISTRATIVE', 'Chemical Engineer Diploma'),
+('WorkerID16', 'ADMINISTRATIVE', 'Buisness Managment Diploma'),
+('WorkerID19', 'ADMINISTRATIVE', 'Mathematical Engineer Diploma'),
+('WorkerID08', 'ADMINISTRATIVE', 'Chemical Engineer Diploma'),
+('WorkerID06', 'ADMINISTRATIVE', 'Computer Engineer Diploma'),
+('WorkerID21', 'ADMINISTRATIVE', 'Buisness Management Diploma'),
+('WorkerID22', 'ADMINISTRATIVE', 'Computer Engineer Diploma');
 
 CREATE TABLE manages(
     mng_adm_AT CHAR(10) NOT NULL,
