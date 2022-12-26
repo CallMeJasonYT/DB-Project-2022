@@ -591,11 +591,61 @@ BEGIN
     (drvAT, first_name, last_name, salary, min_br);
     INSERT INTO driver VALUES
     (drvAT, license, dr_route, experience);
-    --SELECT * FROM worker WHERE wrk_br_code=min_br;
-    --SELECT * FROM driver;
+    /*--SELECT * FROM worker WHERE wrk_br_code=min_br;
+    --SELECT * FROM driver;*/
 END$
 DELIMITER ; 
---CALL new_driver('108456523', 'Jason', 'Random', 1234.21, 'C', 'LOCAL', 21);
+/*CALL new_driver('108456523', 'Jason', 'Random', 1234.21, 'C', 'LOCAL', 21);*/
+
+DROP PROCEDURE IF EXISTS date_check;
+DELIMITER $
+CREATE PROCEDURE date_check(br_code INT,date1 DATE, date2 DATE)
+BEGIN
+    DECLARE dates DATETIME;
+    DECLARE tripid INT;
+    DECLARE reservations INT;
+    DECLARE max_seats tinyINT;
+    DECLARE seatdiff tinyINT;
+    DECLARE not_found INT;
+    
+    DECLARE tridcursor CURSOR FOR
+    SELECT tr_id FROM trip WHERE tr_br_code=br_code;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND
+    SET not_found=1;
+
+    SET not_found=0;
+    OPEN tridcursor;
+    REPEAT
+		FETCH tridcursor INTO tripid;
+        IF(not_found=0)
+        THEN 
+        SELECT tr_departure INTO dates FROM trip
+        WHERE tr_id=tripid;
+            IF (DATEDIFF(dates, date1)>0 && DATEDIFF(dates, date2)<0)
+            THEN
+                SELECT COUNT(*) INTO reservations FROM reservation
+                WHERE tripid=res_tr_id;
+                SELECT tr_maxseats INTO max_seats FROM trip
+                WHERE tr_id=tripid;
+                SET seatdiff=max_seats-reservations;
+                
+                SELECT tr_cost AS Trip_Cost, tr_maxseats AS MaxSeats, reservations, 
+                seatdiff AS Available_Seats, a.wrk_name AS Driver_Name, a.wrk_lname AS Driver_LName, 
+                b.wrk_name AS Guide_Name, b.wrk_lname AS Guide_LName, tr_departure AS Departure, tr_return AS Returning
+                FROM trip 
+                INNER JOIN worker AS a ON tr_drv_AT=a.wrk_AT
+                INNER JOIN worker AS b ON tr_gui_AT=b.wrk_AT
+                WHERE tr_id=tripid;
+            END IF;
+        END IF;
+    UNTIL(not_found=1)
+	END REPEAT;
+END$
+DELIMITER ; 
+/*CALL date_check(1, '2023-01-20', '2023-05-20');
+CALL date_check(1, '2023-01-20', '2023-08-20');*/
+
 
 DROP TRIGGER IF EXISTS capacity;
 DELIMITER $
