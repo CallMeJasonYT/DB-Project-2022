@@ -549,6 +549,54 @@ END IF;
 END$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS new_driver;
+DELIMITER $
+CREATE PROCEDURE new_driver(drvAT CHAR(10), first_name VARCHAR(20), last_name VARCHAR(20), salary FLOAT(7,2), license ENUM('A', 'B', 'C', 'D'), dr_route ENUM('LOCAL', 'ABROAD'), experience TINYINT(4))
+BEGIN
+    DECLARE not_found INT;
+    DECLARE min_br TINYINT;
+    DECLARE temp TINYINT;
+    DECLARE branches TINYINT;
+    DECLARE first_br TINYINT;
+
+    DECLARE drvcursor CURSOR FOR 
+    SELECT br_code FROM branch;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND
+    SET not_found=1;
+    SET min_br=1;
+
+    SELECT COUNT(*) INTO first_br FROM driver 
+    INNER JOIN worker ON drv_AT=wrk_AT
+    WHERE wrk_br_code=1;
+
+    SET not_found=0;
+    OPEN drvcursor;
+    REPEAT
+		FETCH drvcursor INTO branches;
+        IF(not_found=0)
+        THEN 
+            SELECT COUNT(*) INTO temp FROM driver 
+            INNER JOIN worker ON drv_AT=wrk_AT
+            WHERE wrk_br_code=branches;
+            IF(temp<first_br)
+            THEN
+                SELECT branches INTO min_br;
+                SET first_br=temp;
+            END IF;
+        END IF;
+    UNTIL(not_found=1)
+	END REPEAT;
+    INSERT INTO worker VALUES
+    (drvAT, first_name, last_name, salary, min_br);
+    INSERT INTO driver VALUES
+    (drvAT, license, dr_route, experience);
+    --SELECT * FROM worker WHERE wrk_br_code=min_br;
+    --SELECT * FROM driver;
+END$
+DELIMITER ; 
+--CALL new_driver('108456523', 'Jason', 'Random', 1234.21, 'C', 'LOCAL', 21);
+
 DROP TRIGGER IF EXISTS capacity;
 DELIMITER $
 
