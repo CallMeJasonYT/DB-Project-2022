@@ -523,16 +523,16 @@ BEGIN
     DECLARE rsvid INT;
     DECLARE not_found INT;
     DECLARE max TINYINT;
-    
     DECLARE tripcursor CURSOR FOR 
     SELECT res_tr_id FROM reservation WHERE res_tr_id=res_id;
-    
     DECLARE CONTINUE HANDLER FOR NOT FOUND
+
     SET not_found=1;
     
     SELECT tr_maxseats INTO max FROM trip WHERE tr_id=res_id;
     
     SET not_found=0;
+
     OPEN tripcursor;
     REPEAT
 		FETCH tripcursor INTO rsvid;
@@ -540,7 +540,7 @@ BEGIN
         THEN 
 			SELECT COUNT(*) INTO currentSeats FROM reservation WHERE res_tr_id=rsvid;
         END IF;
-        UNTIL(not_found=1)
+    UNTIL(not_found=1)
 	END REPEAT;
 IF (currentSeats < max)
 	THEN SET res=1;
@@ -587,6 +587,7 @@ BEGIN
         END IF;
     UNTIL(not_found=1)
 	END REPEAT;
+
     INSERT INTO worker VALUES
     (drvAT, first_name, last_name, salary, min_br);
     INSERT INTO driver VALUES
@@ -607,29 +608,31 @@ BEGIN
     DECLARE max_seats tinyINT;
     DECLARE seatdiff tinyINT;
     DECLARE not_found INT;
-    
     DECLARE tridcursor CURSOR FOR
     SELECT tr_id FROM trip WHERE tr_br_code=br_code;
-
     DECLARE CONTINUE HANDLER FOR NOT FOUND
-    SET not_found=1;
 
+    SET not_found=1;
     SET not_found=0;
+
     OPEN tridcursor;
     REPEAT
 		FETCH tridcursor INTO tripid;
         IF(not_found=0)
         THEN 
-        SELECT tr_departure INTO dates FROM trip
-        WHERE tr_id=tripid;
+            SELECT tr_departure INTO dates FROM trip
+            WHERE tr_id=tripid;
+
             IF (DATEDIFF(dates, date1)>0 && DATEDIFF(dates, date2)<0)
             THEN
                 SELECT COUNT(*) INTO reservations FROM reservation
                 WHERE tripid=res_tr_id;
+
                 SELECT tr_maxseats INTO max_seats FROM trip
                 WHERE tr_id=tripid;
-                SET seatdiff=max_seats-reservations;
                 
+                SET seatdiff=max_seats-reservations;
+    
                 SELECT tr_cost AS Trip_Cost, tr_maxseats AS MaxSeats, reservations, 
                 seatdiff AS Available_Seats, a.wrk_name AS Driver_Name, a.wrk_lname AS Driver_LName, 
                 b.wrk_name AS Guide_Name, b.wrk_lname AS Guide_LName, tr_departure AS Departure, tr_return AS Returning
@@ -646,6 +649,38 @@ DELIMITER ;
 /*CALL date_check(1, '2023-01-20', '2023-05-20');
 CALL date_check(1, '2023-01-20', '2023-08-20');*/
 
+DROP PROCEDURE IF EXISTS admin_check;
+DELIMITER $
+CREATE PROCEDURE admin_check(work_name CHAR(20), work_lname CHAR(20))
+BEGIN
+    DECLARE detail ENUM('LOGISTICS', 'ADMINISTRATIVE', 'ACCOUNTING');
+    DECLARE admid CHAR(10);
+
+    SELECT adm_type, adm_AT INTO detail, admid FROM admin
+    INNER JOIN worker ON adm_AT=wrk_AT
+    WHERE work_name=wrk_name && work_lname=wrk_lname;
+    
+    SELECT detail;
+
+    IF (detail!='ADMINISTRATIVE' && detail IS NOT NULL)
+    THEN 
+        DELETE FROM admin WHERE adm_AT=admid;
+        DELETE FROM worker WHERE wrk_AT=admid;
+    ELSEIF (detail IS NULL)
+    THEN
+        SELECT('This Worker is not an Admin!');
+    ELSE 
+        SELECT('You cannot Delete this User. This User is an Administrative.');
+    END IF;
+END$
+DELIMITER ;
+/*CALL admin_check('Roumpini', 'Aggoura');
+CALL admin_check('Anastasia', 'Petropoulou');
+CALL admin_check('Efi', 'Persikou');
+CALL admin_check('Petros', 'Giorgos');
+
+SELECT * FROM admin;
+SELECT * FROM Worker;*/
 
 DROP TRIGGER IF EXISTS capacity;
 DELIMITER $
@@ -655,8 +690,8 @@ FOR EACH ROW
 BEGIN
 	CALL seats_trip(NEW.res_tr_id, @res);
     IF(@res=0)
-    THEN SIGNAL SQLSTATE VALUE '45000'
-	SET MESSAGE_TEXT = 'The maximum amount of seats have been Reached.';
+        THEN SIGNAL SQLSTATE VALUE '45000'
+        SET MESSAGE_TEXT = 'The maximum amount of seats have been Reached.';
     END IF;
 END$
 DELIMITER ;
