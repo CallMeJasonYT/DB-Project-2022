@@ -124,11 +124,12 @@ INSERT INTO it VALUES
 ('AX57737772', 'IT02', 'pass0041', '2023-01-01 09:00:00', null),
 ('SA98242556', 'IT01', 'pass0042', '2022-01-02 09:00:00', null);
 
-CREATE TABLE log(
-    log_it_at CHAR(10) NOT NULL,
+CREATE TABLE logging(
+    log_id INT(11) NOT NULL AUTO_INCREMENT,
+    log_it_at CHAR(10),
     chang ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
     tab_ch ENUM('trip', 'reservation', 'event', 'travel_to', 'destination') NOT NULL,
-    PRIMARY KEY(log_it_at),
+    PRIMARY KEY(log_id),
     CONSTRAINT log1 FOREIGN KEY(log_it_at) REFERENCES it(IT_AT)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -667,7 +668,6 @@ BEGIN
     SET not_found=0;
     
     DROP TABLE IF EXISTS final_paid;
-
     CREATE TABLE final_paid(
         last_name CHAR(20),
         first_name CHAR(20),
@@ -717,23 +717,22 @@ BEGIN
         resid INT(11),
         first_name CHAR(20),
         last_name CHAR(20),
-        PRIMARY KEY(offid)
+        PRIMARY KEY(resid)
     );
-    
-    INSERT INTO new_res_off
-    SELECT off_id, res_of_id, first_name, last_name FROM reservation_offers
-    WHERE last_name=lname ORDER BY off_id;
-
+   
     OPEN ofcursor;
     REPEAT
 		FETCH ofcursor INTO res_id;
         IF(not_found=0)
         THEN
-            SELECT last_name, first_name FROM new_res_off
-            WHERE resid = res_id;
+            INSERT INTO new_res_off
+            SELECT off_id, res_of_id, first_name, last_name FROM reservation_offers
+            WHERE last_name=lname AND res_of_id=res_id;
         END IF;
     UNTIL(not_found=1)
 	END REPEAT;
+    SELECT offid, first_name, last_name FROM new_res_off
+    ORDER BY offid;
 END$
 DELIMITER ;
 
@@ -776,13 +775,25 @@ DELIMITER $
 CREATE TRIGGER capacity BEFORE INSERT ON reservation
 FOR EACH ROW
 BEGIN
+    DECLARE max_s TINYINT;
 	CALL seats_trip(NEW.res_tr_id, @res);
     IF(@res=0)
         THEN SIGNAL SQLSTATE VALUE '45000'
         SET MESSAGE_TEXT = 'The maximum amount of seats have been Reached.';
     END IF;
+
+    SELECT tr_maxseats INTO max_s FROM trip
+    WHERE tr_id=NEW.res_tr_id;
+
+    IF(NEW.res_seatnum>max_s)
+        THEN SIGNAL SQLSTATE VALUE '45000'
+        SET MESSAGE_TEXT = 'The seat you are trying to book exceeds the seat number limit of the bus.';
+    END IF;
 END$
 DELIMITER ;
+
+/*INSERT INTO reservation VALUES
+(1, 22, 'Giannis', 'Papadopoulos', 'ADULT');*/
 
 DROP TRIGGER IF EXISTS no_change;
 DELIMITER $
@@ -817,7 +828,6 @@ DELIMITER $
 CREATE TRIGGER no_decrease BEFORE UPDATE ON worker
 FOR EACH ROW
 BEGIN
-
     IF (NEW.wrk_salary<OLD.wrk_salary)
     THEN
             SIGNAL SQLSTATE '45000' 
@@ -826,6 +836,15 @@ BEGIN
 
 END$
 DELIMITER ;
+
+/*CREATE TRIGGER logu AFTER UPDATE 
+ON trip, reservation, event, travel_to, destination
+BEGIN
+    DECLARE action_type CHAR;
+    SET action_type='Insert';
+    
+END$
+DELIMITER ;*/
 
 /*UPDATE worker set wrk_salary=5000 where wrk_AT = 'AM71514316';
 UPDATE worker set wrk_salary=10 where wrk_AT = 'AM71514316';*/
@@ -61765,8 +61784,11 @@ INSERT INTO reservation_offers VALUES
 (null, 'Makhi', 'Hendrix', 1, 118.53),
 (null, 'Marley', 'Beasley', 1, 190.31);
 
-CREATE INDEX reservation_offers_adv_pay_idx
+/*CREATE INDEX reservation_offers_adv_pay_idx
 ON reservation_offers(res_of_id, adv_pay);
 
+CREATE INDEX reservation_offers_last_name_idx
+ON reservation_offers(last_name);*/
+
 /*CALL prepaid(100.00,200.00);
-CALL check_offers('Baldwin');
+CALL check_offers('Baldwin');*/
