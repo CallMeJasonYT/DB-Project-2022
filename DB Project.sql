@@ -124,16 +124,6 @@ INSERT INTO it VALUES
 ('AX57737772', 'IT02', 'pass0041', '2023-01-01 09:00:00', null),
 ('SA98242556', 'IT01', 'pass0042', '2022-01-02 09:00:00', null);
 
-CREATE TABLE logging(
-    log_id INT(11) NOT NULL AUTO_INCREMENT,
-    log_it_at CHAR(10),
-    chang ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
-    tab_ch ENUM('trip', 'reservation', 'event', 'travel_to', 'destination') NOT NULL,
-    PRIMARY KEY(log_id),
-    CONSTRAINT log1 FOREIGN KEY(log_it_at) REFERENCES it(IT_AT)
-    ON DELETE CASCADE ON UPDATE CASCADE
-);
-
 CREATE TABLE driver(
     drv_AT CHAR(10) NOT NULL,
     drv_license ENUM('A', 'B', 'C', 'D') NOT NULL,
@@ -306,8 +296,9 @@ INSERT INTO trip VALUES
 (null, '2023-09-15 10:30:00', '2023-09-19 19:30:00', 7, 350.99, 3, 'XH62833740', 'SC32758869'),
 (null, '2023-12-12 11:30:00', '2023-12-17 17:00:00', 10, 500.34, 8, 'AT13240957', 'SY94496257'),
 (null, '2023-10-07 12:30:00', '2023-10-10 17:00:00', 30, 357.10, 5, 'WE17292308', 'AS33050797'),
-(null, '2023-12-04 10:30:00', '2023-12-15 18:00:00', 45, 1289.99, 9, 'FX23226072', 'TS73756168');
-/*(null, '2023-12-04 10:30:00', '2023-12-15 18:00:00', 45, 1289.99, 9, 'FX23226072', 'TS73756168');*/
+(null, '2023-12-04 10:30:00', '2023-12-15 18:00:00', 45, 1289.99, 9, 'FX23226072', 'TS73756168'),
+(null, '2023-12-04 10:30:00', '2023-12-15 18:00:00', 32, 1289.99, 9, 'FX23226072', 'TS73756168');
+
 CREATE TABLE event(
     ev_tr_id INT(11) NOT NULL,
     ev_start DATETIME NOT NULL,
@@ -343,10 +334,11 @@ INSERT INTO event VALUES
 (16, '2023-09-11 13:30:00', '2023-09-11 15:30:00', 'Visiting the Berlin Television Tower which is the tallest building in Berlin.'),
 (17, '2023-09-16 15:30:00', '2023-09-16 18:30:00', 'Taking a tour around this amazing island.'),
 (18, '2023-12-13 16:30:00', '2023-12-13 18:00:00', 'Learning about the prosperous history of Kalambaka.'),
-(18, '2023-12-15 12:30:00', '2023-12-15 13:30:00', 'Visiting the Acropolis and The Acropolis Museum'),
+(18, '2023-12-15 12:30:00', '2023-12-15 13:30:00', 'Visiting the Acropolis and The Acropolis Museum.'),
 (19, '2023-10-08 12:30:00', '2023-10-08 15:00:00', 'Eating at a local Restaurant.'),
 (20, '2023-12-08 12:30:00', '2023-12-15 15:00:00', 'Visiting The Louvre Museum.'),
-(20, '2023-12-12 13:30:00', '2023-12-12 16:00:00', 'Visiting the Colloseum and the Ancient Market');
+(20, '2023-12-12 13:30:00', '2023-12-12 16:00:00', 'Visiting the Colloseum and the Ancient Market.'),
+(21, '2023-11-04 10:30:00', '2023-11-15 18:00:00', 'Visiting The Louvre Museum.');
 
 CREATE TABLE destination(
     dst_id INT(11) NOT NULL AUTO_INCREMENT,
@@ -375,7 +367,8 @@ INSERT INTO destination VALUES
 (null, 'Rome', 'There’s no place like Rome and of course when in Rome, do as the Romans do.', 'ABROAD', 'Italian', 12),
 (null, 'Berlin', 'Germany’s capital has more history than you can comprehend even after spending weeks in the city.', 'ABROAD', 'German', 13),
 (null, 'London', 'There’s no other city quite like London and it should go without saying that you simply must visit once in your lifetime.', 'ABROAD', 'English', 14),
-(null, 'Paris', 'Paris... a girl’s dream. The croissants, crepes, baguettes... yes, this is Paris. You will be in love.', 'ABROAD', 'French', 15);
+(null, 'Paris', 'Paris... a girl’s dream. The croissants, crepes, baguettes... yes, this is Paris. You will be in love.', 'ABROAD', 'French', 15),
+(null, 'Rome', 'There’s no place like Rome and of course when in Rome, do as the Romans do.', 'ABROAD', 'Italian', 16);
 
 CREATE TABLE travel_to(
     to_tr_id INT(11) NOT NULL,
@@ -417,7 +410,8 @@ INSERT INTO travel_to VALUES
 (18, 8, '2023-12-14 12:30:00', '2023-02-17 12:00:00'),
 (19, 2, '2023-10-07 15:30:00', '2023-10-10 13:00:00'),
 (20, 15, '2023-12-04 13:30:00', '2023-12-11 12:00:00'),
-(20, 12, '2023-12-11 14:30:00', '2023-12-15 12:00:00');
+(20, 12, '2023-12-11 14:30:00', '2023-12-15 12:00:00'),
+(21, 16, '2023-11-05 10:30:00', '2023-11-05 18:00:00');
 
 CREATE TABLE reservation(
     res_tr_id INT(11) NOT NULL,
@@ -487,7 +481,8 @@ INSERT INTO reservation VALUES
 (20, 23, 'Jaycee', 'Douglas', 'ADULT'),
 (20, 14, 'Amir', 'Durham', 'ADULT'),
 (20, 32, 'Alisha', 'Hunter', 'ADULT'),
-(20, 28, 'Mateo', 'Garrett', 'ADULT');
+(20, 28, 'Mateo', 'Garrett', 'ADULT'),
+(21, 21, 'Sam', 'Lerroy', 'ADULT');
 
 CREATE TABLE offers(
     off_code TINYINT(4) NOT NULL,
@@ -516,6 +511,18 @@ CREATE TABLE reservation_offers(
     ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+CREATE TABLE logging(
+    log_id INT(11) NOT NULL AUTO_INCREMENT,
+    chang ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
+    tab_ch ENUM('trip', 'reservation', 'event', 'travel_to', 'destination') NOT NULL,
+    curr_date DATETIME NOT NULL,
+    PRIMARY KEY(log_id)
+);
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PROCEDURES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
 DROP PROCEDURE IF EXISTS seats_trip;
 DELIMITER $
 CREATE PROCEDURE seats_trip(IN res_id INT, OUT res TINYINT)
@@ -543,7 +550,7 @@ BEGIN
         END IF;
     UNTIL(not_found=1)
 	END REPEAT;
-IF (currentSeats < max)
+IF (currentSeats < max OR currentSeats IS NULL)
 	THEN SET res=1;
 	ELSE SET res=0;
 END IF;
@@ -769,6 +776,11 @@ CALL admin_check('Petros', 'Giorgos');
 SELECT * FROM admin;
 SELECT * FROM Worker;*/
 
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TRIGGERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+
 DROP TRIGGER IF EXISTS capacity;
 DELIMITER $
 
@@ -817,10 +829,10 @@ BEGIN
 END$
 DELIMITER ;
 
-/*update trip set tr_departure='2023-01-30 11:00:00' where tr_id=1;
-update trip set tr_return='2023-01-30 11:00:00' where tr_id=1;
-update trip set tr_cost=100.00 where tr_id=1;
-update trip set tr_departure='2023-01-30 11:00:00' where tr_id=21;*/
+/*UPDATE trip SET tr_departure='2023-01-30 11:00:00' WHERE tr_id=1;
+UPDATE trip SET tr_return='2023-01-30 11:00:00' WHERE tr_id=1;
+UPDATE trip SET tr_cost=100.00 WHERE tr_id=1;
+UPDATE trip SET tr_departure='2023-01-30 11:00:00' WHERE tr_id=21;*/
 
 DROP TRIGGER IF EXISTS no_decrease;
 DELIMITER $
@@ -837,17 +849,234 @@ BEGIN
 END$
 DELIMITER ;
 
-/*CREATE TRIGGER logu AFTER UPDATE 
-ON trip, reservation, event, travel_to, destination
-BEGIN
-    DECLARE action_type CHAR;
-    SET action_type='Insert';
-    
-END$
-DELIMITER ;*/
+/*UPDATE worker SET wrk_salary=5000 WHERE wrk_AT='AM71514316';
+UPDATE worker SET wrk_salary=10 WHERE wrk_AT='AM71514316';*/
 
-/*UPDATE worker set wrk_salary=5000 where wrk_AT = 'AM71514316';
-UPDATE worker set wrk_salary=10 where wrk_AT = 'AM71514316';*/
+DROP TRIGGER IF EXISTS logUTrip;
+DELIMITER $
+
+CREATE TRIGGER logUTrip AFTER UPDATE ON trip
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Update', 'trip', curr_date);
+END$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS logDTrip;
+DELIMITER $
+
+CREATE TRIGGER logDTrip AFTER DELETE ON trip
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Delete', 'trip', curr_date);
+END$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS logITrip;
+DELIMITER $
+
+CREATE TRIGGER logITrip AFTER INSERT ON trip
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Insert', 'trip', curr_date);
+END$
+DELIMITER ;
+
+/*UPDATE trip SET tr_departure='2023-01-30 11:00:00' WHERE tr_id=21;
+DELETE FROM trip WHERE tr_id=21;
+INSERT INTO trip VALUES
+(null, '2023-11-04 10:30:00', '2023-11-15 18:00:00', 23, 219.99, 4, 'FG91992776', 'AT53041686');
+SELECT * FROM logging;*/
+
+DROP TRIGGER IF EXISTS logURes;
+DELIMITER $
+
+CREATE TRIGGER logURes AFTER UPDATE ON reservation
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Update', 'reservation', curr_date);
+END$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS logDRes;
+DELIMITER $
+
+CREATE TRIGGER logDRes AFTER DELETE ON reservation
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Delete', 'reservation', curr_date);
+END$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS logIRes;
+DELIMITER $
+
+CREATE TRIGGER logIRes AFTER INSERT ON reservation
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Insert', 'reservation', curr_date);
+END$
+DELIMITER ;
+
+/*UPDATE reservation SET res_isadult='MINOR' WHERE res_tr_id=21;
+DELETE FROM reservation WHERE res_tr_id=21;
+INSERT INTO reservation VALUES
+(21, 21, 'Sam', 'Lerroy', 'ADULT');
+SELECT * FROM logging;*/
+
+DROP TRIGGER IF EXISTS logUEv;
+DELIMITER $
+
+CREATE TRIGGER logUEv AFTER UPDATE ON event
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Update', 'event', curr_date);
+END$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS logDEv;
+DELIMITER $
+
+CREATE TRIGGER logDEv AFTER DELETE ON event
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Delete', 'event', curr_date);
+END$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS logIEv;
+DELIMITER $
+
+CREATE TRIGGER logIEv AFTER INSERT ON event
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Insert', 'event', curr_date);
+END$
+DELIMITER ;
+
+/*UPDATE event SET ev_descr='Visiting The Colloseum.' WHERE ev_tr_id=21;
+DELETE FROM event WHERE ev_tr_id=21;
+INSERT INTO event VALUES
+(21, '2023-11-04 10:30:00', '2023-11-15 18:00:00', 'Visiting The Louvre Museum.');
+SELECT * FROM logging;*/
+
+DROP TRIGGER IF EXISTS logUTravel;
+DELIMITER $
+
+CREATE TRIGGER logUTravel AFTER UPDATE ON travel_to
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Update', 'travel_to', curr_date);
+END$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS logDTravel;
+DELIMITER $
+
+CREATE TRIGGER logDTravel AFTER DELETE ON travel_to
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Delete', 'travel_to', curr_date);
+END$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS logITravel;
+DELIMITER $
+
+CREATE TRIGGER logITravel AFTER INSERT ON travel_to
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Insert', 'travel_to', curr_date);
+END$
+DELIMITER ;
+
+/*UPDATE travel_to SET to_dst_id='12' WHERE to_tr_id=21;
+DELETE FROM travel_to WHERE to_tr_id=21;
+INSERT INTO travel_to VALUES
+(21, 16, '2023-11-05 10:30:00', '2023-11-05 18:00:00');
+SELECT * FROM logging;*/
+
+DROP TRIGGER IF EXISTS logUDest;
+DELIMITER $
+
+CREATE TRIGGER logUDest AFTER UPDATE ON destination
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Update', 'destination', curr_date);
+END$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS logDDest;
+DELIMITER $
+
+CREATE TRIGGER logDDest AFTER DELETE ON destination
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Delete', 'destination', curr_date);
+END$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS logIDest;
+DELIMITER $
+
+CREATE TRIGGER logIDest AFTER INSERT ON destination
+FOR EACH ROW
+BEGIN
+	DECLARE curr_date DATETIME;
+    SELECT now() INTO curr_date;
+    INSERT INTO logging VALUES
+    (null, 'Insert', 'destination', curr_date);
+END$
+DELIMITER ;
+
+/*UPDATE destination SET dst_name='Venice' WHERE dst_id=16;
+DELETE FROM destination WHERE dst_id=16;
+SELECT * FROM destination;
+INSERT INTO destination VALUES
+(null, 'Rome', 'There’s no place like Rome and of course when in Rome, do as the Romans do.', 'ABROAD', 'Italian', 17);
+SELECT * FROM logging;*/
 
 INSERT INTO reservation_offers VALUES
 (null,  'Itzel',  'Baldwin', 2,  111.28),
