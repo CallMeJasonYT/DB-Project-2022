@@ -73,7 +73,8 @@ public class Insert_Selection extends javax.swing.JFrame{
                     mod.addElement(tables.getString("TABLE_NAME"));
                 }
             }
-            Selection.setModel(mod);     
+            Selection.setModel(mod);
+            con.close();
         }catch(ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());
         }
