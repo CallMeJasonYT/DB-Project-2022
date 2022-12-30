@@ -106,7 +106,8 @@ INSERT INTO worker VALUES
 ('SS46333586', 'Tommy', 'Carney', 945.12, 6),
 ('AS85953443', 'Matt', 'Boss', 2931.40, 1),
 ('AX57737772', 'Gilberto', 'Archer', 2341.23, 1),
-('SA98242556', 'Samantha', 'Wilkins', 2422.03, 1);
+('SA98242556', 'Samantha', 'Wilkins', 2422.03, 1),
+('SA9824TEST', 'Test', 'User', 2131.03, 1);
 
 CREATE TABLE it(
     wrk_it_AT CHAR(10) NOT NULL,
@@ -122,7 +123,8 @@ CREATE TABLE it(
 INSERT INTO it VALUES
 ('AS85953443', 'IT01', 'pass0040', '2022-01-01 09:00:00', '2022-12-30 09:00:00'),
 ('AX57737772', 'IT02', 'pass0041', '2023-01-01 09:00:00', null),
-('SA98242556', 'IT01', 'pass0042', '2022-01-02 09:00:00', null);
+('SA98242556', 'IT03', 'pass0042', '2022-01-02 09:00:00', null);
+
 
 CREATE TABLE driver(
     drv_AT CHAR(10) NOT NULL,
@@ -257,6 +259,17 @@ INSERT INTO languages VALUES
 ('AW92790994', 'Greek'),
 ('AW92790994', 'Spanish'),
 ('AW92790994', 'French');
+
+CREATE TABLE login(
+    log_in_id INT(11) AUTO_INCREMENT NOT NULL,
+    username VARCHAR(20) NOT NULL,
+    password VARCHAR(20) NOT NULL,
+    PRIMARY KEY(log_in_id)
+);
+
+INSERT INTO login VALUES
+(null,'IT02', 'pass1'),
+(null,'IT03', 'pass2'); 
 
 CREATE TABLE trip(
     tr_id INT(11) NOT NULL AUTO_INCREMENT,
@@ -700,7 +713,7 @@ BEGIN
         END IF;
     UNTIL(not_found=1)
 	END REPEAT;
-    SELECT last_name, first_name FROM final_paid;
+    SELECT last_name AS Last_Name, first_name AS First_Name FROM final_paid;
 END$
 DELIMITER ;
 
@@ -738,7 +751,7 @@ BEGIN
         END IF;
     UNTIL(not_found=1)
 	END REPEAT;
-    SELECT offid, first_name, last_name FROM new_res_off
+    SELECT offid AS Offer_ID, first_name AS First_Name, last_name AS Last_Name FROM new_res_off
     ORDER BY offid;
 END$
 DELIMITER ;
@@ -1077,6 +1090,10 @@ SELECT * FROM destination;
 INSERT INTO destination VALUES
 (null, 'Rome', 'There’s no place like Rome and of course when in Rome, do as the Romans do.', 'ABROAD', 'Italian', 17);
 SELECT * FROM logging;*/
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Reservation Inserts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
 
 INSERT INTO reservation_offers VALUES
 (null,  'Itzel',  'Baldwin', 2,  111.28),
