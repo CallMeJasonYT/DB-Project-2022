@@ -260,17 +260,6 @@ INSERT INTO languages VALUES
 ('AW92790994', 'Spanish'),
 ('AW92790994', 'French');
 
-CREATE TABLE login(
-    log_in_id INT(11) AUTO_INCREMENT NOT NULL,
-    username CHAR(10) NOT NULL,
-    password CHAR(10) NOT NULL,
-    PRIMARY KEY(log_in_id)
-);
-
-INSERT INTO login VALUES
-(null,'IT02', 'pass1'),
-(null,'IT03', 'pass2');
-
 CREATE TABLE trip(
     tr_id INT(11) NOT NULL AUTO_INCREMENT,
     tr_departure DATETIME,
@@ -369,7 +358,7 @@ INSERT INTO destination VALUES
 (null, 'Kalamata', 'Great place for fans of theatre and the arts to visit. The main draw here is the Castle of Isabeau.', 'LOCAL', 'Greek', 1),
 (null, 'Nafpaktos', 'A stunning little port town across the Rio-Antirrio Bridge from Patras. Great place for a weekend trip away from Athens.', 'LOCAL', 'Greek', 2),
 (null, 'Corfu', 'It boasts some of the most beautiful beaches in all of Europe.', 'LOCAL', 'Greek', 3),
-(null, 'Kalambaka', ' This town is located in Meteora, giving it a stunning landscape as a backdrop to this picturesque city.', 'LOCAL', 'Greek', 4),
+(null, 'Kalambaka', 'This town is located in Meteora, giving it a stunning landscape as a backdrop to this picturesque city.', 'LOCAL', 'Greek', 4),
 (null, 'Heraklion', 'Heraklion, capital of the largest Greek islands, is a great place for those interested in Ancient Greek history.', 'LOCAL', 'Greek', 5),
 (null, 'Thessaloniki', 'Thessaloniki, known as the cultural capital of Greece, is also the second-largest city in Greece.', 'LOCAL', 'Greek', 6),
 (null, 'Rhodes', 'For those interested in Medieval history. This city is also a UNESCO World Heritage Site.', 'LOCAL', 'Greek', 7),
@@ -617,7 +606,20 @@ BEGIN
     --SELECT * FROM driver;*/
 END$
 DELIMITER ; 
-/*CALL new_driver('108456523', 'Jason', 'Random', 1234.21, 'C', 'LOCAL', 21);*/
+/*SELECT wrk_br_code AS Branch_Code, COUNT(*) AS Number_Of_Drivers FROM driver 
+            INNER JOIN worker ON drv_AT=wrk_AT
+            GROUP BY wrk_br_code
+            ORDER BY wrk_br_code;
+SELECT * FROM driver;
+SELECT COUNT(*) FROM worker;
+CALL new_driver('108456523', 'Jason', 'Random', 1234.21, 'C', 'LOCAL', 21);
+SELECT wrk_br_code AS Branch_Code, COUNT(*) AS Number_Of_Drivers FROM driver 
+            INNER JOIN worker ON drv_AT=wrk_AT
+            GROUP BY wrk_br_code
+            ORDER BY wrk_br_code;
+SELECT * FROM driver;
+SELECT COUNT(*) FROM worker;
+SELECT * FROM worker; */
 
 DROP PROCEDURE IF EXISTS date_check;
 DELIMITER $
@@ -636,6 +638,22 @@ BEGIN
     SET not_found=1;
     SET not_found=0;
 
+    DROP TABLE IF EXISTS new;
+    CREATE TABLE new(
+        id INT AUTO_INCREMENT NOT NULL,
+        trcost FLOAT(7,2),
+        maxseats_ INT,
+        reservations_ INT,
+        seatdiff_ TINYINT,
+        drv_name_ CHAR(20),
+        drv_lname_ CHAR(20),
+        wrk_name_ CHAR(20),
+        wrk_lname_ CHAR(20),
+        tr_dep_ DATETIME,
+        tr_ret_ DATETIME,
+        PRIMARY KEY(id)
+    );
+
     OPEN tridcursor;
     REPEAT
 		FETCH tridcursor INTO tripid;
@@ -653,8 +671,9 @@ BEGIN
                 WHERE tr_id=tripid;
                 
                 SET seatdiff=max_seats-reservations;
-    
-                SELECT tr_cost AS Trip_Cost, tr_maxseats AS MaxSeats, reservations, 
+
+                INSERT INTO new
+                SELECT null, tr_cost AS Trip_Cost, tr_maxseats AS MaxSeats, reservations, 
                 seatdiff AS Available_Seats, a.wrk_name AS Driver_Name, a.wrk_lname AS Driver_LName, 
                 b.wrk_name AS Guide_Name, b.wrk_lname AS Guide_LName, tr_departure AS Departure, tr_return AS Returning
                 FROM trip 
@@ -665,9 +684,13 @@ BEGIN
         END IF;
     UNTIL(not_found=1)
 	END REPEAT;
+    
+    SELECT * FROM new;
 END$
 DELIMITER ; 
-/*CALL date_check(1, '2023-01-20', '2023-05-20');
+
+/*SELECT * FROM trip;
+CALL date_check(1, '2023-01-20', '2023-05-20');
 CALL date_check(1, '2023-01-20', '2023-08-20');*/
 
 DROP PROCEDURE IF EXISTS prepaid;
@@ -677,8 +700,6 @@ BEGIN
     DECLARE costs FLOAT(7,2);
     DECLARE res_id INT(11);
     DECLARE not_found INT;
-    /*DECLARE min FLOAT(7,2);
-    declare max FLOAT(7,2);*/
 
     DECLARE precursor CURSOR FOR
     SELECT res_of_id FROM reservation_offers;
@@ -781,6 +802,7 @@ BEGIN
     END IF;
 END$
 DELIMITER ;
+    
 /*CALL admin_check('Roumpini', 'Aggoura');
 CALL admin_check('Anastasia', 'Petropoulou');
 CALL admin_check('Efi', 'Persikou');
@@ -62207,11 +62229,11 @@ INSERT INTO reservation_offers VALUES
 (null, 'Makhi', 'Hendrix', 1, 118.53),
 (null, 'Marley', 'Beasley', 1, 190.31);
 
-/*CREATE INDEX reservation_offers_adv_pay_idx
+CREATE INDEX reservation_offers_adv_pay_idx
 ON reservation_offers(res_of_id, adv_pay);
 
 CREATE INDEX reservation_offers_last_name_idx
-ON reservation_offers(last_name);*/
+ON reservation_offers(last_name);
 
-/*CALL prepaid(100.00,200.00);
-CALL check_offers('Baldwin');*/
+CALL prepaid(100.00,200.00);
+/*CALL check_offers('Baldwin');*/

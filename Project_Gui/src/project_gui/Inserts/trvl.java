@@ -4,28 +4,30 @@ import javax.swing.JOptionPane;
 import java.text.*;
 import javax.swing.DefaultComboBoxModel;
 
-public class off_Ins extends javax.swing.JFrame {
-    public off_Ins() {
+public class trvl extends javax.swing.JFrame {
+
+    public trvl() {
         initComponents();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         timePicker1 = new com.raven.swing.TimePicker();
         timePicker2 = new com.raven.swing.TimePicker();
-        PickTime2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        tr_start = new com.toedter.calendar.JDateChooser();
-        jLabel3 = new javax.swing.JLabel();
-        tr_end = new com.toedter.calendar.JDateChooser();
-        cost = new javax.swing.JTextField();
-        PickTime1 = new javax.swing.JTextField();
-        Insert_btn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Cancel_btn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        dest_id = new javax.swing.JComboBox<>();
+        PickTime2 = new javax.swing.JTextField();
+        to_dst_id = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        to_arrival = new com.toedter.calendar.JDateChooser();
+        jLabel3 = new javax.swing.JLabel();
+        to_departure = new com.toedter.calendar.JDateChooser();
+        PickTime1 = new javax.swing.JTextField();
+        Insert_btn = new javax.swing.JButton();
+        to_tr_id = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -33,6 +35,20 @@ public class off_Ins extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setText("Arrival:");
+
+        Cancel_btn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Cancel_btn.setText("Cancel");
+        Cancel_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cancel_btnActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("Destination:");
 
         PickTime2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         PickTime2.setText("Set Time");
@@ -43,15 +59,17 @@ public class off_Ins extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Trip End:");
+        to_dst_id.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        tr_start.setDateFormatString("yyyy-MM-dd");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setText("Departure:");
+
+        to_arrival.setDateFormatString("yyyy-MM-dd");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Cost:");
+        jLabel3.setText("Trip:");
 
-        tr_end.setDateFormatString("yyyy-MM-dd");
+        to_departure.setDateFormatString("yyyy-MM-dd");
 
         PickTime1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         PickTime1.setText("Set Time");
@@ -70,54 +88,40 @@ public class off_Ins extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Trip Start:");
-
-        Cancel_btn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Cancel_btn.setText("Cancel");
-        Cancel_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cancel_btnActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Destination:");
-
-        dest_id.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        to_tr_id.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
+                        .addGap(248, 248, 248)
                         .addComponent(Insert_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(148, 148, 148)
                         .addComponent(Cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addGap(2, 2, 2)
+                        .addComponent(to_tr_id, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(to_dst_id, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tr_start, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(to_arrival, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PickTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tr_end, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(to_departure, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PickTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cost, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dest_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PickTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -125,28 +129,31 @@ public class off_Ins extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(tr_end, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(PickTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(PickTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cost, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(dest_id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tr_start, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                    .addComponent(to_departure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(to_dst_id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(to_tr_id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(to_arrival, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PickTime2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PickTime1, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Insert_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
+                    .addComponent(Insert_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel_btnActionPerformed
+        dispose();
+    }//GEN-LAST:event_Cancel_btnActionPerformed
 
     private void PickTime2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PickTime2MouseClicked
         timePicker2.showPopup(this, 100, 100);
@@ -167,7 +174,7 @@ public class off_Ins extends javax.swing.JFrame {
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String insert="INSERT INTO offers(off_code,tr_start,tr_end,cost,dest_id) VALUES(null,?,?,?,?)";
+            String insert="INSERT INTO travel_to(to_tr_id,to_dst_id,to_arrival,to_departure) VALUES(?,?,?,?)";
             PreparedStatement insrt = con.prepareStatement(insert);
             String time1 = PickTime1.getText();
             String time2 = PickTime2.getText();
@@ -194,7 +201,6 @@ public class off_Ins extends javax.swing.JFrame {
             }
             time1=time1.replace("PM", "");
             time1=time1.replace("AM", "");
-
             if(time2.contains("PM")){
                 String[] parts = time2.split(":");
                 String part1 = parts[0];
@@ -219,28 +225,23 @@ public class off_Ins extends javax.swing.JFrame {
             time1=time1.concat(":00");
             time2=time2.concat(":00");
             DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd ");
-            String strDate1 = dateFormat1.format(tr_start.getDate());
+            String strDate1 = dateFormat1.format(to_arrival.getDate());
             String date1 = strDate1.concat(time1);
             DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd ");
-            String strDate2 = dateFormat2.format(tr_end.getDate());
+            String strDate2 = dateFormat2.format(to_departure.getDate());
             String date2 = strDate2.concat(time2);
             Timestamp t1 = java.sql.Timestamp.valueOf(date1);
             Timestamp t2 = java.sql.Timestamp.valueOf(date2);
-            insrt.setTimestamp(1,t1);
-            insrt.setTimestamp(2,t2);
-            insrt.setFloat(3,Float.parseFloat(cost.getText()));
-            insrt.setInt(4, Integer.parseInt(dest_id.getSelectedItem().toString()));
+            insrt.setInt(1,Integer.parseInt(to_tr_id.getSelectedItem().toString()));
+            insrt.setInt(2, Integer.parseInt(to_dst_id.getSelectedItem().toString()));
+            insrt.setTimestamp(3,t1);
+            insrt.setTimestamp(4,t2);
             insrt.execute();
-
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
         }catch(ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_Insert_btnActionPerformed
-
-    private void Cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel_btnActionPerformed
-        dispose();
-    }//GEN-LAST:event_Cancel_btnActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         PickTime1.setText("Set Time");
@@ -249,16 +250,26 @@ public class off_Ins extends javax.swing.JFrame {
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT dst_id FROM destination;";
-            Statement slct = con.createStatement();
-            ResultSet rs = slct.executeQuery(select);
-            DefaultComboBoxModel mod = new DefaultComboBoxModel();
-            mod.removeAllElements();
-            while(rs.next()){
-                int box = rs.getInt("dst_id");
-                mod.addElement(box);
+            String select1="SELECT dst_id FROM destination;";
+            String select2="SELECT tr_id FROM trip ORDER BY tr_id;";
+            Statement slct1 = con.createStatement();
+            Statement slct2 = con.createStatement();
+            ResultSet rs1 = slct1.executeQuery(select1);
+            ResultSet rs2 = slct2.executeQuery(select2);
+            DefaultComboBoxModel mod1 = new DefaultComboBoxModel();
+            DefaultComboBoxModel mod2 = new DefaultComboBoxModel();
+            mod1.removeAllElements();
+            mod2.removeAllElements();
+            while(rs1.next()){
+                int box1 = rs1.getInt("dst_id");
+                mod1.addElement(box1);
             }
-            dest_id.setModel(mod);
+            while(rs2.next()){
+                int box2 = rs2.getInt("tr_id");
+                mod2.addElement(box2);
+            }
+            to_dst_id.setModel(mod1);
+            to_tr_id.setModel(mod2);
             con.close();
         }catch(ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());
@@ -266,27 +277,27 @@ public class off_Ins extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
+
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new off_Ins().setVisible(true);
+            public void run(){
+                new trvl().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel_btn;
     private javax.swing.JButton Insert_btn;
     private javax.swing.JTextField PickTime1;
     private javax.swing.JTextField PickTime2;
-    private javax.swing.JTextField cost;
-    private javax.swing.JComboBox<String> dest_id;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private com.raven.swing.TimePicker timePicker1;
     private com.raven.swing.TimePicker timePicker2;
-    private com.toedter.calendar.JDateChooser tr_end;
-    private com.toedter.calendar.JDateChooser tr_start;
+    private com.toedter.calendar.JDateChooser to_arrival;
+    private com.toedter.calendar.JDateChooser to_departure;
+    private javax.swing.JComboBox<String> to_dst_id;
+    private javax.swing.JComboBox<String> to_tr_id;
     // End of variables declaration//GEN-END:variables
 }

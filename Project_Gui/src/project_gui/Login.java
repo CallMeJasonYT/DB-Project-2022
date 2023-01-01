@@ -116,7 +116,7 @@ public class Login extends javax.swing.JFrame {
             String password = Password.getText();
             
             Statement stm = con.createStatement();
-            String login = "SELECT * FROM login WHERE username='"+username+"' AND password='"+password+"'";
+            String login = "SELECT * FROM it WHERE IT_AT='"+username+"' AND pass='"+password+"' AND end_date IS NULL";
             
             ResultSet rs = stm.executeQuery(login);
             String[] types = {"TABLE"};

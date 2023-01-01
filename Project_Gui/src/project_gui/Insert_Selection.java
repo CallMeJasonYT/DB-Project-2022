@@ -86,82 +86,82 @@ public class Insert_Selection extends javax.swing.JFrame{
         {
             case "branch":
                 dispose();
-                branch_Ins inspage1 = new branch_Ins();
+                branch inspage1 = new branch();
                 inspage1.show();
                 break;
             case "phones":
                 dispose();
-                phones_Ins inspage2 = new phones_Ins();
+                phones inspage2 = new phones();
                 inspage2.show();
                 break;
             case "worker":
                 dispose();
-                wrk_Ins inspage3 = new wrk_Ins();
+                wrk inspage3 = new wrk();
                 inspage3.show();
                 break;
             case "it":    
                 dispose();
-                it_Ins inspage4 = new it_Ins();
+                it inspage4 = new it();
                 inspage4.show();
                 break;
             case "driver":   
                 dispose();
-                drv_Ins inspage5 = new drv_Ins();
+                drv inspage5 = new drv();
                 inspage5.show();
                 break;
             case "admin":    
                 dispose();
-                adm_Ins inspage6 = new adm_Ins();
+                adm inspage6 = new adm();
                 inspage6.show();
                 break;
             case "manages":    
                 dispose();
-                mngs_Ins inspage7 = new mngs_Ins();
+                mngs inspage7 = new mngs();
                 inspage7.show();
                 break;
             case "guide":    
                 dispose();
-                gui_Ins inspage8 = new gui_Ins();
+                gui inspage8 = new gui();
                 inspage8.show();
                 break;
             case "languages":   
                 dispose();
-                lang_Ins inspage9 = new lang_Ins();
+                lang inspage9 = new lang();
                 inspage9.show();
                 break;
             case "trip":  
                 dispose();
-                trip_Ins inspage10 = new trip_Ins();
+                trip inspage10 = new trip();
                 inspage10.show();
                 break;
             case "event":   
                 dispose();
-                evt_Ins inspage11 = new evt_Ins();
+                evt inspage11 = new evt();
                 inspage11.show();
                 break;
             case "destination":
                 dispose();
-                dst_Ins inspage12 = new dst_Ins();
+                dst inspage12 = new dst();
                 inspage12.show();
                 break;
             case "travel_to":    
                 dispose();
-                trvl_Ins inspage13 = new trvl_Ins();
+                trvl inspage13 = new trvl();
                 inspage13.show();
                 break;
             case "reservation":
                 dispose();
-                rsv_Ins inspage14 = new rsv_Ins();
+                rsv inspage14 = new rsv();
                 inspage14.show();
                 break;
             case "offers":   
                 dispose();
-                off_Ins inspage15 = new off_Ins();
+                off inspage15 = new off();
                 inspage15.show();
                 break;
             case "reservation_offers":  
                 dispose();
-                ResOff_Ins inspage16 = new ResOff_Ins();
+                ResOff inspage16 = new ResOff();
                 inspage16.show();
                 break;
         }
