@@ -29,18 +29,8 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Password:");
 
         Username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsernameActionPerformed(evt);
-            }
-        });
 
         Password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PasswordActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -111,14 +101,6 @@ public class Login extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(868, 647));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameActionPerformed
-
-    }//GEN-LAST:event_UsernameActionPerformed
-
-    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
-
-    }//GEN-LAST:event_PasswordActionPerformed
 
     private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
         Username.setText("");

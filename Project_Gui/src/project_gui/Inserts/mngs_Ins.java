@@ -55,6 +55,11 @@ public class mngs_Ins extends javax.swing.JFrame {
         });
 
         adm_AT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        adm_AT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adm_ATActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,6 +158,10 @@ public class mngs_Ins extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void adm_ATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adm_ATActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adm_ATActionPerformed
 
 
     public static void main(String args[]) {

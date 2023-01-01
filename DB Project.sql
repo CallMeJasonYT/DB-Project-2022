@@ -121,9 +121,9 @@ CREATE TABLE it(
 );
 
 INSERT INTO it VALUES
-('AS85953443', 'IT01', 'pass0040', '2022-01-01 09:00:00', '2022-12-30 09:00:00'),
-('AX57737772', 'IT02', 'pass0041', '2023-01-01 09:00:00', null),
-('SA98242556', 'IT03', 'pass0042', '2022-01-02 09:00:00', null);
+('AS85953443', 'IT01', 'pass0', '2022-01-01 09:00:00', '2022-12-30 09:00:00'),
+('AX57737772', 'IT02', 'pass1', '2023-01-01 09:00:00', null),
+('SA98242556', 'IT03', 'pass2', '2022-01-02 09:00:00', null);
 
 
 CREATE TABLE driver(
@@ -262,14 +262,14 @@ INSERT INTO languages VALUES
 
 CREATE TABLE login(
     log_in_id INT(11) AUTO_INCREMENT NOT NULL,
-    username VARCHAR(20) NOT NULL,
-    password VARCHAR(20) NOT NULL,
+    username CHAR(10) NOT NULL,
+    password CHAR(10) NOT NULL,
     PRIMARY KEY(log_in_id)
 );
 
 INSERT INTO login VALUES
 (null,'IT02', 'pass1'),
-(null,'IT03', 'pass2'); 
+(null,'IT03', 'pass2');
 
 CREATE TABLE trip(
     tr_id INT(11) NOT NULL AUTO_INCREMENT,
@@ -498,7 +498,7 @@ INSERT INTO reservation VALUES
 (21, 21, 'Sam', 'Lerroy', 'ADULT');
 
 CREATE TABLE offers(
-    off_code TINYINT(4) NOT NULL,
+    off_code TINYINT(4) NOT NULL AUTO_INCREMENT,
     tr_start DATETIME NOT NULL,
     tr_end DATETIME NOT NULL,
     cost FLOAT(7,2) NOT NULL,
@@ -509,9 +509,9 @@ CREATE TABLE offers(
 );
 
 INSERT INTO offers VALUES
-(1, '2023-07-05 09:00:00', '2023-09-27 09:00:00', 456.53, 7),
-(2, '2023-11-10 11:00:00', '2023-12-30 11:00:00', 654.53, 10),
-(3, '2023-03-08 12:00:00', '2023-05-15 12:00:00', 923.53, 15);
+(null, '2023-07-05 09:00:00', '2023-09-27 09:00:00', 456.53, 7),
+(null, '2023-11-10 11:00:00', '2023-12-30 11:00:00', 654.53, 10),
+(null, '2023-03-08 12:00:00', '2023-05-15 12:00:00', 923.53, 15);
 
 CREATE TABLE reservation_offers(
     res_of_id INT(11) NOT NULL AUTO_INCREMENT,
@@ -788,6 +788,7 @@ CALL admin_check('Petros', 'Giorgos');
 
 SELECT * FROM admin;
 SELECT * FROM Worker;*/
+       
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TRIGGERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -1091,6 +1092,182 @@ INSERT INTO destination VALUES
 (null, 'Rome', 'There’s no place like Rome and of course when in Rome, do as the Romans do.', 'ABROAD', 'Italian', 17);
 SELECT * FROM logging;*/
 
+DROP TRIGGER IF EXISTS check_driver;
+DELIMITER $
+CREATE TRIGGER check_driver BEFORE INSERT ON driver
+FOR EACH ROW 
+BEGIN
+    DECLARE temp1 char(10);
+    DECLARE temp2 char(10);
+    DECLARE temp3 char(10);
+
+    SELECT adm_AT INTO temp1 FROM admin
+    WHERE adm_AT = NEW.drv_AT 
+    limit 0,1;
+
+    SELECT gui_AT INTO temp2 FROM guide
+    WHERE gui_AT = NEW.drv_AT
+    LIMIT 0,1;
+
+    SELECT wrk_it_AT INTO temp3 FROM it
+    WHERE wrk_it_AT = NEW.drv_AT
+    LIMIT 0,1;
+     
+    IF(temp1 = NEW.drv_AT)
+    THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'You cannot add this worker as a driver because he is an Admin.';
+    END IF;
+    IF(temp2 = NEW.drv_AT)
+    THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'You cannot add this worker as a driver because he is a Guide.';
+    END IF;
+    IF(temp3 = NEW.drv_AT)
+    THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'You cannot add this worker as a driver because he is an IT Manager.';
+    END IF;
+END$
+DELIMITER ;
+
+/*INSERT INTO driver VALUES
+('SA9824TEST', 'C', 'ABROAD',15);
+INSERT INTO driver VALUES
+('AS85953443', 'C', 'ABROAD',15);*/
+
+DROP TRIGGER IF EXISTS check_admin;
+DELIMITER $
+CREATE TRIGGER check_admin BEFORE INSERT ON admin
+FOR EACH ROW 
+BEGIN
+    DECLARE temp1 char(10);
+    DECLARE temp2 char(10);
+    DECLARE temp3 char(10);
+
+    SELECT drv_AT INTO temp1 FROM driver
+    WHERE drv_AT = NEW.adm_AT 
+    limit 0,1;
+
+    SELECT gui_AT INTO temp2 FROM guide
+    WHERE gui_AT = NEW.adm_AT
+    LIMIT 0,1;
+
+    SELECT wrk_it_AT INTO temp3 FROM it
+    WHERE wrk_it_AT = NEW.adm_AT
+    LIMIT 0,1;
+     
+    IF(temp1 = NEW.adm_AT)
+    THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'You cannot add this worker as an admin because he is a Driver.';
+    END IF;
+    IF(temp2 = NEW.adm_AT)
+    THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'You cannot add this worker as an admin because he is a Guide.';
+    END IF;
+    IF(temp3 = NEW.adm_AT)
+    THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'You cannot add this worker as an admin because he is an IT Manager.';
+    END IF;
+END$
+DELIMITER ;
+
+/*INSERT INTO admin VALUES
+('SA9824TEST', 'LOGISTICS', 'Logistics Diploma');
+INSERT INTO admin VALUES
+('AS85953443','LOGISTICS', 'Logistics Diploma');*/
+
+
+DROP TRIGGER IF EXISTS check_guide;
+DELIMITER $
+CREATE TRIGGER check_guide BEFORE INSERT ON guide
+FOR EACH ROW 
+BEGIN
+    DECLARE temp1 char(10);
+    DECLARE temp2 char(10);
+    DECLARE temp3 char(10);
+
+    SELECT drv_AT INTO temp1 FROM driver
+    WHERE drv_AT = NEW.gui_AT 
+    limit 0,1;
+
+    SELECT adm_AT INTO temp2 FROM admin
+    WHERE adm_AT = NEW.gui_AT
+    LIMIT 0,1;
+
+    SELECT wrk_it_AT INTO temp3 FROM it
+    WHERE wrk_it_AT = NEW.gui_AT
+    LIMIT 0,1;
+     
+    IF(temp1 = NEW.gui_AT)
+    THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'You cannot add this worker as a Guide because he is a Driver.';
+    END IF;
+    IF(temp2 = NEW.gui_AT)
+    THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'You cannot add this worker as a Guide because he is an Admin.';
+    END IF;
+    IF(temp3 = NEW.gui_AT)
+    THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'You cannot add this worker asa Guide because he is an IT Manager.';
+    END IF;
+END$
+DELIMITER ;
+
+/*INSERT INTO guide VALUES
+('SA9824TEST', 'Very good guide');
+INSERT INTO guide VALUES
+('AS85953443','Very good guide');*/
+
+DROP TRIGGER IF EXISTS check_it;
+DELIMITER $
+CREATE TRIGGER check_it BEFORE INSERT ON it
+FOR EACH ROW 
+BEGIN
+    DECLARE temp1 char(10);
+    DECLARE temp2 char(10);
+    DECLARE temp3 char(10);
+
+    SELECT drv_AT INTO temp1 FROM driver
+    WHERE drv_AT = NEW.wrk_it_AT 
+    limit 0,1;
+
+    SELECT adm_AT INTO temp2 FROM admin
+    WHERE adm_AT = NEW.wrk_it_AT
+    LIMIT 0,1;
+
+    SELECT gui_AT INTO temp3 FROM guide
+    WHERE gui_AT = NEW.wrk_it_AT
+    LIMIT 0,1;
+     
+    IF(temp1 = NEW.wrk_it_AT)
+    THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'You cannot add this worker as an IT Manager because he is a Driver.';
+    END IF;
+    IF(temp2 = NEW.wrk_it_AT)
+    THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'You cannot add this worker as an IT Manager because he is an Admmin.';
+    END IF;
+    IF(temp3 = NEW.wrk_it_AT)
+    THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'You cannot add this worker as an IT Manager because he is a Guide.';
+    END IF;
+END$
+DELIMITER ;
+
+/*INSERT INTO it VALUES
+('SA9824TEST', 'IT04', 'pass0040', '2022-01-01 09:00:00', null);
+INSERT INTO it VALUES
+('SA88164961','IT04', 'pass0040', '2022-01-01 09:00:00', null);*/
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Reservation Inserts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
