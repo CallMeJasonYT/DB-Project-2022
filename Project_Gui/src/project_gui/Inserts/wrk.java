@@ -116,6 +116,11 @@ public class wrk extends javax.swing.JFrame {
 
         Delete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,7 +206,7 @@ public class wrk extends javax.swing.JFrame {
                 String name = rs.getString("wrk_name"); 
                 String lname = rs.getString("wrk_lname");
                 String salary = rs.getString("wrk_salary");
-                String code = Float.toString(rs.getFloat("wrk_br_code"));
+                String code = Integer.toString(rs.getInt("wrk_br_code"));
                 String tb_data[]= {at, name, lname, salary, code};
                 tbModel.addRow(tb_data);
             }
@@ -297,10 +302,26 @@ public class wrk extends javax.swing.JFrame {
             updateTable();
             JOptionPane.showMessageDialog(this, "Updated Succesfully");
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_UpdateActionPerformed
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String del= "DELETE FROM worker WHERE wrk_AT = ?;";
+            PreparedStatement dlt = con.prepareStatement(del);
+            dlt.setString(1, wrk_AT.getText());
+            dlt.executeUpdate();
+            updateTable();
+            wrk_AT.setText("");
+            wrk_name.setText("");
+            wrk_lname.setText("");
+            wrk_salary.setText("");
+            JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+    }//GEN-LAST:event_DeleteActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -135,6 +135,11 @@ public class it extends javax.swing.JFrame {
 
         Delete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         Update.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Update.setText("Update");
@@ -465,6 +470,29 @@ public class it extends javax.swing.JFrame {
             }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
         }else{JOptionPane.showMessageDialog(this, "You cannot Update the Travel_to destination ID! Try Using Insert/Delete Instead.");}
     }//GEN-LAST:event_UpdateActionPerformed
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        try{
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+                String delete="DELETE FROM it WHERE IT_AT = ?";
+                PreparedStatement dlt = con.prepareStatement(delete);
+                dlt.setString(1, IT_AT.getText());
+                dlt.executeUpdate();
+                updateTable();
+                t1 = null;
+                t2 = null;
+                pass.setText("");
+                jDateChooser1.setDate(null);
+                jDateChooser2.setDate(null);
+                PickTime1.setText("");
+                PickTime2.setText("");
+                isRetired.setSelected(false);
+                IT_AT.setText("");
+                JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+                con.close();
+            }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+    }//GEN-LAST:event_DeleteActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

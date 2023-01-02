@@ -68,6 +68,11 @@ public class branch extends javax.swing.JFrame {
 
         Delete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         BranchTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -234,6 +239,25 @@ public void updateTable(){
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         updateTable();
     }//GEN-LAST:event_formWindowOpened
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        try{
+            DefaultTableModel tbModel= (DefaultTableModel) BranchTable.getModel();
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String del="DELETE FROM branch WHERE br_code = ?";
+            PreparedStatement dlt = con.prepareStatement(del);
+            dlt.setString(1, tbModel.getValueAt(BranchTable.getSelectedRow(), 0).toString());
+            dlt.execute();
+            updateTable();
+            br_street.setText("");
+            br_num.setText("");
+            br_city.setText("");
+            JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_DeleteActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

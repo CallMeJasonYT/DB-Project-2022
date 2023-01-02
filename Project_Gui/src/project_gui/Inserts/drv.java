@@ -73,6 +73,11 @@ public class drv extends javax.swing.JFrame {
 
         Delete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         Update.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Update.setText("Update");
@@ -256,9 +261,7 @@ public class drv extends javax.swing.JFrame {
             updateTable();
             JOptionPane.showMessageDialog(this, "Updated Succesfully");
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_UpdateActionPerformed
 
     private void DriverTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DriverTableMouseClicked
@@ -272,6 +275,22 @@ public class drv extends javax.swing.JFrame {
         drv_route.setSelectedItem(route);
         drv_experience.setText(exp);
     }//GEN-LAST:event_DriverTableMouseClicked
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String delete="DELETE FROM driver WHERE drv_AT = ?";
+            PreparedStatement dlt = con.prepareStatement(delete);
+            dlt.setString(1, wrk_AT.getSelectedItem().toString());
+            dlt.executeUpdate();
+            updateTable();
+            wrk_AT.setSelectedItem("");
+            drv_experience.setText("");
+            JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+    }//GEN-LAST:event_DeleteActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

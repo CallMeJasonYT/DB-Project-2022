@@ -796,9 +796,9 @@ BEGIN
         DELETE FROM worker WHERE wrk_AT=admid;
     ELSEIF (detail IS NULL)
     THEN
-        SELECT('This Worker is not an Admin!');
+        SELECT('This Worker is not an Admin!') AS test1;
     ELSE
-        SELECT('You cannot Delete this User. This User is an Administrative.');
+        SELECT('You cannot Delete this User. This User is an Administrative.') AS test2;
     END IF;
 END$
 DELIMITER ;
@@ -1201,7 +1201,6 @@ DELIMITER ;
 ('SA9824TEST', 'LOGISTICS', 'Logistics Diploma');
 INSERT INTO admin VALUES
 ('AS85953443','LOGISTICS', 'Logistics Diploma');*/
-
 
 DROP TRIGGER IF EXISTS check_guide;
 DELIMITER $
@@ -62235,5 +62234,7 @@ ON reservation_offers(res_of_id, adv_pay);
 CREATE INDEX reservation_offers_last_name_idx
 ON reservation_offers(last_name);
 
-CALL prepaid(100.00,200.00);
-/*CALL check_offers('Baldwin');*/
+CALL admin_check('Maritini','Petroula');
+
+/*CALL prepaid(100.00,200.00);
+CALL check_offers('Baldwin');*/

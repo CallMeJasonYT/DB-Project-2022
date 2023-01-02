@@ -72,6 +72,11 @@ public class adm extends javax.swing.JFrame {
 
         Delete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         AdminTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -248,9 +253,7 @@ public class adm extends javax.swing.JFrame {
             updateTable();
             JOptionPane.showMessageDialog(this, "Updated Succesfully");
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_UpdateActionPerformed
 
     private void AdminTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminTableMouseClicked
@@ -263,15 +266,63 @@ public class adm extends javax.swing.JFrame {
         adm_diploma.setText(diploma);
     }//GEN-LAST:event_AdminTableMouseClicked
 
-    public static void main(String args[]) {
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        try{
+            String fname = null;
+            String lname = null;
+            String test = null;
+            String msg = "You cannot Delete this User. This User is an Administrative.";
+            String msg2 = "This Worker is not an Admin!";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String delete="DELETE FROM admin WHERE adm_AT = ?";
+            String select1="SELECT wrk_name FROM worker INNER JOIN admin ON adm_AT=wrk_AT WHERE wrk_AT = ? AND adm_type='ADMINISTRATIVE';";
+            String select2="SELECT wrk_lname FROM worker INNER JOIN admin ON adm_AT=wrk_AT WHERE wrk_AT = ? AND adm_type='ADMINISTRATIVE';";
+            String select3="SELECT adm_AT FROM admin";
+            PreparedStatement dlt = con.prepareStatement(delete);
+            PreparedStatement slc1 = con.prepareStatement(select1);
+            PreparedStatement slc2 = con.prepareStatement(select2);
+            PreparedStatement slc3 = con.prepareStatement(select3);
+            slc1.setString(1, wrk_AT.getSelectedItem().toString());
+            slc2.setString(1, wrk_AT.getSelectedItem().toString());
+            dlt.setString(1, wrk_AT.getSelectedItem().toString());
+            ResultSet rs1 = slc1.executeQuery();
+            ResultSet rs2 = slc2.executeQuery();
+            ResultSet rs4 = slc3.executeQuery();
+            if(rs1.next()==true){fname = rs1.getString("wrk_name");}
+            if(rs2.next()==true){lname = rs2.getString("wrk_lname");}
+            String s = "{CALL admin_check('"+fname+"','"+lname+"')}";
+            CallableStatement cs = con.prepareCall(s);
+            cs.execute();
+            ResultSet rs3 = cs.getResultSet();
+            System.out.println(fname);
+            System.out.println(lname);
+            if(rs3 != null)rs3.next();
+            if(rs3.getString(1).equals(msg)){
+                JOptionPane.showMessageDialog(this, msg);
+            }else if(rs3.getString(1).equals(msg2) && fname == null){
+                while(rs4.next()){
+                    if(rs4.getString("adm_AT").equals(wrk_AT.getSelectedItem().toString())){
+                        test = "found";
+                        break;
+                    }else test = "not found";
+                }if ("found".equals(test)){
+                    dlt.execute();
+                    JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+                }else JOptionPane.showMessageDialog(this, msg2);
+            }
+            updateTable();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+    }//GEN-LAST:event_DeleteActionPerformed
 
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new adm().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AdminTable;
     private javax.swing.JButton Cancel_btn;
