@@ -1,27 +1,27 @@
-package project_gui.Inserts;
+package project_gui.Functions;
 import java.sql.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class phones extends javax.swing.JFrame {
-    public phones() {
+public class lang extends javax.swing.JFrame {
+    public lang() {
         initComponents();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         Insert_btn = new javax.swing.JButton();
         Cancel_btn = new javax.swing.JButton();
-        br_code = new javax.swing.JComboBox<>();
-        ph_number = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        lng_language = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        lng_gui_AT = new javax.swing.JComboBox<>();
         Update = new javax.swing.JButton();
         Delete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        PhonesTable = new javax.swing.JTable();
+        LanguageTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -29,12 +29,6 @@ public class phones extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Branch Code:");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Phone Number:");
 
         Insert_btn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Insert_btn.setText("Insert");
@@ -52,7 +46,13 @@ public class phones extends javax.swing.JFrame {
             }
         });
 
-        br_code.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setText("Language:");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Guide AT:");
+
+        lng_gui_AT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         Update.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Update.setText("Update");
@@ -70,16 +70,16 @@ public class phones extends javax.swing.JFrame {
             }
         });
 
-        PhonesTable.setModel(new javax.swing.table.DefaultTableModel(
+        LanguageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ph_br_code", "ph_number"
+                "lng_gui_AT", "lng_language"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false
@@ -93,130 +93,110 @@ public class phones extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        PhonesTable.setColumnSelectionAllowed(true);
-        PhonesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        LanguageTable.setColumnSelectionAllowed(true);
+        LanguageTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PhonesTableMouseClicked(evt);
+                LanguageTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(PhonesTable);
-        PhonesTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jScrollPane1.setViewportView(LanguageTable);
+        LanguageTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Insert_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ph_number, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(Insert_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lng_gui_AT, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(37, 37, 37)
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lng_language)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ph_number, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lng_gui_AT, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lng_language, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Insert_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-public void updateTable(){
-        try
-        {
+
+    public void updateTable(){
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT * FROM phones;";
+            String select="SELECT * FROM languages;";
             Statement slct = con.createStatement();
             ResultSet rs = slct.executeQuery(select);
-            DefaultTableModel tbModel= (DefaultTableModel) PhonesTable.getModel();
+            DefaultTableModel tbModel= (DefaultTableModel) LanguageTable.getModel();
             tbModel.setNumRows(0);
             while(rs.next()){
-                String code = rs.getString("ph_br_code");
-                String number = rs.getString("ph_number"); 
-                String tb_data[]= {code,number};
+                String at = rs.getString("lng_gui_AT");
+                String language = rs.getString("lng_language"); 
+                String tb_data[]= {at,language};
                 tbModel.addRow(tb_data);
             }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     public void updateCombo(){
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT br_code FROM branch;";
+            String select="SELECT wrk_AT FROM worker INNER JOIN guide ON wrk_AT = gui_AT;";
             Statement slct = con.createStatement();
             ResultSet rs = slct.executeQuery(select);
             DefaultComboBoxModel mod = new DefaultComboBoxModel();
             mod.removeAllElements();
-            while(rs.next()){
-                String box = "Branch: "+rs.getInt("br_code")+"";
-                mod.addElement(box);
-            }
-            br_code.setModel(mod);
+            while(rs.next()){mod.addElement(rs.getString("wrk_AT"));}
+            lng_gui_AT.setModel(mod);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
-    
     private void Insert_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Insert_btnActionPerformed
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String insert="INSERT INTO phones(ph_br_code,ph_number) VALUES(?,?)";
+            String insert="INSERT INTO languages(lng_gui_AT,lng_language) VALUES(?,?)";
             PreparedStatement insrt = con.prepareStatement(insert);
-            String code = br_code.getSelectedItem().toString().replaceAll("[^0-9.]", "");
-            int i=Integer.parseInt(code);
-            insrt.setInt(1,i);
-            insrt.setString(2,ph_number.getText());
+            insrt.setString(1,lng_gui_AT.getSelectedItem().toString());
+            insrt.setString(2,lng_language.getText());
             insrt.execute();
             updateTable();
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_Insert_btnActionPerformed
 
     private void Cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel_btnActionPerformed
@@ -232,27 +212,25 @@ public void updateTable(){
         JOptionPane.showMessageDialog(this, "You cannot Update this Table! Try Using Insert/Delete Instead.");
     }//GEN-LAST:event_UpdateActionPerformed
 
-    private void PhonesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PhonesTableMouseClicked
-        DefaultTableModel tbModel= (DefaultTableModel) PhonesTable.getModel();
-        String code = "Branch: "+tbModel.getValueAt(PhonesTable.getSelectedRow(), 0).toString()+"";
-        String number = tbModel.getValueAt(PhonesTable.getSelectedRow(), 1).toString();
-        br_code.setSelectedItem(code);
-        ph_number.setText(number);
-    }//GEN-LAST:event_PhonesTableMouseClicked
+    private void LanguageTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LanguageTableMouseClicked
+        DefaultTableModel tbModel= (DefaultTableModel) LanguageTable.getModel();
+        String code = tbModel.getValueAt(LanguageTable.getSelectedRow(), 0).toString();
+        String language = tbModel.getValueAt(LanguageTable.getSelectedRow(), 1).toString();
+        lng_gui_AT.setSelectedItem(code);
+        lng_language.setText(language);
+    }//GEN-LAST:event_LanguageTableMouseClicked
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String delete="DELETE FROM phones WHERE ph_br_code = ? AND ph_number = ?";
+            String delete="DELETE FROM languages WHERE lng_gui_AT = ? AND lng_language = ?";
             PreparedStatement dlt = con.prepareStatement(delete);
-            String code = br_code.getSelectedItem().toString().replaceAll("[^0-9.]", "");
-            int i=Integer.parseInt(code);
-            dlt.setInt(1,i);
-            dlt.setString(2,ph_number.getText());
+            dlt.setString(1,lng_gui_AT.getSelectedItem().toString());
+            dlt.setString(2,lng_language.getText());
             dlt.execute();
-            ph_number.setText("");
             updateTable();
+            lng_language.setText("");
             JOptionPane.showMessageDialog(this, "Deleted Succesfully");
         }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_DeleteActionPerformed
@@ -260,7 +238,7 @@ public void updateTable(){
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new phones().setVisible(true);
+                new lang().setVisible(true);
             }
         });
     }
@@ -268,12 +246,12 @@ public void updateTable(){
     private javax.swing.JButton Cancel_btn;
     private javax.swing.JButton Delete;
     private javax.swing.JButton Insert_btn;
-    private javax.swing.JTable PhonesTable;
+    private javax.swing.JTable LanguageTable;
     private javax.swing.JButton Update;
-    private javax.swing.JComboBox<String> br_code;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField ph_number;
+    private javax.swing.JComboBox<String> lng_gui_AT;
+    private javax.swing.JTextField lng_language;
     // End of variables declaration//GEN-END:variables
 }

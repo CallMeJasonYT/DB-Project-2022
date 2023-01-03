@@ -1,14 +1,11 @@
-package project_gui.Inserts;
+package project_gui.Functions;
 import java.sql.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class gui extends javax.swing.JFrame {
-
-    public gui() {
-        initComponents();
-    }
+    public gui() {initComponents();}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -65,6 +62,11 @@ public class gui extends javax.swing.JFrame {
 
         Delete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         GuiTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,30 +153,9 @@ public class gui extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Insert_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Insert_btnActionPerformed
-        try
-        {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String insert="INSERT INTO guide(gui_AT,gui_cv) VALUES(?,?)";
-            PreparedStatement insrt = con.prepareStatement(insert);
-            insrt.setString(1,gui_AT.getSelectedItem().toString());
-            insrt.setString(2,gui_cv.getText());
-            insrt.execute();
-            updateTable();
-            JOptionPane.showMessageDialog(this, "Inserted Succesfully");
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
-    }//GEN-LAST:event_Insert_btnActionPerformed
-
-    private void Cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel_btnActionPerformed
-        dispose();
-    }//GEN-LAST:event_Cancel_btnActionPerformed
+    
     public void updateTable(){
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select2="SELECT * FROM guide;";
@@ -183,15 +164,13 @@ public class gui extends javax.swing.JFrame {
             DefaultTableModel tbModel= (DefaultTableModel) GuiTable.getModel();
             tbModel.setNumRows(0);
             while(rs2.next()){
-                String gui_AT = rs2.getString("gui_AT");
-                String gui_cv = rs2.getString("gui_cv"); 
-                String tb_data[]= {gui_AT,gui_cv};
+                String at = rs2.getString("gui_AT");
+                String cv = rs2.getString("gui_cv"); 
+                String tb_data[]= {at,cv};
                 tbModel.addRow(tb_data);
             }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     public void updateCombo(){
         try{
@@ -208,10 +187,26 @@ public class gui extends javax.swing.JFrame {
             updateTable();
             gui_AT.setModel(mod);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
+    private void Insert_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Insert_btnActionPerformed
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String insert="INSERT INTO guide(gui_AT,gui_cv) VALUES(?,?)";
+            PreparedStatement insrt = con.prepareStatement(insert);
+            insrt.setString(1,gui_AT.getSelectedItem().toString());
+            insrt.setString(2,gui_cv.getText());
+            insrt.execute();
+            updateTable();
+            JOptionPane.showMessageDialog(this, "Inserted Succesfully");
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+    }//GEN-LAST:event_Insert_btnActionPerformed
+
+    private void Cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel_btnActionPerformed
+        dispose();
+    }//GEN-LAST:event_Cancel_btnActionPerformed
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         updateCombo();
     }//GEN-LAST:event_formWindowOpened
@@ -236,10 +231,23 @@ public class gui extends javax.swing.JFrame {
             updateTable();
             JOptionPane.showMessageDialog(this, "Updated Succesfully");
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_UpdateActionPerformed
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String delete="DELETE FROM guide WHERE gui_AT = ?";
+            PreparedStatement dlt = con.prepareStatement(delete);
+            dlt.setString(1, gui_AT.getSelectedItem().toString());
+            dlt.executeUpdate();
+            updateTable();
+            gui_cv.setText("");
+            JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+    }//GEN-LAST:event_DeleteActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

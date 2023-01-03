@@ -1,4 +1,4 @@
-package project_gui.Inserts;
+package project_gui.Functions;
 import java.sql.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -7,9 +7,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class rsv extends javax.swing.JFrame {
-    public rsv() {
-        initComponents();
-    }
+    public rsv() {initComponents();}
     static int seatnum = 1;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -85,6 +83,11 @@ public class rsv extends javax.swing.JFrame {
 
         Delete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         ReservationTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -191,8 +194,7 @@ public class rsv extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     public void updateTable(){
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select="SELECT * FROM reservation;";
@@ -210,13 +212,10 @@ public class rsv extends javax.swing.JFrame {
                 tbModel.addRow(tb_data);
             }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     public void updateCombo(){
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select="SELECT tr_id FROM trip ORDER BY tr_id;";
@@ -229,13 +228,10 @@ public class rsv extends javax.swing.JFrame {
             }
             res_tr_id.setModel(mod);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     private void Insert_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Insert_btnActionPerformed
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String insert="INSERT INTO reservation(res_tr_id,res_seatnum,res_name,res_lname,res_isadult) VALUES(?,?,?,?,?)";
@@ -250,9 +246,7 @@ public class rsv extends javax.swing.JFrame {
             insrt.execute();
             updateTable();
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_Insert_btnActionPerformed
 
     private void Cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel_btnActionPerformed
@@ -300,13 +294,26 @@ public class rsv extends javax.swing.JFrame {
         seatnum = Integer.parseInt(res_seatnum.getText());
     }//GEN-LAST:event_ReservationTableMouseClicked
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new rsv().setVisible(true);
-            }
-        });
-    }
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String delete="DELETE FROM reservation WHERE res_tr_id = ? AND res_seatnum = ?";
+            PreparedStatement dlt = con.prepareStatement(delete);
+            int i = Integer.parseInt(res_tr_id.getSelectedItem().toString().replaceAll("[^0-9.]", ""));
+            dlt.setInt(1, i);
+            dlt.setInt(2,Integer.parseInt(res_seatnum.getText()));
+            dlt.executeUpdate();
+            updateTable();
+            res_seatnum.setText("");
+            res_name.setText("");
+            res_lname.setText("");
+            JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+    }//GEN-LAST:event_DeleteActionPerformed
+
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new rsv().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel_btn;
     private javax.swing.JButton Delete;

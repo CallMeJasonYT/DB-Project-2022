@@ -1,5 +1,5 @@
 package project_gui;
-import project_gui.Inserts.*;
+import project_gui.Functions.*;
 import java.sql.*;
 import javax.swing.*;
 

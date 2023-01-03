@@ -1,4 +1,4 @@
-package project_gui.Inserts;
+package project_gui.Functions;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.text.*;
@@ -6,10 +6,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class trvl extends javax.swing.JFrame {
-
-    public trvl() {
-        initComponents();
-    }
+    public trvl() {initComponents();}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -136,6 +133,11 @@ public class trvl extends javax.swing.JFrame {
 
         Delete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,8 +230,7 @@ public class trvl extends javax.swing.JFrame {
             part1 = Integer.toString(part1int);
             time1 = part1.concat(":").concat(part2);
             }else time1 = part1.concat(":").concat(part2);
-        }else
-        {
+        }else{
             String[] parts = time1.split(":");
             String part1 = parts[0];
             String part2 = parts[1];
@@ -250,8 +251,7 @@ public class trvl extends javax.swing.JFrame {
             part1 = Integer.toString(part1int);
             time2 = part1.concat(":").concat(part2);
             }else time2 = part1.concat(":").concat(part2);
-        }else
-        {
+        }else{
             String[] parts = time2.split(":");
             String part1 = parts[0];
             String part2 = parts[1];
@@ -275,8 +275,7 @@ public class trvl extends javax.swing.JFrame {
     }
     
     public void updateTable(){
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select="SELECT * FROM travel_to;";
@@ -293,15 +292,12 @@ public class trvl extends javax.swing.JFrame {
                 tbModel.addRow(tb_data);
             }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     public void updateCombo(){
         PickTime1.setText("Set Time");
         PickTime2.setText("Set Time");
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select1="SELECT dst_id FROM destination;";
@@ -325,9 +321,7 @@ public class trvl extends javax.swing.JFrame {
             to_dst_id.setModel(mod1);
             to_tr_id.setModel(mod2);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     private void Cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel_btnActionPerformed
         dispose();
@@ -348,8 +342,7 @@ public class trvl extends javax.swing.JFrame {
     }//GEN-LAST:event_PickTime1MouseClicked
 
     private void Insert_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Insert_btnActionPerformed
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String insert="INSERT INTO travel_to(to_tr_id,to_dst_id,to_arrival,to_departure) VALUES(?,?,?,?)";
@@ -362,9 +355,7 @@ public class trvl extends javax.swing.JFrame {
             insrt.execute();
             updateTable();
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_Insert_btnActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -417,14 +408,26 @@ public class trvl extends javax.swing.JFrame {
         }else{JOptionPane.showMessageDialog(this, "You cannot Update the Travel_to destination ID! Try Using Insert/Delete Instead.");}
     }//GEN-LAST:event_UpdateActionPerformed
 
-    public static void main(String args[]) {
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String delete="DELETE FROM travel_to WHERE to_tr_id = ? AND to_dst_id = ?";
+            PreparedStatement dlt = con.prepareStatement(delete);
+            dlt.setInt(1, Integer.parseInt(to_tr_id.getSelectedItem().toString()));
+            dlt.setInt(2, Integer.parseInt(to_dst_id.getSelectedItem().toString()));
+            dlt.executeUpdate();
+            updateTable();
+            jDateChooser1.setDate(null);
+            jDateChooser2.setDate(null);
+            PickTime1.setText("");
+            PickTime2.setText("");
+            JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+    }//GEN-LAST:event_DeleteActionPerformed
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run(){
-                new trvl().setVisible(true);
-            }
-        });
-    }
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run(){new trvl().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel_btn;
     private javax.swing.JButton Delete;

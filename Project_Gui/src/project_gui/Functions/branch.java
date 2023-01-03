@@ -1,4 +1,4 @@
-package project_gui.Inserts;
+package project_gui.Functions;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

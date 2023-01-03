@@ -1,4 +1,4 @@
-package project_gui.Inserts;
+package project_gui.Functions;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -205,8 +205,7 @@ public class mngs extends javax.swing.JFrame {
         }
     }
     private void Insert_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Insert_btnActionPerformed
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String insert="INSERT INTO manages(mng_adm_AT,mng_br_code) VALUES(?,?)";
@@ -218,9 +217,7 @@ public class mngs extends javax.swing.JFrame {
             insrt.execute();
             updateTable();
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_Insert_btnActionPerformed
 
     private void Cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel_btnActionPerformed
@@ -237,7 +234,16 @@ public class mngs extends javax.swing.JFrame {
     }//GEN-LAST:event_UpdateActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-        // TODO add your handling code here:
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String delete="DELETE FROM manages WHERE mng_adm_AT = ?";
+            PreparedStatement dlt = con.prepareStatement(delete);
+            dlt.setString(1,adm_AT.getSelectedItem().toString());
+            dlt.execute();
+            updateTable();
+            JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void ManagesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManagesTableMouseClicked

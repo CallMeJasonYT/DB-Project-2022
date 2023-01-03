@@ -1,4 +1,4 @@
-package project_gui.Inserts;
+package project_gui.Functions;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.text.*;
@@ -6,9 +6,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class off extends javax.swing.JFrame {
-    public off() {
-        initComponents();
-    }
+    public off() {initComponents();}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -93,6 +91,11 @@ public class off extends javax.swing.JFrame {
 
         Delete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         Update.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Update.setText("Update");
@@ -196,8 +199,8 @@ public class off extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Cancel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Insert_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,8 +228,7 @@ public class off extends javax.swing.JFrame {
             part1 = Integer.toString(part1int);
             time1 = part1.concat(":").concat(part2);
             }else time1 = part1.concat(":").concat(part2);
-        }else
-        {
+        }else{
             String[] parts = time1.split(":");
             String part1 = parts[0];
             String part2 = parts[1];
@@ -247,8 +249,7 @@ public class off extends javax.swing.JFrame {
             part1 = Integer.toString(part1int);
             time2 = part1.concat(":").concat(part2);
             }else time2 = part1.concat(":").concat(part2);
-        }else
-        {
+        }else{
             String[] parts = time2.split(":");
             String part1 = parts[0];
             String part2 = parts[1];
@@ -272,8 +273,7 @@ public class off extends javax.swing.JFrame {
     }
     
     public void updateTable(){
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select="SELECT * FROM offers;";
@@ -291,15 +291,12 @@ public class off extends javax.swing.JFrame {
                 tbModel.addRow(tb_data);
             }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     public void updateCombo(){
         PickTime1.setText("Set Time");
         PickTime2.setText("Set Time");
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select="SELECT dst_id FROM destination;";
@@ -313,9 +310,7 @@ public class off extends javax.swing.JFrame {
             }
             dest_id.setModel(mod);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     private void PickTime2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PickTime2MouseClicked
         timePicker2.showPopup(this, 100, 100);
@@ -332,8 +327,7 @@ public class off extends javax.swing.JFrame {
     }//GEN-LAST:event_PickTime1MouseClicked
 
     private void Insert_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Insert_btnActionPerformed
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String insert="INSERT INTO offers(off_code,tr_start,tr_end,cost,dest_id) VALUES(null,?,?,?,?)";
@@ -346,9 +340,7 @@ public class off extends javax.swing.JFrame {
             insrt.execute();
             updateTable();
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_Insert_btnActionPerformed
 
     private void Cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel_btnActionPerformed
@@ -403,13 +395,27 @@ public class off extends javax.swing.JFrame {
         PickTime2.setText(part2e);
     }//GEN-LAST:event_OffersTableMouseClicked
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new off().setVisible(true);
-            }
-        });
-    }
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            DefaultTableModel tbModel= (DefaultTableModel) OffersTable.getModel();
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String delete="DELETE FROM offers WHERE off_code = ?";
+            PreparedStatement dlt = con.prepareStatement(delete);
+            dlt.setInt(1, Integer.parseInt(tbModel.getValueAt(OffersTable.getSelectedRow(), 0).toString()));
+            dlt.executeUpdate();
+            updateTable();
+            jDateChooser1.setDate(null);
+            jDateChooser2.setDate(null);
+            PickTime1.setText("");
+            PickTime2.setText("");
+            cost.setText("");
+            JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+    }//GEN-LAST:event_DeleteActionPerformed
+
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new off().setVisible(true);}});}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel_btn;

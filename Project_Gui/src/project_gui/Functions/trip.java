@@ -1,4 +1,4 @@
-package project_gui.Inserts;
+package project_gui.Functions;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.text.*;
@@ -125,6 +125,11 @@ public class trip extends javax.swing.JFrame {
 
         Delete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         TripTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -266,10 +271,7 @@ public class trip extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     static Timestamp t1;
     static Timestamp t2;
-    static Timestamp temp;
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    
-    // </editor-fold>                        
+    static Timestamp temp;                       
     public void convertTimeStamp(){
         String time1 = PickTime1.getText();
         String time2 = PickTime2.getText();
@@ -284,8 +286,7 @@ public class trip extends javax.swing.JFrame {
             part1 = Integer.toString(part1int);
             time1 = part1.concat(":").concat(part2);
             }else time1 = part1.concat(":").concat(part2);
-        }else
-        {
+        }else{
             String[] parts = time1.split(":");
             String part1 = parts[0];
             String part2 = parts[1];
@@ -306,8 +307,7 @@ public class trip extends javax.swing.JFrame {
             part1 = Integer.toString(part1int);
             time2 = part1.concat(":").concat(part2);
             }else time2 = part1.concat(":").concat(part2);
-        }else
-        {
+        }else{
             String[] parts = time2.split(":");
             String part1 = parts[0];
             String part2 = parts[1];
@@ -331,8 +331,7 @@ public class trip extends javax.swing.JFrame {
     }
     
     public void updateTable(){
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select="SELECT * FROM trip;";
@@ -353,15 +352,12 @@ public class trip extends javax.swing.JFrame {
                 tbModel.addRow(tb_data);
             }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     public void updateCombo(){
         PickTime1.setText("Set Time");
         PickTime2.setText("Set Time");
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select1="SELECT br_code FROM branch;";
@@ -397,8 +393,7 @@ public class trip extends javax.swing.JFrame {
     }//GEN-LAST:event_PickTime1MouseClicked
 
     private void Insert_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Insert_btnActionPerformed
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String insert="INSERT INTO trip(tr_id,tr_departure,tr_return,tr_maxseats,tr_cost,tr_br_code,tr_gui_AT,tr_drv_AT) VALUES(null,?,?,?,?,?,?,?)";
@@ -414,9 +409,7 @@ public class trip extends javax.swing.JFrame {
             insrt.execute();
             updateTable();
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_Insert_btnActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -446,7 +439,6 @@ public class trip extends javax.swing.JFrame {
                 upd.setString(6, tr_gui_AT.getSelectedItem().toString());
                 upd.setString(7, tr_drv_AT.getSelectedItem().toString());
                 upd.setInt(8, Integer.parseInt(tbModel.getValueAt(TripTable.getSelectedRow(), 0).toString()));
-
                 upd.executeUpdate();
                 updateTable();
                 JOptionPane.showMessageDialog(this, "Updated Succesfully");
@@ -519,6 +511,27 @@ public class trip extends javax.swing.JFrame {
             }con.close();
         }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_tr_br_codeActionPerformed
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        try{
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+                String delete="DELETE FROM trip WHERE tr_id = ?";
+                PreparedStatement dlt = con.prepareStatement(delete);
+                DefaultTableModel tbModel= (DefaultTableModel) TripTable.getModel();
+                dlt.setInt(1, Integer.parseInt(tbModel.getValueAt(TripTable.getSelectedRow(), 0).toString()));
+                dlt.executeUpdate();
+                updateTable();
+                jDateChooser1.setDate(null);
+                jDateChooser2.setDate(null);
+                PickTime1.setText("");
+                PickTime2.setText("");
+                tr_maxseats.setText("");
+                tr_cost.setText("");
+                JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+                con.close();
+            }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+    }//GEN-LAST:event_DeleteActionPerformed
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
