@@ -4,10 +4,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class mngs extends javax.swing.JFrame {
-
-    public mngs() {
-        initComponents();
-    }
+    public mngs() {initComponents();}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -155,8 +152,7 @@ public class mngs extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     public void updateTable(){
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select="SELECT * FROM manages;";
@@ -171,9 +167,7 @@ public class mngs extends javax.swing.JFrame {
                 tbModel.addRow(tb_data);
             }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     public void updateCombo(){
         try
@@ -200,9 +194,7 @@ public class mngs extends javax.swing.JFrame {
             br_code.setModel(mod1);
             adm_AT.setModel(mod2);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     private void Insert_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Insert_btnActionPerformed
         try{
@@ -254,13 +246,7 @@ public class mngs extends javax.swing.JFrame {
         br_code.setSelectedItem(code);
     }//GEN-LAST:event_ManagesTableMouseClicked
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new mngs().setVisible(true);
-            }
-        });
-    }
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new mngs().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel_btn;
     private javax.swing.JButton Delete;

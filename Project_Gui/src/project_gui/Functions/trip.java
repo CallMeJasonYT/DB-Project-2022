@@ -6,9 +6,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class trip extends javax.swing.JFrame {
-    public trip() {
-        initComponents();
-    }
+    public trip() {initComponents();}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -423,8 +421,6 @@ public class trip extends javax.swing.JFrame {
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
         convertTimeStamp();
-        System.out.println(temp);
-        System.out.println(t1);
             try{
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
@@ -532,13 +528,7 @@ public class trip extends javax.swing.JFrame {
                 con.close();
             }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_DeleteActionPerformed
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new trip().setVisible(true);
-            }
-        });
-    }
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new trip().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel_btn;
     private javax.swing.JButton Delete;

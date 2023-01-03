@@ -623,7 +623,7 @@ SELECT * FROM worker; */
 
 DROP PROCEDURE IF EXISTS date_check;
 DELIMITER $
-CREATE PROCEDURE date_check(br_code INT,date1 DATE, date2 DATE)
+CREATE PROCEDURE date_check(br_code INT, date1 DATE, date2 DATE)
 BEGIN
     DECLARE dates DATETIME;
     DECLARE tripid INT;
@@ -647,8 +647,8 @@ BEGIN
         seatdiff_ TINYINT,
         drv_name_ CHAR(20),
         drv_lname_ CHAR(20),
-        wrk_name_ CHAR(20),
-        wrk_lname_ CHAR(20),
+        gui_name_ CHAR(20),
+        gui_lname_ CHAR(20),
         tr_dep_ DATETIME,
         tr_ret_ DATETIME,
         PRIMARY KEY(id)
@@ -673,9 +673,9 @@ BEGIN
                 SET seatdiff=max_seats-reservations;
 
                 INSERT INTO new
-                SELECT null, tr_cost AS Trip_Cost, tr_maxseats AS MaxSeats, reservations, 
-                seatdiff AS Available_Seats, a.wrk_name AS Driver_Name, a.wrk_lname AS Driver_LName, 
-                b.wrk_name AS Guide_Name, b.wrk_lname AS Guide_LName, tr_departure AS Departure, tr_return AS Returning
+                SELECT null, tr_cost, tr_maxseats, reservations, 
+                seatdiff, a.wrk_name, a.wrk_lname, b.wrk_name, 
+                b.wrk_lname, tr_departure, tr_return
                 FROM trip 
                 INNER JOIN worker AS a ON tr_drv_AT=a.wrk_AT
                 INNER JOIN worker AS b ON tr_gui_AT=b.wrk_AT
@@ -684,7 +684,6 @@ BEGIN
         END IF;
     UNTIL(not_found=1)
 	END REPEAT;
-    
     SELECT * FROM new;
 END$
 DELIMITER ; 
@@ -754,8 +753,8 @@ BEGIN
 
     DROP TABLE IF EXISTS new_res_off;
     CREATE TABLE new_res_off(
-        offid TINYINT(4),
         resid INT(11),
+        offid TINYINT(4),
         first_name CHAR(20),
         last_name CHAR(20),
         PRIMARY KEY(resid)

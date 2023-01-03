@@ -5,9 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class wrk extends javax.swing.JFrame {
-    public wrk() {
-        initComponents();
-    }
+    public wrk() {initComponents();}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -59,11 +57,6 @@ public class wrk extends javax.swing.JFrame {
         });
 
         wrk_br_code.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        wrk_br_code.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                wrk_br_codeActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Name:");
@@ -192,8 +185,7 @@ public class wrk extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     public void updateTable(){
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select="SELECT * FROM worker;";
@@ -211,13 +203,10 @@ public class wrk extends javax.swing.JFrame {
                 tbModel.addRow(tb_data);
             }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     public void updateCombo(){
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select="SELECT br_code FROM branch;";
@@ -231,13 +220,10 @@ public class wrk extends javax.swing.JFrame {
             }
             wrk_br_code.setModel(mod);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     private void Insert_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Insert_btnActionPerformed
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String insert="INSERT INTO worker(wrk_AT,wrk_name,wrk_lname,wrk_salary,wrk_br_code) VALUES(?,?,?,?,?)";
@@ -252,18 +238,12 @@ public class wrk extends javax.swing.JFrame {
             insrt.execute();
             updateTable();
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_Insert_btnActionPerformed
 
     private void Cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel_btnActionPerformed
         dispose();
     }//GEN-LAST:event_Cancel_btnActionPerformed
-
-    private void wrk_br_codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wrk_br_codeActionPerformed
-
-    }//GEN-LAST:event_wrk_br_codeActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         updateTable();
@@ -323,13 +303,7 @@ public class wrk extends javax.swing.JFrame {
         }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_DeleteActionPerformed
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new wrk().setVisible(true);
-            }
-        });
-    }
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new wrk().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel_btn;
     private javax.swing.JButton Delete;
