@@ -358,17 +358,17 @@ public class trip extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select1="SELECT br_code FROM branch;";
-            Statement slct1 = con.createStatement();
-            ResultSet rs1 = slct1.executeQuery(select1);
-            DefaultComboBoxModel mod1 = new DefaultComboBoxModel();
-            mod1.removeAllElements();
-            mod1.addElement("");
-            while(rs1.next()){
-                int box1 = rs1.getInt("br_code");
-                mod1.addElement(box1);
+            String select="SELECT br_code FROM branch;";
+            Statement slct = con.createStatement();
+            ResultSet rs = slct.executeQuery(select);
+            DefaultComboBoxModel mod = new DefaultComboBoxModel();
+            mod.removeAllElements();
+            mod.addElement("");
+            while(rs.next()){
+                int box = rs.getInt("br_code");
+                mod.addElement(box);
             }
-            tr_br_code.setModel(mod1);
+            tr_br_code.setModel(mod);
             con.close();
         }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }

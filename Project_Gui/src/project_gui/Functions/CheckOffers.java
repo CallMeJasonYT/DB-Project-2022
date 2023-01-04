@@ -28,6 +28,11 @@ public class CheckOffers extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton2.setText("Cancel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Last Name:");
@@ -109,14 +114,12 @@ public class CheckOffers extends javax.swing.JFrame {
                 tbModel.setRowCount(0);
                 while(rs.next()){
                     String id = rs.getString("Offer_ID");
-                    String name = rs.getString("first_name");
-                    String ln = rs.getString("last_name");
+                    String name = rs.getString("First_Name");
+                    String ln = rs.getString("Last_Name");
                     String tb_data[]= {id, name, ln};
                     tbModel.addRow(tb_data);
                 }
-                if(tbModel.getRowCount()==0){
-                    JOptionPane.showMessageDialog(this, "There aren't any Reservations under this Last Name");
-                }
+                if(tbModel.getRowCount()==0){JOptionPane.showMessageDialog(this, "There aren't any Reservations under this Last Name");}
             con.close();
         }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
@@ -126,6 +129,10 @@ public class CheckOffers extends javax.swing.JFrame {
             updateTable();
         }else JOptionPane.showMessageDialog(this, "Please Fill all the Fields in order to proceed!");
     }//GEN-LAST:event_SearchActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new CheckOffers().setVisible(true);}});}
 

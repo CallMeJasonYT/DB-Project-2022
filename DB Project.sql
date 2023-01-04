@@ -189,10 +189,6 @@ CREATE TABLE manages(
 );
 
 INSERT INTO manages VALUES
-('WE30613700', 1),
-('YS17377807', 5),
-('TA54439709', 3),
-('SF16806081', 7),
 ('SA47300877', 10),
 ('RW93324684', 1),
 ('AW79051091', 2),
@@ -754,7 +750,7 @@ BEGIN
     DROP TABLE IF EXISTS new_res_off;
     CREATE TABLE new_res_off(
         resid INT(11),
-        offid TINYINT(4),
+        offid INT(4),
         first_name CHAR(20),
         last_name CHAR(20),
         PRIMARY KEY(resid)
@@ -766,7 +762,7 @@ BEGIN
         IF(not_found=0)
         THEN
             INSERT INTO new_res_off
-            SELECT off_id, res_of_id, first_name, last_name FROM reservation_offers
+            SELECT res_of_id, off_id, first_name, last_name FROM reservation_offers
             WHERE last_name=lname AND res_of_id=res_id;
         END IF;
     UNTIL(not_found=1)
