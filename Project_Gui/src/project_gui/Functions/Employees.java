@@ -134,13 +134,14 @@ public class Employees extends javax.swing.JFrame {
         }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }
     public void updateTable(){
-        try{
+        String code = br_code.getSelectedItem().toString().replaceAll("[^0-9.]", "");
+        if(!"".equals(code)){
+            try{
                 DefaultTableModel tbModel= (DefaultTableModel) CheckOffers.getModel();
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-                String code = br_code.getSelectedItem().toString().replaceAll("[^0-9.]", "");
-                int i=Integer.parseInt(code);
                 String select1="SELECT wrk_name, wrk_lname, wrk_salary FROM worker WHERE wrk_br_code = ?";
+                int i=Integer.parseInt(code);
                 PreparedStatement slct1 = con.prepareStatement(select1);
                 slct1.setInt(1, i);
                 ResultSet rs1 = slct1.executeQuery();
@@ -158,6 +159,8 @@ public class Employees extends javax.swing.JFrame {
                 if(tbModel.getRowCount()==0){JOptionPane.showMessageDialog(this, "There aren't any Employees");}
             con.close();
         }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}}
+    }
+        
     
     private void br_codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_br_codeActionPerformed
         updateTable();
