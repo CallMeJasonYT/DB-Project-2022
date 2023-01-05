@@ -1,4 +1,5 @@
 package project_gui;
+import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.*;
 
@@ -109,7 +110,7 @@ public class Login extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(868, 647));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    String lname = "";
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_ExitActionPerformed
@@ -123,14 +124,13 @@ public class Login extends javax.swing.JFrame {
             String password = Password.getText();
             
             Statement stm = con.createStatement();
-            String login = "SELECT * FROM it WHERE IT_AT='"+username+"' AND pass='"+password+"' AND end_date IS NULL";
-            
+            String delete = "DELETE FROM user";
+            PreparedStatement del = con.prepareStatement(delete);
+            String login = "SELECT * FROM it INNER JOIN worker ON wrk_it_AT = wrk_AT WHERE IT_AT='"+username+"' AND pass='"+password+"' AND end_date IS NULL";
+            del.execute();
             ResultSet rs = stm.executeQuery(login);
-            String[] types = {"TABLE"};
-            DatabaseMetaData metaData = con.getMetaData();
-            ResultSet tables = metaData.getTables(null, null, "%", types);
-            
             if(rs.next()){
+                lname = rs.getString("wrk_lname");
                 dispose();
                 ITManagerHomePage hpage1 = new ITManagerHomePage();
                 hpage1.show();
@@ -139,8 +139,13 @@ public class Login extends javax.swing.JFrame {
                 Username.setText("");
                 Password.setText("");
             }
+            if(!"".equals(lname)){
+                String insert = "INSERT INTO user VALUES('"+lname+"')";
+                PreparedStatement ins = con.prepareStatement(insert);
+                ins.execute();
+            }
             con.close(); 
-        }catch (Exception e){System.out.println(e.getMessage());}
+        }catch (HeadlessException | ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
     }//GEN-LAST:event_LoginActionPerformed
 
     private void Clear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clear1ActionPerformed

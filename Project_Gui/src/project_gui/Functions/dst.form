@@ -235,7 +235,7 @@
                 <Column editable="false" title="dst_name" type="java.lang.String"/>
                 <Column editable="false" title="dst_descr" type="java.lang.String"/>
                 <Column editable="false" title="dst_rtype" type="java.lang.String"/>
-                <Column editable="false" title="dst_language" type="java.lang.String"/>
+                <Column editable="false" title="dst_language" type="java.lang.Object"/>
                 <Column editable="false" title="dst_location" type="java.lang.Integer"/>
               </Table>
             </Property>

@@ -93,7 +93,7 @@ public class dst extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -224,7 +224,7 @@ public class dst extends javax.swing.JFrame {
             insrt.setString(1,dst_name.getText());
             insrt.setString(2,dst_descr.getText());
             insrt.setString(3,dst_rtype.getSelectedItem().toString());
-            insrt.setString(4,dst_descr.getText());
+            insrt.setString(4,dst_language.getText());
             insrt.setInt(5,Integer.parseInt(dst_location.getText()));
             insrt.execute();
             updateTable();

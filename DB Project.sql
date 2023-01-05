@@ -479,8 +479,7 @@ INSERT INTO reservation VALUES
 (20, 23, 'Jaycee', 'Douglas', 'ADULT'),
 (20, 14, 'Amir', 'Durham', 'ADULT'),
 (20, 32, 'Alisha', 'Hunter', 'ADULT'),
-(20, 28, 'Mateo', 'Garrett', 'ADULT'),
-(21, 21, 'Sam', 'Lerroy', 'ADULT');
+(20, 28, 'Mateo', 'Garrett', 'ADULT');
 
 CREATE TABLE offers(
     off_code TINYINT(4) NOT NULL AUTO_INCREMENT,
@@ -513,8 +512,14 @@ CREATE TABLE logging(
     log_id INT(11) NOT NULL AUTO_INCREMENT,
     chang ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
     tab_ch ENUM('trip', 'reservation', 'event', 'travel_to', 'destination') NOT NULL,
+    it_lname CHAR(20) NOT NULL,
     curr_date DATETIME NOT NULL,
     PRIMARY KEY(log_id)
+);
+
+CREATE TABLE user(
+    lname CHAR(20) NOT NULL,
+    PRIMARY KEY(lname)
 );
 
 
@@ -890,9 +895,12 @@ CREATE TRIGGER logUTrip AFTER UPDATE ON trip
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Update', 'trip', curr_date);
+    (null, 'Update', 'trip', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -903,9 +911,12 @@ CREATE TRIGGER logDTrip AFTER DELETE ON trip
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Delete', 'trip', curr_date);
+    (null, 'Delete', 'trip', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -916,9 +927,12 @@ CREATE TRIGGER logITrip AFTER INSERT ON trip
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Insert', 'trip', curr_date);
+    (null, 'Insert', 'trip', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -935,9 +949,12 @@ CREATE TRIGGER logURes AFTER UPDATE ON reservation
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Update', 'reservation', curr_date);
+    (null, 'Update', 'reservation', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -948,9 +965,12 @@ CREATE TRIGGER logDRes AFTER DELETE ON reservation
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Delete', 'reservation', curr_date);
+    (null, 'Delete', 'reservation', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -961,9 +981,12 @@ CREATE TRIGGER logIRes AFTER INSERT ON reservation
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Insert', 'reservation', curr_date);
+    (null, 'Insert', 'reservation', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -980,9 +1003,12 @@ CREATE TRIGGER logUEv AFTER UPDATE ON event
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Update', 'event', curr_date);
+    (null, 'Update', 'event', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -993,9 +1019,12 @@ CREATE TRIGGER logDEv AFTER DELETE ON event
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Delete', 'event', curr_date);
+    (null, 'Delete', 'event', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -1006,9 +1035,12 @@ CREATE TRIGGER logIEv AFTER INSERT ON event
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Insert', 'event', curr_date);
+    (null, 'Insert', 'event', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -1025,9 +1057,12 @@ CREATE TRIGGER logUTravel AFTER UPDATE ON travel_to
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Update', 'travel_to', curr_date);
+    (null, 'Update', 'travel_to', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -1038,9 +1073,12 @@ CREATE TRIGGER logDTravel AFTER DELETE ON travel_to
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Delete', 'travel_to', curr_date);
+    (null, 'Delete', 'travel_to', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -1051,9 +1089,12 @@ CREATE TRIGGER logITravel AFTER INSERT ON travel_to
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Insert', 'travel_to', curr_date);
+    (null, 'Insert', 'travel_to', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -1070,9 +1111,12 @@ CREATE TRIGGER logUDest AFTER UPDATE ON destination
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Update', 'destination', curr_date);
+    (null, 'Update', 'destination', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -1083,9 +1127,12 @@ CREATE TRIGGER logDDest AFTER DELETE ON destination
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Delete', 'destination', curr_date);
+    (null, 'Delete', 'destination', last_name, curr_date);
 END$
 DELIMITER ;
 
@@ -1096,9 +1143,12 @@ CREATE TRIGGER logIDest AFTER INSERT ON destination
 FOR EACH ROW
 BEGIN
 	DECLARE curr_date DATETIME;
+    DECLARE last_name CHAR(20);
+
+    SELECT lname INTO last_name FROM user;
     SELECT now() INTO curr_date;
     INSERT INTO logging VALUES
-    (null, 'Insert', 'destination', curr_date);
+    (null, 'Insert', 'destination', last_name, curr_date);
 END$
 DELIMITER ;
 
