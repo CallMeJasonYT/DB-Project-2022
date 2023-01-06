@@ -189,7 +189,6 @@ CREATE TABLE manages(
 );
 
 INSERT INTO manages VALUES
-('SA47300877', 10),
 ('RW93324684', 1),
 ('AW79051091', 2),
 ('CX68594948', 3),
@@ -465,6 +464,8 @@ INSERT INTO reservation VALUES
 (14, 3, 'Sam', 'Parker', 'ADULT'),
 (14, 4, 'Happy', 'Smith', 'ADULT'),
 (15, 6, 'Maria', 'Papadopoulou', 'ADULT'),
+(15, 7, 'Nikolas', 'Doukas', 'ADULT'),
+(15, 1, 'Marios', 'Panagiotou', 'ADULT'),
 (16, 1, 'Patricia', 'Pilster', 'ADULT'),
 (16, 2, 'Alice', 'Drake', 'ADULT'),
 (16, 3, 'Giorgia', 'Dourou', 'MINOR'),

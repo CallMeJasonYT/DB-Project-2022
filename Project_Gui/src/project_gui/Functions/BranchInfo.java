@@ -104,8 +104,9 @@ public class BranchInfo extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    static int cost = 0;
+    static float cost = 0;
     static int count = 0;
+    static int count2 = 0;
     public void updateCombo(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -141,8 +142,9 @@ public class BranchInfo extends javax.swing.JFrame {
                 ResultSet rs2 = slct2.executeQuery(select2);
                 tbModel.setRowCount(0);
                 while(rs1.next()){
-                    count = count + rs1.getInt("COUNT(tr_id)");
-                    cost = cost + rs1.getInt("tr_cost") * count;
+                    count = rs1.getInt("COUNT(tr_id)");
+                    count2 = count2 + rs1.getInt("COUNT(tr_id)");
+                    cost = cost + rs1.getFloat("tr_cost") * count;
                 }
                 while(rs2.next()){
                     String street = rs2.getString("br_street");
@@ -150,8 +152,8 @@ public class BranchInfo extends javax.swing.JFrame {
                     String city = rs2.getString("br_city");
                     String name = rs2.getString("wrk_name");
                     String ln = rs2.getString("wrk_lname");
-                    String costs = Integer.toString(cost);
-                    String counts = Integer.toString(count);
+                    String costs = Float.toString(cost);
+                    String counts = Integer.toString(count2);
                     String tb_data[]= {street, num, city, name, ln, counts, costs};
                     tbModel.addRow(tb_data);
                 }
