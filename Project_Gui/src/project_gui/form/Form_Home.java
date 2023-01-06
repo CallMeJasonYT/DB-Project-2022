@@ -11,6 +11,8 @@ public class Form_Home extends javax.swing.JPanel {
     static float cost = 0;
     public Form_Home() {
         initComponents();
+        cost = 0;
+        profit = 0;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
