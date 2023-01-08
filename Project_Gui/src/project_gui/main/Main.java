@@ -1,10 +1,14 @@
 package project_gui.main;
 import java.awt.Color;
 import javax.swing.JComponent;
+import project_gui.Functions.BranchInfo;
+import project_gui.Functions.CheckOffers;
+import project_gui.Functions.CheckTrip;
+import project_gui.Functions.Employees;
+import project_gui.Functions.Logs;
+import project_gui.Insert_Selection;
+import project_gui.Login;
 import project_gui.event.EventMenuSelected;
-import project_gui.form.Form_1;
-import project_gui.form.Form_2;
-import project_gui.form.Form_3;
 import project_gui.form.Form_Home;
 
 public class Main extends javax.swing.JFrame {
@@ -20,15 +24,39 @@ public class Main extends javax.swing.JFrame {
                         setForm(new Form_Home());
                         break;
                     case 1:
-                        setForm(new Form_1());
+                        Insert_Selection select = new Insert_Selection();
+                        select.show();
+                        dispose();
                         break;
                     case 2:
-                        setForm(new Form_2());
+                        CheckTrip checktr = new CheckTrip();
+                        checktr.show();
+                        dispose();
                         break;
                     case 3:
-                        setForm(new Form_3());
+                        CheckOffers checkoff = new CheckOffers();
+                        checkoff.show();
+                        dispose();
                         break;
-                    default:
+                    case 4:
+                        BranchInfo brinfo = new BranchInfo();
+                        brinfo.show();
+                        dispose();
+                        break;
+                    case 5:
+                        Employees empl = new Employees();
+                        empl.show();
+                        dispose();
+                        break;
+                    case 8:
+                        Logs log = new Logs();
+                        log.show();
+                        dispose();
+                        break;
+                    case 9:    
+                        Login login = new Login();
+                        login.show();
+                        dispose();
                         break;
                 }
             }
@@ -36,7 +64,7 @@ public class Main extends javax.swing.JFrame {
         setForm(new Form_Home());
     }
     
-    private void setForm(JComponent com){
+    public void setForm(JComponent com){
         mainPanel.removeAll();
         mainPanel.add(com);
         mainPanel.repaint();

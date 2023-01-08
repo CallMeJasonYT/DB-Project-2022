@@ -1,62 +1,142 @@
 package project_gui;
+import java.awt.Color;
 import project_gui.Functions.*;
 import java.sql.*;
 import javax.swing.*;
+import project_gui.event.EventMenuSelected;
+import project_gui.main.Main;
 
 public class Insert_Selection extends javax.swing.JFrame{
 
-    public Insert_Selection() {initComponents();}
+    public Insert_Selection() {
+        initComponents();
+        setBackground(new Color(0, 0, 0, 0));
+        menu.initMoving(Insert_Selection.this);
+        menu.addEventMenuSelected(new EventMenuSelected(){
+            @Override
+            public void selected(int index) {
+                switch (index) {
+                    case 0:
+                        Main main = new Main();
+                        main.show();
+                        dispose();
+                        break;
+                    case 1:
+                        Insert_Selection select = new Insert_Selection();
+                        select.show();
+                        dispose();
+                        break;
+                    case 2:
+                        CheckTrip checktr = new CheckTrip();
+                        checktr.show();
+                        dispose();
+                        break;
+                    case 3:
+                        CheckOffers checkoff = new CheckOffers();
+                        checkoff.show();
+                        dispose();
+                        break;
+                    case 4:
+                        BranchInfo brinfo = new BranchInfo();
+                        brinfo.show();
+                        dispose();
+                        break;
+                    case 5:
+                        Employees empl = new Employees();
+                        empl.show();
+                        dispose();
+                        break;
+                    case 8:
+                        Logs log = new Logs();
+                        log.show();
+                        dispose();
+                        break;
+                    case 9:    
+                        Login login = new Login();
+                        login.show();
+                        dispose();
+                        break;
+                }
+            }
+        });
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Selection = new javax.swing.JComboBox<>();
+        menu = new project_gui.component.Menu();
+        panelBorder1 = new project_gui.swing.PanelBorder();
+        header1 = new project_gui.component.Header();
         jLabel1 = new javax.swing.JLabel();
+        Selection1 = new combobox.CustomJCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        Selection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Selection.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SelectionActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Please Select the Table of your choice");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Selection1.setLabeText("");
+        Selection1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Selection1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
+        panelBorder1.setLayout(panelBorder1Layout);
+        panelBorder1Layout.setHorizontalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder1Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Selection1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(188, 188, 188))
+            .addComponent(header1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+        );
+        panelBorder1Layout.setVerticalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(Selection1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(Selection, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(Selection, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
+            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(414, 168));
+        setSize(new java.awt.Dimension(887, 601));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    public static int select = 0;
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try
         {
@@ -73,15 +153,15 @@ public class Insert_Selection extends javax.swing.JFrame{
                     mod.addElement(tables.getString("TABLE_NAME"));
                 }
             }
-            Selection.setModel(mod);
+            Selection1.setModel(mod);
             con.close();
         }catch(ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void SelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectionActionPerformed
-        String select = Selection.getSelectedItem().toString();
+    private void Selection1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Selection1ActionPerformed
+        String select = Selection1.getSelectedItem().toString();
         switch(select)
         {
             case "branch":
@@ -165,7 +245,7 @@ public class Insert_Selection extends javax.swing.JFrame{
                 inspage16.show();
                 break;
         }
-    }//GEN-LAST:event_SelectionActionPerformed
+    }//GEN-LAST:event_Selection1ActionPerformed
 
     public static void main(String args[]){
         try {
@@ -187,7 +267,10 @@ public class Insert_Selection extends javax.swing.JFrame{
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Selection;
+    private combobox.CustomJCombo Selection1;
+    private project_gui.component.Header header1;
     private javax.swing.JLabel jLabel1;
+    private project_gui.component.Menu menu;
+    private project_gui.swing.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables
 }
