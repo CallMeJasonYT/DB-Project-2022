@@ -1184,7 +1184,7 @@ BEGIN
     IF(temp1 = NEW.drv_AT)
     THEN
         SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'You cannot add this worker as a driver because he is an Admin.';
+        SET MESSAGE_TEXT = 'You cannot add t    his worker as a driver because he is an Admin.';
     END IF;
     IF(temp2 = NEW.drv_AT)
     THEN
