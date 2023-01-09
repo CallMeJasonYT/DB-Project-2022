@@ -31,7 +31,7 @@ public class Main_Mng extends javax.swing.JFrame {
                         empl.show();
                         dispose();
                         break;
-                    case 5:  
+                    case 5:
                         Login login = new Login();
                         login.show();
                         dispose();

@@ -8,9 +8,8 @@ import project_gui.main.Main_Mng;
 
 public class Login extends javax.swing.JFrame {
 
-    public static int getBranch() {
-        return branch;
-    }
+    public static int getBranch() {return branch;}
+    
     public Login() {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
@@ -136,7 +135,6 @@ public class Login extends javax.swing.JFrame {
     String lname = "";
     public static int branch = 0;
     
-    
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
@@ -150,7 +148,6 @@ public class Login extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            
             String username = Username.getText();
             String password = Password.getText();
             
@@ -170,7 +167,7 @@ public class Login extends javax.swing.JFrame {
                 hpage1.show();
             }else if(rs2.next()){
                 lname = rs2.getString("wrk_lname");
-                branch = Integer.parseInt(rs2.getString("mng_br_code"));
+                branch = rs2.getInt("mng_br_code");
                 dispose();
                 Main_Mng hpage1 = new Main_Mng();
                 hpage1.show();

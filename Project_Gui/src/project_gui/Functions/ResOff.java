@@ -305,7 +305,7 @@ public class ResOff extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT DISTINCT off_code FROM offers;";
+            String select="SELECT off_code FROM offers;";
             Statement slct = con.createStatement();
             ResultSet rs = slct.executeQuery(select);
             DefaultComboBoxModel mod = new DefaultComboBoxModel();

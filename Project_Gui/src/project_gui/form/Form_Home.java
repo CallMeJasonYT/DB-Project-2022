@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 import project_gui.model.Model_Card;
 import project_gui.model.StatusType;
 
-
 public class Form_Home extends javax.swing.JPanel {
     static float profit = 0;
     static float cost = 0;
@@ -38,7 +37,7 @@ public class Form_Home extends javax.swing.JPanel {
                 String max = rs1.getString("tr_maxseats");
                 String res = rs1.getString("COUNT(res_tr_id)");
                 String code = rs1.getString("tr_br_code");
-                if(Integer.parseInt(res) <= Integer.parseInt(max)/2){
+                if(Integer.parseInt(res) <= Integer.parseInt(max)*0.5){
                     table1.addRow(new Object[]{id, departure, ret, cost, code, StatusType.Available_Seats});
                 }else if (res.equals(max)){table1.addRow(new Object[]{id, departure, ret, cost, code, StatusType.Fully_Booked});
                 }else table1.addRow(new Object[]{id, departure, ret, cost, code, StatusType.Limited_Availability});

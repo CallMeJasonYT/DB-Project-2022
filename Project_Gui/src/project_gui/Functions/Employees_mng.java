@@ -53,8 +53,8 @@ public class Employees_mng extends javax.swing.JFrame {
         EmployeesTable = new project_gui.swing.Table1();
         header1 = new project_gui.component.Header();
         jLabel4 = new javax.swing.JLabel();
-        br_code = new combobox.CustomJCombo();
         jLabel3 = new javax.swing.JLabel();
+        br_code = new javax.swing.JTextField();
         menu = new project_gui.component.Menu_Manager();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,13 +114,6 @@ public class Employees_mng extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Branch Code:");
 
-        br_code.setLabeText("");
-        br_code.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                br_codeActionPerformed(evt);
-            }
-        });
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Total Costs:");
 
@@ -135,8 +128,8 @@ public class Employees_mng extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)
+                        .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(151, 151, 151)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(totalcost, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,8 +148,8 @@ public class Employees_mng extends javax.swing.JFrame {
                     .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
                             .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(1, 1, 1))
                         .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,34 +184,13 @@ public class Employees_mng extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     float total = 0;
-    public void updateCombo(){
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT br_code FROM branch;";
-            Statement slct = con.createStatement();
-            ResultSet rs = slct.executeQuery(select);
-            DefaultComboBoxModel mod = new DefaultComboBoxModel();
-            mod.removeAllElements();
-            while(rs.next()){
-                String box = "Branch: "+rs.getInt("br_code")+"";
-                mod.addElement(box);
-            }
-            br_code.setModel(mod);
-            con.close();
-        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
-    }
     public void updateTable(){
-        String code = br_code.getSelectedItem().toString().replaceAll("[^0-9.]", "");
-        if(!"".equals(code)){
             try{
                 DefaultTableModel tbModel= (DefaultTableModel) EmployeesTable.getModel();
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-                String select1="SELECT wrk_name, wrk_lname, wrk_salary FROM worker WHERE wrk_br_code = ?";
-                int i=Integer.parseInt(code);
+                String select1="SELECT wrk_name, wrk_lname, wrk_salary FROM worker WHERE wrk_br_code = "+Login.getBranch()+"";
                 PreparedStatement slct1 = con.prepareStatement(select1);
-                slct1.setInt(1, i);
                 ResultSet rs1 = slct1.executeQuery();
                 tbModel.setRowCount(0);
                 total = 0;
@@ -234,11 +206,12 @@ public class Employees_mng extends javax.swing.JFrame {
                 totalcost.setText(str1);
                 if(tbModel.getRowCount()==0){JOptionPane.showMessageDialog(this, "There aren't any Employees");}
             con.close();
-        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        updateCombo();
+        br_code.setText(""+Login.getBranch()+"");
+        updateTable();
     }//GEN-LAST:event_formWindowOpened
 
     private void Cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel1ActionPerformed
@@ -246,15 +219,11 @@ public class Employees_mng extends javax.swing.JFrame {
         Main main = new Main();
         main.show();
     }//GEN-LAST:event_Cancel1ActionPerformed
-
-    private void br_codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_br_codeActionPerformed
-        updateTable();
-    }//GEN-LAST:event_br_codeActionPerformed
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new Employees_mng().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private project_gui.swing.CustomButton Cancel1;
     private project_gui.swing.Table1 EmployeesTable;
-    private combobox.CustomJCombo br_code;
+    private javax.swing.JTextField br_code;
     private project_gui.component.Header header1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

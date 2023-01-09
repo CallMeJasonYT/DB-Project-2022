@@ -53,11 +53,6 @@ public class Insert_Selection2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -125,8 +120,7 @@ public class Insert_Selection2 extends javax.swing.JFrame {
 
     private void Selection1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Selection1ActionPerformed
         String select = Selection1.getSelectedItem().toString();
-        switch(select)
-        {
+        switch(select){
             case "Worker":
             dispose();
             wrk_mng inspage3 = new wrk_mng();
@@ -155,17 +149,7 @@ public class Insert_Selection2 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Selection1ActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
-    }//GEN-LAST:event_formWindowOpened
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Insert_Selection2().setVisible(true);
-            }
-        });
-    }
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new Insert_Selection2().setVisible(true);}});}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private combobox.CustomJCombo Selection1;

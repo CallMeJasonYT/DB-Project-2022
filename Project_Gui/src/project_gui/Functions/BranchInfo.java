@@ -248,7 +248,6 @@ public class BranchInfo extends javax.swing.JFrame {
                     String tb_data[]= {street, num, city, name, ln, counts, costs};
                     tbModel.addRow(tb_data);
                 }
-                if(tbModel.getRowCount()==0){JOptionPane.showMessageDialog(this, "There aren't any Reservations under this Last Name");}
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
