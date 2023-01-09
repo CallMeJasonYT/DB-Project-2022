@@ -64,7 +64,7 @@ public class adm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menu = new project_gui.component.Menu();
+        menu = new project_gui.component.Menu1();
         panelBorder1 = new project_gui.swing.PanelBorder();
         panelBorder3 = new project_gui.swing.PanelBorder();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -280,7 +280,7 @@ public class adm extends javax.swing.JFrame {
                 tbModel.addRow(tb_data);
             }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     public void updateCombo(){
         try{
@@ -294,7 +294,7 @@ public class adm extends javax.swing.JFrame {
             while(rs.next()){mod.addElement(rs.getString("wrk_AT"));}
             wrk_AT.setModel(mod);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         updateCombo();
@@ -323,7 +323,7 @@ public class adm extends javax.swing.JFrame {
         insrt.execute();
         updateTable();
         JOptionPane.showMessageDialog(this, "Inserted Succesfully");
-    }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+    }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_InsertActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
@@ -379,7 +379,7 @@ public class adm extends javax.swing.JFrame {
             }
             updateTable();
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
@@ -396,7 +396,7 @@ public class adm extends javax.swing.JFrame {
             updateTable();
             JOptionPane.showMessageDialog(this, "Updated Succesfully");
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_UpdateActionPerformed
 
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new adm().setVisible(true);}});}
@@ -413,7 +413,7 @@ public class adm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane3;
-    private project_gui.component.Menu menu;
+    private project_gui.component.Menu1 menu;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.PanelBorder panelBorder3;
     private combobox.CustomJCombo wrk_AT;

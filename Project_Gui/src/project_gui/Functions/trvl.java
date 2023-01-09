@@ -67,7 +67,6 @@ public class trvl extends javax.swing.JFrame {
 
         timePicker1 = new com.raven.swing.TimePicker();
         timePicker2 = new com.raven.swing.TimePicker();
-        menu = new project_gui.component.Menu();
         panelBorder1 = new project_gui.swing.PanelBorder();
         panelBorder3 = new project_gui.swing.PanelBorder();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -87,6 +86,7 @@ public class trvl extends javax.swing.JFrame {
         PickTime2 = new javax.swing.JTextField();
         to_dst_id = new combobox.CustomJCombo();
         to_tr_id = new combobox.CustomJCombo();
+        menu = new project_gui.component.Menu1();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -258,12 +258,12 @@ public class trvl extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(to_dst_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(to_tr_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(to_dst_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(to_tr_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PickTime2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PickTime1)
@@ -290,11 +290,10 @@ public class trvl extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(menu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelBorder1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -379,7 +378,7 @@ public class trvl extends javax.swing.JFrame {
                 tbModel.addRow(tb_data);
             }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     public void updateCombo(){
         PickTime1.setText("Set Time");
@@ -408,7 +407,7 @@ public class trvl extends javax.swing.JFrame {
             to_dst_id.setModel(mod1);
             to_tr_id.setModel(mod2);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     private void PickTime2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PickTime2MouseClicked
         timePicker2.showPopup(this, 100, 100);
@@ -468,7 +467,7 @@ public class trvl extends javax.swing.JFrame {
             insrt.execute();
             updateTable();
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_InsertActionPerformed
 
     private void Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete1ActionPerformed
@@ -487,7 +486,7 @@ public class trvl extends javax.swing.JFrame {
             PickTime2.setText("");
             JOptionPane.showMessageDialog(this, "Deleted Succesfully");
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_Delete1ActionPerformed
 
     private void Update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Update1ActionPerformed
@@ -506,7 +505,7 @@ public class trvl extends javax.swing.JFrame {
                 updateTable();
                 JOptionPane.showMessageDialog(this, "Updated Succesfully");
                 con.close();
-            }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+            }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
         }else{JOptionPane.showMessageDialog(this, "You cannot Update the Travel_to destination ID! Try Using Insert/Delete Instead.");}
     }//GEN-LAST:event_Update1ActionPerformed
 
@@ -533,7 +532,7 @@ public class trvl extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane3;
-    private project_gui.component.Menu menu;
+    private project_gui.component.Menu1 menu;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.PanelBorder panelBorder3;
     private com.raven.swing.TimePicker timePicker1;

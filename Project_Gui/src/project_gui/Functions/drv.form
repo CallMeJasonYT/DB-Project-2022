@@ -99,13 +99,13 @@
                           <Component id="drv_experience" max="32767" attributes="0"/>
                           <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="drv_license" alignment="1" pref="38" max="32767" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="wrk_AT" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="3" max="32767" attributes="0"/>
                           <Component id="JLabel3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="drv_route" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="drv_license" alignment="1" pref="38" max="32767" attributes="0"/>
                           <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -325,7 +325,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="project_gui.component.Menu" name="menu">
+    <Component class="project_gui.component.Menu1" name="menu">
     </Component>
   </SubComponents>
 </Form>

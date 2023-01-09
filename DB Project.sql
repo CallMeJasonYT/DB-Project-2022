@@ -181,24 +181,26 @@ INSERT INTO admin VALUES
 CREATE TABLE manages(
     mng_adm_AT CHAR(10) NOT NULL,
     mng_br_code INT(11) NOT NULL,
+    mng_pass CHAR(10) NOT NULL,
+    mng_username CHAR(10) NOT NULL,
     PRIMARY KEY(mng_adm_AT,mng_br_code),
     CONSTRAINT manages1 FOREIGN KEY (mng_adm_AT) REFERENCES admin(adm_AT)
     ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT manages2 FOREIGN KEY (mng_br_code) REFERENCES branch(br_code)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
-
+SELECT * FROM it INNER JOIN worker ON wrk_it_AT = wrk_AT INNER JOIN manages ON mng_adm_AT = wrk_AT WHERE IT_AT="MNG01" AND pass="mng1" AND end_date IS NULL OR mng_username = "MNG01" AND pass="mng1"
 INSERT INTO manages VALUES
-('RW93324684', 1),
-('AW79051091', 2),
-('CX68594948', 3),
-('AY57791065', 4),
-('AC18362095', 5),
-('AT26598124', 7),
-('SA33423559', 8),
-('CX21653217', 6),
-('AQ88165869', 9),
-('AT23079419', 10);
+('RW93324684', 1, "mng1", "MNG01"),
+('AW79051091', 2, "mng2", "MNG02"),
+('CX68594948', 3, "mng3", "MNG03"),
+('AY57791065', 4, "mng4", "MNG04"),
+('AC18362095', 5, "mng5", "MNG05"),
+('AT26598124', 7, "mng6", "MNG06"),
+('SA33423559', 8, "mng7", "MNG07"),
+('CX21653217', 6, "mng8", "MNG08"),
+('AQ88165869', 9, "mng9", "MNG09"),
+('AT23079419', 10, "mng10", "MNG10");
 
 CREATE TABLE guide(
     gui_AT CHAR(10) NOT NULL,

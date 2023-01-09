@@ -13,9 +13,6 @@
       <Color id="Default Cursor"/>
     </Property>
     <Property name="undecorated" type="boolean" value="true"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1400, 726]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -60,7 +57,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="project_gui.component.Menu" name="menu">
+    <Component class="project_gui.component.Menu1" name="menu">
     </Component>
     <Container class="project_gui.swing.PanelBorder" name="panelBorder1">
 

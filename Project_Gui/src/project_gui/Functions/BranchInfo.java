@@ -65,7 +65,7 @@ public class BranchInfo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menu = new project_gui.component.Menu();
+        menu = new project_gui.component.Menu1();
         panelBorder1 = new project_gui.swing.PanelBorder();
         jLabel2 = new javax.swing.JLabel();
         br_code = new combobox.CustomJCombo();
@@ -214,7 +214,7 @@ public class BranchInfo extends javax.swing.JFrame {
             }
             br_code.setModel(mod);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     
     public void updateTable(){
@@ -250,7 +250,7 @@ public class BranchInfo extends javax.swing.JFrame {
                 }
                 if(tbModel.getRowCount()==0){JOptionPane.showMessageDialog(this, "There aren't any Reservations under this Last Name");}
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         updateCombo();
@@ -275,7 +275,7 @@ public class BranchInfo extends javax.swing.JFrame {
     private project_gui.component.Header header1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private project_gui.component.Menu menu;
+    private project_gui.component.Menu1 menu;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.PanelBorder panelBorder2;
     // End of variables declaration//GEN-END:variables

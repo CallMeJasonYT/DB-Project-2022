@@ -288,7 +288,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="project_gui.component.Menu" name="menu">
+    <Component class="project_gui.component.Menu1" name="menu">
     </Component>
   </SubComponents>
 </Form>

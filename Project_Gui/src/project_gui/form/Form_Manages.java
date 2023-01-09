@@ -1,31 +1,40 @@
+
 package project_gui.form;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import project_gui.Login;
+import static project_gui.form.Form_Home.cost;
+import static project_gui.form.Form_Home.profit;
 import project_gui.model.Model_Card;
 import project_gui.model.StatusType;
 
+public class Form_Manages extends javax.swing.JPanel {
 
-public class Form_Home extends javax.swing.JPanel {
-    static float profit = 0;
-    static float cost = 0;
-    public Form_Home() {
+    public Form_Manages() {
         initComponents();
         cost = 0;
         profit = 0;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select1="SELECT tr_id, tr_departure, tr_return, tr_cost, tr_br_code, tr_maxseats, COUNT(res_tr_id) FROM trip INNER JOIN reservation ON tr_id = res_tr_id GROUP BY tr_id ORDER BY tr_departure ASC;";
-            String select2="SELECT COUNT(tr_id), tr_cost FROM reservation INNER JOIN trip ON tr_id = res_tr_id GROUP BY tr_id;";
-            String select3="SELECT wrk_salary FROM worker";
+            String select1="SELECT tr_id, tr_departure, tr_return, tr_cost, tr_br_code, tr_maxseats, COUNT(res_tr_id) FROM trip INNER JOIN reservation ON tr_id = res_tr_id WHERE tr_br_code = "+Login.getBranch()+" GROUP BY tr_id ORDER BY tr_departure ASC;";
+            String select2="SELECT COUNT(tr_id), tr_cost FROM reservation INNER JOIN trip ON tr_id = res_tr_id WHERE tr_br_code = "+Login.getBranch()+" GROUP BY tr_id;";
+            String select3="SELECT wrk_salary FROM worker WHERE wrk_br_code = "+Login.getBranch()+"";
+            String select4="SELECT COUNT(*) FROM worker WHERE wrk_br_code = "+Login.getBranch()+"";
             Statement slct1 = con.createStatement();
             Statement slct2 = con.createStatement();
             Statement slct3 = con.createStatement();
+            Statement slct4 = con.createStatement();
             ResultSet rs1 = slct1.executeQuery(select1);
             ResultSet rs2 = slct2.executeQuery(select2);
             ResultSet rs3 = slct3.executeQuery(select3);
+            ResultSet rs4 = slct4.executeQuery(select4);
             while(rs1.next()){
                 if(rs1.getRow() == 1){
                     String date = rs1.getString("tr_departure");
@@ -49,8 +58,13 @@ public class Form_Home extends javax.swing.JPanel {
             }
             while(rs3.next()){cost = cost + rs3.getFloat("wrk_salary");}
             String str1 = String.format("%.02f", cost);
-            card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/project_gui/icon/profit.png")), "Total Profit", Float.toString(profit)+"€", "Total Profit From all Branches"));
-            card2.setData(new Model_Card(new ImageIcon(getClass().getResource("/project_gui/icon/costs.png")), "Total Costs", str1+"€", "Total Costs From all Branches"));
+            card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/project_gui/icon/profit.png")), "Total Profit", Float.toString(profit)+"€", "Total Profit From Branch "+Login.getBranch()+""));
+            card2.setData(new Model_Card(new ImageIcon(getClass().getResource("/project_gui/icon/costs.png")), "Total Costs", str1+"€", "Total Costs From Branch "+Login.getBranch()+""));
+            while(rs4.next()){
+                int employees = rs4.getInt("COUNT(*)");
+                card4.setData(new Model_Card(new ImageIcon(getClass().getResource("/project_gui/icon/employees.png")), "Number Of Employees", Integer.toString(employees), "Number of Employees in Branch "+Login.getBranch()+""));
+            }
+            
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
@@ -59,8 +73,10 @@ public class Form_Home extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         panel = new javax.swing.JLayeredPane();
         card1 = new project_gui.component.Card();
+        card4 = new project_gui.component.Card();
         card2 = new project_gui.component.Card();
         card3 = new project_gui.component.Card();
         panelBorder1 = new project_gui.swing.PanelBorder();
@@ -68,11 +84,15 @@ public class Form_Home extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new project_gui.swing.Table();
 
-        panel.setLayout(new java.awt.GridLayout(1, 3, 10, 0));
+        panel.setLayout(new java.awt.GridLayout(1, 4, 10, 0));
 
         card1.setColor1(new java.awt.Color(25, 236, 32));
         card1.setColor2(new java.awt.Color(10, 105, 6));
         panel.add(card1);
+
+        card4.setColor1(new java.awt.Color(0, 91, 255));
+        card4.setColor2(new java.awt.Color(0, 6, 105));
+        panel.add(card4);
 
         card2.setColor1(new java.awt.Color(186, 123, 247));
         card2.setColor2(new java.awt.Color(80, 45, 114));
@@ -131,25 +151,46 @@ public class Form_Home extends javax.swing.JPanel {
                 .addGap(20, 20, 20))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1064, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 738, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -158,10 +199,13 @@ public class Form_Home extends javax.swing.JPanel {
     private project_gui.component.Card card1;
     private project_gui.component.Card card2;
     private project_gui.component.Card card3;
+    private project_gui.component.Card card4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLayeredPane panel;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.Table table1;
     // End of variables declaration//GEN-END:variables
+
 }

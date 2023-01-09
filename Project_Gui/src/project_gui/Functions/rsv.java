@@ -65,7 +65,7 @@ public class rsv extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menu = new project_gui.component.Menu();
+        menu = new project_gui.component.Menu1();
         panelBorder1 = new project_gui.swing.PanelBorder();
         panelBorder3 = new project_gui.swing.PanelBorder();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -303,7 +303,7 @@ public class rsv extends javax.swing.JFrame {
                 tbModel.addRow(tb_data);
             }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     public void updateCombo(){
         try{
@@ -317,7 +317,7 @@ public class rsv extends javax.swing.JFrame {
             while(rs.next()){mod.addElement("Trip: "+rs.getInt("tr_id")+"");}
             res_tr_id.setModel(mod);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         updateCombo();
@@ -355,7 +355,7 @@ public class rsv extends javax.swing.JFrame {
             insrt.execute();
             updateTable();
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_InsertActionPerformed
 
     private void Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete1ActionPerformed
@@ -374,7 +374,7 @@ public class rsv extends javax.swing.JFrame {
             res_lname.setText("");
             JOptionPane.showMessageDialog(this, "Deleted Succesfully");
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_Delete1ActionPerformed
 
     private void Update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Update1ActionPerformed
@@ -394,7 +394,7 @@ public class rsv extends javax.swing.JFrame {
                 updateTable();
                 JOptionPane.showMessageDialog(this, "Updated Succesfully");
                 con.close();
-            }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+            }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
         }else{JOptionPane.showMessageDialog(this, "You cannot Update the Seat Number! Try Using Insert/Delete Instead.");}
     }//GEN-LAST:event_Update1ActionPerformed
 
@@ -418,7 +418,7 @@ public class rsv extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane3;
-    private project_gui.component.Menu menu;
+    private project_gui.component.Menu1 menu;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.PanelBorder panelBorder3;
     private combobox.CustomJCombo res_isadult;

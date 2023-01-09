@@ -64,7 +64,7 @@ public class phones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menu = new project_gui.component.Menu();
+        menu = new project_gui.component.Menu1();
         panelBorder1 = new project_gui.swing.PanelBorder();
         panelBorder3 = new project_gui.swing.PanelBorder();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -259,7 +259,7 @@ public void updateTable(){
                 tbModel.addRow(tb_data);
             }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     public void updateCombo(){
         try{
@@ -276,7 +276,7 @@ public void updateTable(){
             }
             br_code.setModel(mod);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -305,7 +305,7 @@ public void updateTable(){
             insrt.execute();
             updateTable();
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_InsertActionPerformed
 
     private void Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete1ActionPerformed
@@ -322,7 +322,7 @@ public void updateTable(){
             ph_number.setText("");
             updateTable();
             JOptionPane.showMessageDialog(this, "Deleted Succesfully");
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_Delete1ActionPerformed
 
     private void Update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Update1ActionPerformed
@@ -347,7 +347,7 @@ public void updateTable(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane3;
-    private project_gui.component.Menu menu;
+    private project_gui.component.Menu1 menu;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.PanelBorder panelBorder3;
     private javax.swing.JTextField ph_number;

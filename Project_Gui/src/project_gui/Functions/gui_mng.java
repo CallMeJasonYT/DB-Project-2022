@@ -3,55 +3,36 @@ import java.sql.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import project_gui.Insert_Selection;
+import project_gui.Insert_Selection2;
 import project_gui.Login;
 import project_gui.event.EventMenuSelected;
 import project_gui.main.Main;
+import project_gui.main.Main_Mng;
 
-public class lang extends javax.swing.JFrame {
-    public lang() {
+public class gui_mng extends javax.swing.JFrame {
+    public gui_mng() {
         initComponents();
-        menu.initMoving(lang.this);
+        menu.initMoving(gui_mng.this);
         menu.addEventMenuSelected(new EventMenuSelected(){
             @Override
             public void selected(int index) {
                 switch (index) {
                     case 0:
-                        Main main = new Main();
+                        Main_Mng main = new Main_Mng();
                         main.show();
                         dispose();
                         break;
                     case 1:
-                        Insert_Selection select = new Insert_Selection();
+                        Insert_Selection2 select = new Insert_Selection2();
                         select.show();
                         dispose();
                         break;
                     case 2:
-                        CheckTrip checktr = new CheckTrip();
-                        checktr.show();
-                        dispose();
-                        break;
-                    case 3:
-                        CheckOffers checkoff = new CheckOffers();
-                        checkoff.show();
-                        dispose();
-                        break;
-                    case 4:
-                        BranchInfo brinfo = new BranchInfo();
-                        brinfo.show();
-                        dispose();
-                        break;
-                    case 5:
-                        Employees empl = new Employees();
+                        Employees_mng empl = new Employees_mng();
                         empl.show();
                         dispose();
                         break;
-                    case 8:
-                        Logs log = new Logs();
-                        log.show();
-                        dispose();
-                        break;
-                    case 9:    
+                    case 5:   
                         Login login = new Login();
                         login.show();
                         dispose();
@@ -64,20 +45,20 @@ public class lang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menu = new project_gui.component.Menu1();
         panelBorder1 = new project_gui.swing.PanelBorder();
         panelBorder3 = new project_gui.swing.PanelBorder();
         jScrollPane3 = new javax.swing.JScrollPane();
-        LanguageTable = new project_gui.swing.Table1();
+        GuiTable = new project_gui.swing.Table1();
         header = new project_gui.component.Header();
         Insert = new project_gui.swing.CustomButton();
         Cancel = new project_gui.swing.CustomButton();
         Delete1 = new project_gui.swing.CustomButton();
         Update1 = new project_gui.swing.CustomButton();
         jLabel1 = new javax.swing.JLabel();
+        gui_cv = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        lng_language = new javax.swing.JTextField();
-        lng_gui_AT = new combobox.CustomJCombo();
+        gui_AT = new combobox.CustomJCombo();
+        menu = new project_gui.component.Menu_Manager();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -89,12 +70,12 @@ public class lang extends javax.swing.JFrame {
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
 
-        LanguageTable.setModel(new javax.swing.table.DefaultTableModel(
+        GuiTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Guide AT", "Language"
+                "Guide AT", "Guide CV"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -105,12 +86,12 @@ public class lang extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        LanguageTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        GuiTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LanguageTableMouseClicked(evt);
+                GuiTableMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(LanguageTable);
+        jScrollPane3.setViewportView(GuiTable);
 
         javax.swing.GroupLayout panelBorder3Layout = new javax.swing.GroupLayout(panelBorder3);
         panelBorder3.setLayout(panelBorder3Layout);
@@ -168,9 +149,9 @@ public class lang extends javax.swing.JFrame {
         jLabel1.setText("Guide AT:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Language:");
+        jLabel4.setText("Experience:");
 
-        lng_gui_AT.setLabeText("");
+        gui_AT.setLabeText("");
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
@@ -178,47 +159,49 @@ public class lang extends javax.swing.JFrame {
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelBorder3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(header, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBorder1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lng_gui_AT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lng_language, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBorder1Layout.createSequentialGroup()
-                            .addComponent(Insert, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(Update1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(Delete1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelBorder3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(gui_AT, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(gui_cv, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
+                        .addComponent(Insert, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(Update1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(Delete1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(26, 26, 26)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lng_language, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gui_cv, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lng_gui_AT, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Update1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Insert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gui_AT, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Delete1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Insert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Update1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
                 .addComponent(panelBorder3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,37 +209,37 @@ public class lang extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     public void updateTable(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT * FROM languages;";
-            Statement slct = con.createStatement();
-            ResultSet rs = slct.executeQuery(select);
-            DefaultTableModel tbModel= (DefaultTableModel) LanguageTable.getModel();
+            String select2="SELECT * FROM guide;";
+            Statement slct2 = con.createStatement();
+            ResultSet rs2 = slct2.executeQuery(select2);
+            DefaultTableModel tbModel= (DefaultTableModel) GuiTable.getModel();
             tbModel.setNumRows(0);
-            while(rs.next()){
-                String at = rs.getString("lng_gui_AT");
-                String language = rs.getString("lng_language"); 
-                String tb_data[]= {at,language};
+            while(rs2.next()){
+                String at = rs2.getString("gui_AT");
+                String cv = rs2.getString("gui_cv"); 
+                String tb_data[]= {at,cv};
                 tbModel.addRow(tb_data);
             }
             con.close();
@@ -266,37 +249,37 @@ public class lang extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT wrk_AT FROM worker INNER JOIN guide ON wrk_AT = gui_AT;";
+            String select="SELECT wrk_AT FROM worker;";
             Statement slct = con.createStatement();
             ResultSet rs = slct.executeQuery(select);
             DefaultComboBoxModel mod = new DefaultComboBoxModel();
             mod.removeAllElements();
             while(rs.next()){mod.addElement(rs.getString("wrk_AT"));}
-            lng_gui_AT.setModel(mod);
+            updateTable();
+            gui_AT.setModel(mod);
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
-    }
+    }    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         updateCombo();
-        updateTable();
     }//GEN-LAST:event_formWindowOpened
 
-    private void LanguageTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LanguageTableMouseClicked
-        DefaultTableModel tbModel= (DefaultTableModel) LanguageTable.getModel();
-        String code = tbModel.getValueAt(LanguageTable.getSelectedRow(), 0).toString();
-        String language = tbModel.getValueAt(LanguageTable.getSelectedRow(), 1).toString();
-        lng_gui_AT.setSelectedItem(code);
-        lng_language.setText(language);
-    }//GEN-LAST:event_LanguageTableMouseClicked
+    private void GuiTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuiTableMouseClicked
+        DefaultTableModel tbModel= (DefaultTableModel) GuiTable.getModel();
+        String gui_at = tbModel.getValueAt(GuiTable.getSelectedRow(), 0).toString();
+        String gui_CV = tbModel.getValueAt(GuiTable.getSelectedRow(), 1).toString();
+        gui_AT.setSelectedItem(gui_at);
+        gui_cv.setText(gui_CV);
+    }//GEN-LAST:event_GuiTableMouseClicked
 
     private void InsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertActionPerformed
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String insert="INSERT INTO languages(lng_gui_AT,lng_language) VALUES(?,?)";
+            String insert="INSERT INTO guide(gui_AT,gui_cv) VALUES(?,?)";
             PreparedStatement insrt = con.prepareStatement(insert);
-            insrt.setString(1,lng_gui_AT.getSelectedItem().toString());
-            insrt.setString(2,lng_language.getText());
+            insrt.setString(1,gui_AT.getSelectedItem().toString());
+            insrt.setString(2,gui_cv.getText());
             insrt.execute();
             updateTable();
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
@@ -313,35 +296,46 @@ public class lang extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String delete="DELETE FROM languages WHERE lng_gui_AT = ? AND lng_language = ?";
+            String delete="DELETE FROM guide WHERE gui_AT = ?";
             PreparedStatement dlt = con.prepareStatement(delete);
-            dlt.setString(1,lng_gui_AT.getSelectedItem().toString());
-            dlt.setString(2,lng_language.getText());
-            dlt.execute();
+            dlt.setString(1, gui_AT.getSelectedItem().toString());
+            dlt.executeUpdate();
             updateTable();
-            lng_language.setText("");
+            gui_cv.setText("");
             JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+            con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_Delete1ActionPerformed
 
     private void Update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Update1ActionPerformed
-        JOptionPane.showMessageDialog(this, "You cannot Update this Table! Try Using Insert/Delete Instead.");
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String update="UPDATE guide SET gui_cv = ? WHERE gui_AT = ?";
+            PreparedStatement upd = con.prepareStatement(update);
+            upd.setString(1, gui_cv.getText());
+            upd.setString(2, gui_AT.getSelectedItem().toString());
+            upd.executeUpdate();
+            updateTable();
+            JOptionPane.showMessageDialog(this, "Updated Succesfully");
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_Update1ActionPerformed
 
-    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new lang().setVisible(true);}});}
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new gui_mng().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private project_gui.swing.CustomButton Cancel;
     private project_gui.swing.CustomButton Delete1;
+    private project_gui.swing.Table1 GuiTable;
     private project_gui.swing.CustomButton Insert;
-    private project_gui.swing.Table1 LanguageTable;
     private project_gui.swing.CustomButton Update1;
+    private combobox.CustomJCombo gui_AT;
+    private javax.swing.JTextField gui_cv;
     private project_gui.component.Header header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane3;
-    private combobox.CustomJCombo lng_gui_AT;
-    private javax.swing.JTextField lng_language;
-    private project_gui.component.Menu1 menu;
+    private project_gui.component.Menu_Manager menu;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.PanelBorder panelBorder3;
     // End of variables declaration//GEN-END:variables

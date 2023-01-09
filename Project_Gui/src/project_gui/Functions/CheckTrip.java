@@ -67,7 +67,7 @@ public class CheckTrip extends javax.swing.JFrame {
 
         timePicker1 = new com.raven.swing.TimePicker();
         timePicker2 = new com.raven.swing.TimePicker();
-        menu = new project_gui.component.Menu();
+        menu = new project_gui.component.Menu1();
         panelBorder1 = new project_gui.swing.PanelBorder();
         Cancel1 = new project_gui.swing.CustomButton();
         panelBorder2 = new project_gui.swing.PanelBorder();
@@ -258,6 +258,7 @@ public class CheckTrip extends javax.swing.JFrame {
                 CallableStatement cs = con.prepareCall(s);
                 cs.execute();
                 ResultSet rs = cs.getResultSet();
+                tbModel.setNumRows(0);
                 while(rs.next()){
                     String cost = rs.getString("trcost");
                     String max = rs.getString("maxseats_");
@@ -273,7 +274,7 @@ public class CheckTrip extends javax.swing.JFrame {
                     tbModel.addRow(tb_data);
                 }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     public void updateCombo(){
         try{
@@ -290,7 +291,7 @@ public class CheckTrip extends javax.swing.JFrame {
             }
             br_code.setModel(mod);
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -328,7 +329,7 @@ public class CheckTrip extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private project_gui.component.Menu menu;
+    private project_gui.component.Menu1 menu;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.PanelBorder panelBorder2;
     private com.raven.swing.TimePicker timePicker1;

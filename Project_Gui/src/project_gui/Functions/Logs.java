@@ -1,5 +1,6 @@
 package project_gui.Functions;
 import java.sql.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import project_gui.Insert_Selection;
 import project_gui.Login;
@@ -62,7 +63,7 @@ public class Logs extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menu = new project_gui.component.Menu();
+        menu = new project_gui.component.Menu1();
         panelBorder1 = new project_gui.swing.PanelBorder();
         Cancel2 = new project_gui.swing.CustomButton();
         panelBorder3 = new project_gui.swing.PanelBorder();
@@ -201,7 +202,7 @@ public class Logs extends javax.swing.JFrame {
                     tbModel.addRow(tb_data);
                 }
             con.close();
-        }catch(ClassNotFoundException | SQLException e){System.out.println(e.getMessage());}
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
     
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new Logs().setVisible(true);}});}
@@ -211,7 +212,7 @@ public class Logs extends javax.swing.JFrame {
     private project_gui.swing.Table1 LogsTable;
     private project_gui.component.Header header2;
     private javax.swing.JScrollPane jScrollPane3;
-    private project_gui.component.Menu menu;
+    private project_gui.component.Menu1 menu;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.PanelBorder panelBorder3;
     // End of variables declaration//GEN-END:variables

@@ -1,56 +1,39 @@
 package project_gui.Functions;
 import java.sql.*;
-import javax.swing.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import project_gui.Insert_Selection;
+import project_gui.Insert_Selection2;
 import project_gui.Login;
 import project_gui.event.EventMenuSelected;
 import project_gui.main.Main;
+import project_gui.main.Main_Mng;
 
-public class branch extends javax.swing.JFrame {
-    public branch() {
+public class drv_mng extends javax.swing.JFrame {
+
+    public drv_mng() {
         initComponents();
-        menu.initMoving(branch.this);
+        menu.initMoving(drv_mng.this);
         menu.addEventMenuSelected(new EventMenuSelected(){
             @Override
             public void selected(int index) {
                 switch (index) {
                     case 0:
-                        Main main = new Main();
+                        Main_Mng main = new Main_Mng();
                         main.show();
                         dispose();
                         break;
                     case 1:
-                        Insert_Selection select = new Insert_Selection();
+                        Insert_Selection2 select = new Insert_Selection2();
                         select.show();
                         dispose();
                         break;
                     case 2:
-                        CheckTrip checktr = new CheckTrip();
-                        checktr.show();
-                        dispose();
-                        break;
-                    case 3:
-                        CheckOffers checkoff = new CheckOffers();
-                        checkoff.show();
-                        dispose();
-                        break;
-                    case 4:
-                        BranchInfo brinfo = new BranchInfo();
-                        brinfo.show();
-                        dispose();
-                        break;
-                    case 5:
-                        Employees empl = new Employees();
+                        Employees_mng empl = new Employees_mng();
                         empl.show();
                         dispose();
                         break;
-                    case 8:
-                        Logs log = new Logs();
-                        log.show();
-                        dispose();
-                        break;
-                    case 9:    
+                    case 5:   
                         Login login = new Login();
                         login.show();
                         dispose();
@@ -66,19 +49,21 @@ public class branch extends javax.swing.JFrame {
         panelBorder1 = new project_gui.swing.PanelBorder();
         panelBorder3 = new project_gui.swing.PanelBorder();
         jScrollPane3 = new javax.swing.JScrollPane();
-        BranchTable = new project_gui.swing.Table1();
+        DriverTable = new project_gui.swing.Table1();
         header = new project_gui.component.Header();
         Insert = new project_gui.swing.CustomButton();
         Cancel = new project_gui.swing.CustomButton();
         Delete = new project_gui.swing.CustomButton();
         Update = new project_gui.swing.CustomButton();
-        br_city = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        br_num = new javax.swing.JTextField();
+        drv_experience = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        JLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        br_street = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        menu = new project_gui.component.Menu1();
+        drv_license = new combobox.CustomJCombo();
+        wrk_AT = new combobox.CustomJCombo();
+        drv_route = new combobox.CustomJCombo();
+        menu = new project_gui.component.Menu_Manager();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -90,12 +75,12 @@ public class branch extends javax.swing.JFrame {
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
 
-        BranchTable.setModel(new javax.swing.table.DefaultTableModel(
+        DriverTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Branch", "Street", "Number", "City"
+                "Driver AT", "License", "Route", "Experience"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -106,12 +91,12 @@ public class branch extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        BranchTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        DriverTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BranchTableMouseClicked(evt);
+                DriverTableMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(BranchTable);
+        jScrollPane3.setViewportView(DriverTable);
 
         javax.swing.GroupLayout panelBorder3Layout = new javax.swing.GroupLayout(panelBorder3);
         panelBorder3.setLayout(panelBorder3Layout);
@@ -165,16 +150,25 @@ public class branch extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("City:");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setText("Experience:");
+
+        JLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        JLabel3.setText("Route:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Number:");
-
-        br_street.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("License Type:");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Street:");
+        jLabel1.setText("Worker AT:");
+
+        drv_license.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C", "D" }));
+        drv_license.setLabeText("");
+
+        wrk_AT.setLabeText("");
+
+        drv_route.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Local", "Abroad" }));
+        drv_route.setLabeText("");
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
@@ -182,46 +176,54 @@ public class branch extends javax.swing.JFrame {
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(header, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(panelBorder1Layout.createSequentialGroup()
-                            .addComponent(Insert, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(39, 39, 39)
-                            .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(48, 48, 48)
-                            .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(43, 43, 43)
-                            .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelBorder1Layout.createSequentialGroup()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(br_street, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(br_num, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(br_city, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(panelBorder3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelBorder3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelBorder1Layout.createSequentialGroup()
+                        .addComponent(Insert, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85)
+                        .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
+                        .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelBorder1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(wrk_AT, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(drv_license, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(drv_route, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(drv_experience, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(br_street, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(br_num, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(br_city, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelBorder1Layout.createSequentialGroup()
+                        .addComponent(drv_experience)
+                        .addGap(1, 1, 1))
+                    .addComponent(drv_license, javax.swing.GroupLayout.PREFERRED_SIZE, 38, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(wrk_AT, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(drv_route, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(20, 20, 20)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Insert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,6 +239,7 @@ public class branch extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -244,60 +247,75 @@ public class branch extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-public void updateTable(){
-        try
-        {
+    public void updateTable(){
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT * FROM branch;";
+            String select="SELECT * FROM driver;";
             Statement slct = con.createStatement();
             ResultSet rs = slct.executeQuery(select);
-            DefaultTableModel tbModel= (DefaultTableModel) BranchTable.getModel();
+            DefaultTableModel tbModel= (DefaultTableModel) DriverTable.getModel();
             tbModel.setNumRows(0);
             while(rs.next()){
-                String code = rs.getString("br_code");
-                String street = rs.getString("br_street");
-                String num = rs.getString("br_num");
-                String city = rs.getString("br_city");
-                String tb_data[]= {code, street, num, city};
+                String at = rs.getString("drv_AT");
+                String license = rs.getString("drv_license"); 
+                String route = rs.getString("drv_route");
+                String experience = rs.getString("drv_experience");
+                String tb_data[]= {at,license,route,experience};
                 tbModel.addRow(tb_data);
             }
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
+    public void updateCombo(){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String select="SELECT wrk_AT FROM worker;";
+            Statement slct = con.createStatement();
+            ResultSet rs = slct.executeQuery(select);
+            DefaultComboBoxModel mod = new DefaultComboBoxModel();
+            mod.removeAllElements();
+            while(rs.next()){mod.addElement(rs.getString("wrk_AT"));}
+            wrk_AT.setModel(mod);
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
+    }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        updateCombo();
         updateTable();
     }//GEN-LAST:event_formWindowOpened
 
-    private void BranchTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BranchTableMouseClicked
-        DefaultTableModel tbModel= (DefaultTableModel) BranchTable.getModel();
-        String street = tbModel.getValueAt(BranchTable.getSelectedRow(), 1).toString();
-        String num = tbModel.getValueAt(BranchTable.getSelectedRow(), 2).toString();
-        String city = tbModel.getValueAt(BranchTable.getSelectedRow(), 3).toString();
-        br_street.setText(street);
-        br_num.setText(num);
-        br_city.setText(city);
-    }//GEN-LAST:event_BranchTableMouseClicked
+    private void DriverTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DriverTableMouseClicked
+        DefaultTableModel tbModel= (DefaultTableModel) DriverTable.getModel();
+        String at = tbModel.getValueAt(DriverTable.getSelectedRow(), 0).toString();
+        String license = tbModel.getValueAt(DriverTable.getSelectedRow(), 1).toString();
+        String route = tbModel.getValueAt(DriverTable.getSelectedRow(), 2).toString();
+        String exp = tbModel.getValueAt(DriverTable.getSelectedRow(), 3).toString();
+        wrk_AT.setSelectedItem(at);
+        drv_license.setSelectedItem(license);
+        drv_route.setSelectedItem(route);
+        drv_experience.setText(exp);
+    }//GEN-LAST:event_DriverTableMouseClicked
 
     private void InsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertActionPerformed
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String insert="INSERT INTO branch(br_code,br_street,br_num,br_city) VALUES(null,?,?,?)";
+            String insert="INSERT INTO driver(drv_AT,drv_license,drv_route,drv_experience) VALUES(?,?,?,?)";
             PreparedStatement insrt = con.prepareStatement(insert);
-            insrt.setString(1,br_street.getText());
-            insrt.setInt(2,Integer.parseInt(br_num.getText()));
-            insrt.setString(3,br_city.getText());
+            insrt.setString(1,wrk_AT.getSelectedItem().toString());
+            insrt.setString(2,drv_license.getSelectedItem().toString());
+            insrt.setString(3,drv_route.getSelectedItem().toString());
+            insrt.setInt(4,Integer.parseInt(drv_experience.getText()));
             insrt.execute();
             updateTable();
             JOptionPane.showMessageDialog(this, "Inserted Succesfully");
@@ -312,32 +330,30 @@ public void updateTable(){
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         try{
-            DefaultTableModel tbModel= (DefaultTableModel) BranchTable.getModel();
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String del="DELETE FROM branch WHERE br_code = ?";
-            PreparedStatement dlt = con.prepareStatement(del);
-            dlt.setString(1, tbModel.getValueAt(BranchTable.getSelectedRow(), 0).toString());
-            dlt.execute();
+            String delete="DELETE FROM driver WHERE drv_AT = ?";
+            PreparedStatement dlt = con.prepareStatement(delete);
+            dlt.setString(1, wrk_AT.getSelectedItem().toString());
+            dlt.executeUpdate();
             updateTable();
-            br_street.setText("");
-            br_num.setText("");
-            br_city.setText("");
+            wrk_AT.setSelectedItem("");
+            drv_experience.setText("");
             JOptionPane.showMessageDialog(this, "Deleted Succesfully");
+            con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
         try{
-            DefaultTableModel tbModel= (DefaultTableModel) BranchTable.getModel();
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String update="UPDATE branch SET br_street = ?, br_num = ?, br_city = ? WHERE br_code = ?";
+            String update="UPDATE driver SET drv_license = ?, drv_route = ?, drv_experience = ? WHERE drv_AT = ?";
             PreparedStatement upd = con.prepareStatement(update);
-            upd.setString(1, br_street.getText());
-            upd.setInt(2, Integer.parseInt(br_num.getText()));
-            upd.setString(3, br_city.getText());
-            upd.setString(4, tbModel.getValueAt(BranchTable.getSelectedRow(), 0).toString());
+            upd.setString(1, drv_license.getSelectedItem().toString());
+            upd.setString(2, drv_route.getSelectedItem().toString());
+            upd.setInt(3, Integer.parseInt(drv_experience.getText()));
+            upd.setString(4, wrk_AT.getSelectedItem().toString());
             upd.executeUpdate();
             updateTable();
             JOptionPane.showMessageDialog(this, "Updated Succesfully");
@@ -345,29 +361,25 @@ public void updateTable(){
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_UpdateActionPerformed
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new branch().setVisible(true);
-            }
-        });
-    }
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new drv_mng().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private project_gui.swing.Table1 BranchTable;
     private project_gui.swing.CustomButton Cancel;
     private project_gui.swing.CustomButton Delete;
+    private project_gui.swing.Table1 DriverTable;
     private project_gui.swing.CustomButton Insert;
+    private javax.swing.JLabel JLabel3;
     private project_gui.swing.CustomButton Update;
-    private javax.swing.JTextField br_city;
-    private javax.swing.JTextField br_num;
-    private javax.swing.JTextField br_street;
+    private javax.swing.JTextField drv_experience;
+    private combobox.CustomJCombo drv_license;
+    private combobox.CustomJCombo drv_route;
     private project_gui.component.Header header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane3;
-    private project_gui.component.Menu1 menu;
+    private project_gui.component.Menu_Manager menu;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.PanelBorder panelBorder3;
+    private combobox.CustomJCombo wrk_AT;
     // End of variables declaration//GEN-END:variables
 }

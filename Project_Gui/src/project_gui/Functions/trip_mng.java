@@ -4,55 +4,36 @@ import javax.swing.JOptionPane;
 import java.text.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
-import project_gui.Insert_Selection;
+import project_gui.Insert_Selection2;
 import project_gui.Login;
 import project_gui.event.EventMenuSelected;
 import project_gui.main.Main;
+import project_gui.main.Main_Mng;
 
-public class trip extends javax.swing.JFrame {
-    public trip() {
+public class trip_mng extends javax.swing.JFrame {
+    public trip_mng() {
         initComponents();
-        menu.initMoving(trip.this);
+        menu.initMoving(trip_mng.this);
         menu.addEventMenuSelected(new EventMenuSelected(){
             @Override
             public void selected(int index) {
                 switch (index) {
                     case 0:
-                        Main main = new Main();
+                        Main_Mng main = new Main_Mng();
                         main.show();
                         dispose();
                         break;
                     case 1:
-                        Insert_Selection select = new Insert_Selection();
+                        Insert_Selection2 select = new Insert_Selection2();
                         select.show();
                         dispose();
                         break;
                     case 2:
-                        CheckTrip checktr = new CheckTrip();
-                        checktr.show();
-                        dispose();
-                        break;
-                    case 3:
-                        CheckOffers checkoff = new CheckOffers();
-                        checkoff.show();
-                        dispose();
-                        break;
-                    case 4:
-                        BranchInfo brinfo = new BranchInfo();
-                        brinfo.show();
-                        dispose();
-                        break;
-                    case 5:
-                        Employees empl = new Employees();
+                        Employees_mng empl = new Employees_mng();
                         empl.show();
                         dispose();
                         break;
-                    case 8:
-                        Logs log = new Logs();
-                        log.show();
-                        dispose();
-                        break;
-                    case 9:    
+                    case 5:   
                         Login login = new Login();
                         login.show();
                         dispose();
@@ -67,7 +48,6 @@ public class trip extends javax.swing.JFrame {
 
         timePicker1 = new com.raven.swing.TimePicker();
         timePicker2 = new com.raven.swing.TimePicker();
-        menu = new project_gui.component.Menu1();
         panelBorder1 = new project_gui.swing.PanelBorder();
         panelBorder3 = new project_gui.swing.PanelBorder();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -93,6 +73,7 @@ public class trip extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         tr_gui_AT = new combobox.CustomJCombo();
         tr_drv_AT = new combobox.CustomJCombo();
+        menu = new project_gui.component.Menu_Manager();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -292,7 +273,7 @@ public class trip extends javax.swing.JFrame {
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(tr_drv_AT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                        .addContainerGap(12, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,18 +327,18 @@ public class trip extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(menu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelBorder1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -626,7 +607,7 @@ public class trip extends javax.swing.JFrame {
             }con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_tr_br_codeActionPerformed
-    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new trip().setVisible(true);}});}
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new trip_mng().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private project_gui.swing.CustomButton Cancel;
     private project_gui.swing.CustomButton Delete1;
@@ -646,7 +627,7 @@ public class trip extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane3;
-    private project_gui.component.Menu1 menu;
+    private project_gui.component.Menu_Manager menu;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.PanelBorder panelBorder3;
     private com.raven.swing.TimePicker timePicker1;

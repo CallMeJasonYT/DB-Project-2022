@@ -3,55 +3,36 @@ import java.sql.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import project_gui.Insert_Selection;
+import project_gui.Insert_Selection2;
 import project_gui.Login;
 import project_gui.event.EventMenuSelected;
 import project_gui.main.Main;
+import project_gui.main.Main_Mng;
 
-public class wrk extends javax.swing.JFrame {
-    public wrk() {
+public class wrk_mng extends javax.swing.JFrame {
+    public wrk_mng() {
         initComponents();
-        menu.initMoving(wrk.this);
+        menu.initMoving(wrk_mng.this);
         menu.addEventMenuSelected(new EventMenuSelected(){
             @Override
             public void selected(int index) {
                 switch (index) {
                     case 0:
-                        Main main = new Main();
+                        Main_Mng main = new Main_Mng();
                         main.show();
                         dispose();
                         break;
                     case 1:
-                        Insert_Selection select = new Insert_Selection();
+                        Insert_Selection2 select = new Insert_Selection2();
                         select.show();
                         dispose();
                         break;
                     case 2:
-                        CheckTrip checktr = new CheckTrip();
-                        checktr.show();
-                        dispose();
-                        break;
-                    case 3:
-                        CheckOffers checkoff = new CheckOffers();
-                        checkoff.show();
-                        dispose();
-                        break;
-                    case 4:
-                        BranchInfo brinfo = new BranchInfo();
-                        brinfo.show();
-                        dispose();
-                        break;
-                    case 5:
-                        Employees empl = new Employees();
+                        Employees_mng empl = new Employees_mng();
                         empl.show();
                         dispose();
                         break;
-                    case 8:
-                        Logs log = new Logs();
-                        log.show();
-                        dispose();
-                        break;
-                    case 9:    
+                    case 5:   
                         Login login = new Login();
                         login.show();
                         dispose();
@@ -83,7 +64,7 @@ public class wrk extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         wrk_br_code = new combobox.CustomJCombo();
-        menu = new project_gui.component.Menu1();
+        menu = new project_gui.component.Menu_Manager();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -262,7 +243,7 @@ public class wrk extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -270,11 +251,10 @@ public class wrk extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -401,7 +381,7 @@ public class wrk extends javax.swing.JFrame {
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_InsertActionPerformed
 
-    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new wrk().setVisible(true);}});}
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new wrk_mng().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private project_gui.swing.CustomButton Cancel;
     private project_gui.swing.CustomButton Delete1;
@@ -415,7 +395,7 @@ public class wrk extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane3;
-    private project_gui.component.Menu1 menu;
+    private project_gui.component.Menu_Manager menu;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.PanelBorder panelBorder3;
     private javax.swing.JTextField wrk_AT;

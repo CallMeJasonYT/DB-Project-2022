@@ -42,15 +42,12 @@
               <Component id="panelBorder1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" attributes="0">
-              <Component id="menu" max="32767" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-          </Group>
+          <Component id="menu" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="project_gui.component.Menu" name="menu">
+    <Component class="project_gui.component.Menu1" name="menu">
     </Component>
     <Container class="project_gui.swing.PanelBorder" name="panelBorder1">
 
@@ -122,14 +119,12 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="dst_rtype" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel4" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="dst_language" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="dst_location" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel4" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="dst_language" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="dst_location" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="dst_rtype" min="-2" pref="35" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                                   <Component id="dst_descr" min="-2" pref="35" max="-2" attributes="0"/>
@@ -139,11 +134,13 @@
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Insert" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="Cancel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="Delete1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="Update1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Insert" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Update1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="panelBorder3" min="-2" max="-2" attributes="0"/>

@@ -3,55 +3,36 @@ import java.sql.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import project_gui.Insert_Selection;
+import project_gui.Insert_Selection2;
 import project_gui.Login;
 import project_gui.event.EventMenuSelected;
 import project_gui.main.Main;
+import project_gui.main.Main_Mng;
 
-public class Employees extends javax.swing.JFrame {
-    public Employees() {
+public class Employees_mng extends javax.swing.JFrame {
+    public Employees_mng() {
         initComponents();
-        menu.initMoving(Employees.this);
+        menu.initMoving(Employees_mng.this);
         menu.addEventMenuSelected(new EventMenuSelected(){
             @Override
             public void selected(int index) {
                 switch (index) {
                     case 0:
-                        Main main = new Main();
+                        Main_Mng main = new Main_Mng();
                         main.show();
                         dispose();
                         break;
                     case 1:
-                        Insert_Selection select = new Insert_Selection();
+                        Insert_Selection2 select = new Insert_Selection2();
                         select.show();
                         dispose();
                         break;
                     case 2:
-                        CheckTrip checktr = new CheckTrip();
-                        checktr.show();
-                        dispose();
-                        break;
-                    case 3:
-                        CheckOffers checkoff = new CheckOffers();
-                        checkoff.show();
-                        dispose();
-                        break;
-                    case 4:
-                        BranchInfo brinfo = new BranchInfo();
-                        brinfo.show();
-                        dispose();
-                        break;
-                    case 5:
-                        Employees empl = new Employees();
+                        Employees_mng empl = new Employees_mng();
                         empl.show();
                         dispose();
                         break;
-                    case 8:
-                        Logs log = new Logs();
-                        log.show();
-                        dispose();
-                        break;
-                    case 9:    
+                    case 5:   
                         Login login = new Login();
                         login.show();
                         dispose();
@@ -74,7 +55,7 @@ public class Employees extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         br_code = new combobox.CustomJCombo();
         jLabel3 = new javax.swing.JLabel();
-        menu = new project_gui.component.Menu1();
+        menu = new project_gui.component.Menu_Manager();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -202,8 +183,8 @@ public class Employees extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -269,7 +250,7 @@ public class Employees extends javax.swing.JFrame {
     private void br_codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_br_codeActionPerformed
         updateTable();
     }//GEN-LAST:event_br_codeActionPerformed
-    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new Employees().setVisible(true);}});}
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new Employees_mng().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private project_gui.swing.CustomButton Cancel1;
     private project_gui.swing.Table1 EmployeesTable;
@@ -278,7 +259,7 @@ public class Employees extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private project_gui.component.Menu1 menu;
+    private project_gui.component.Menu_Manager menu;
     private project_gui.swing.PanelBorder panelBorder1;
     private project_gui.swing.PanelBorder panelBorder2;
     private javax.swing.JTextField totalcost;
