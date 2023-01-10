@@ -326,7 +326,7 @@ public class evt extends javax.swing.JFrame {
             part1 = Integer.toString(part1int);
             time1 = part1.concat(":").concat(part2);
             }else time1 = part1.concat(":").concat(part2);
-        }else{
+        }else if(time1.contains("AM")){
             String[] parts = time1.split(":");
             String part1 = parts[0];
             String part2 = parts[1];
@@ -334,6 +334,11 @@ public class evt extends javax.swing.JFrame {
                 part1 = "00";
                 time1 = part1.concat(":").concat(part2);
             }else time1 = part1.concat(":").concat(part2);
+        }else{
+            String[] parts = time1.split(":");
+            String part1 = parts[0];
+            String part2 = parts[1];
+            time1 = part1.concat(":").concat(part2);
         }
         time1=time1.replace("PM", "");
         time1=time1.replace("AM", "");
@@ -347,7 +352,7 @@ public class evt extends javax.swing.JFrame {
             part1 = Integer.toString(part1int);
             time2 = part1.concat(":").concat(part2);
             }else time2 = part1.concat(":").concat(part2);
-        }else{
+        }else if(time2.contains("AM")){
             String[] parts = time2.split(":");
             String part1 = parts[0];
             String part2 = parts[1];
@@ -366,6 +371,7 @@ public class evt extends javax.swing.JFrame {
         DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd ");
         String strDate2 = dateFormat2.format(jDateChooser2.getDate());
         String date2 = strDate2.concat(time2);
+        System.out.println(date1);
         t1 = java.sql.Timestamp.valueOf(date1);
         t2 = java.sql.Timestamp.valueOf(date2);
     }
@@ -502,13 +508,14 @@ public class evt extends javax.swing.JFrame {
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
         convertTimeStamp();
+        System.out.println(temp);
+        System.out.println(t1);
         if(temp.toString().equals(t1.toString())){
             try{
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
                 String update="UPDATE event SET ev_end = ?, ev_descr = ? WHERE ev_tr_id = ? AND ev_start = ?";
                 PreparedStatement upd = con.prepareStatement(update);
-
                 String code = ev_tr_id.getSelectedItem().toString().replaceAll("[^0-9.]", "");
                 int i=Integer.parseInt(code);
                 upd.setTimestamp(1, t2);

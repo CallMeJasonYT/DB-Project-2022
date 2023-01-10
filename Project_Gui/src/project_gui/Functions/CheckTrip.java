@@ -85,7 +85,6 @@ public class CheckTrip extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1400, 726));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -160,11 +159,6 @@ public class CheckTrip extends javax.swing.JFrame {
         jDateChooser2.setDateFormatString("yyyy-MM-dd");
 
         br_code.setLabeText("");
-        br_code.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                br_codeActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
@@ -228,7 +222,7 @@ public class CheckTrip extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -311,10 +305,6 @@ public class CheckTrip extends javax.swing.JFrame {
             updateTable();
         }else JOptionPane.showMessageDialog(this, "Please Fill all the Fields in order to proceed!");
     }//GEN-LAST:event_Search1ActionPerformed
-
-    private void br_codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_br_codeActionPerformed
-        updateTable();
-    }//GEN-LAST:event_br_codeActionPerformed
 
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new CheckTrip().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
