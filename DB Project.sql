@@ -189,7 +189,8 @@ CREATE TABLE manages(
     CONSTRAINT manages2 FOREIGN KEY (mng_br_code) REFERENCES branch(br_code)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
-SELECT * FROM it INNER JOIN worker ON wrk_it_AT = wrk_AT INNER JOIN manages ON mng_adm_AT = wrk_AT WHERE IT_AT="MNG01" AND pass="mng1" AND end_date IS NULL OR mng_username = "MNG01" AND pass="mng1"
+
+
 INSERT INTO manages VALUES
 ('RW93324684', 1, "mng1", "MNG01"),
 ('AW79051091', 2, "mng2", "MNG02"),
@@ -62281,8 +62282,6 @@ ON reservation_offers(res_of_id, adv_pay);
 
 CREATE INDEX reservation_offers_last_name_idx
 ON reservation_offers(last_name);
-
-CALL admin_check('Maritini','Petroula');
 
 /*CALL prepaid(100.00,200.00);
 CALL check_offers('Baldwin');*/
