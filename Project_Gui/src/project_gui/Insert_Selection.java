@@ -260,7 +260,7 @@ public class Insert_Selection extends javax.swing.JFrame {
             DefaultComboBoxModel mod = new DefaultComboBoxModel();
             mod.removeAllElements();
             while (tables.next()){
-                if(!"sys_config".equals(tables.getString("TABLE_NAME")) && !"logging".equals(tables.getString("TABLE_NAME"))){
+                if(!"sys_config".equals(tables.getString("TABLE_NAME")) && !"logging".equals(tables.getString("TABLE_NAME")) && !"user".equals(tables.getString("TABLE_NAME"))){
                     mod.addElement(tables.getString("TABLE_NAME"));
                 }
             }

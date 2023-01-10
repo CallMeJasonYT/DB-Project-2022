@@ -316,7 +316,7 @@ public class trvl extends javax.swing.JFrame {
             part1 = Integer.toString(part1int);
             time1 = part1.concat(":").concat(part2);
             }else time1 = part1.concat(":").concat(part2);
-        }else{
+        }else if(time1.contains("AM")){
             String[] parts = time1.split(":");
             String part1 = parts[0];
             String part2 = parts[1];
@@ -324,6 +324,11 @@ public class trvl extends javax.swing.JFrame {
                 part1 = "00";
                 time1 = part1.concat(":").concat(part2);
             }else time1 = part1.concat(":").concat(part2);
+        }else{
+            String[] parts = time1.split(":");
+            String part1 = parts[0];
+            String part2 = parts[1];
+            time1 = part1.concat(":").concat(part2);
         }
         time1=time1.replace("PM", "");
         time1=time1.replace("AM", "");
