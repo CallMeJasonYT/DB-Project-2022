@@ -8,7 +8,6 @@ import project_gui.Login;
 import project_gui.event.EventMenuSelected;
 import project_gui.main.Main;
 
-
 public class BranchInfo extends javax.swing.JFrame {
     public BranchInfo() {
         initComponents();
@@ -216,35 +215,35 @@ public class BranchInfo extends javax.swing.JFrame {
     
     public void updateTable(){
         try{
-                DefaultTableModel tbModel= (DefaultTableModel) BranchInfo.getModel();
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-                String code = br_code.getSelectedItem().toString().replaceAll("[^0-9.]", "");
-                int i=Integer.parseInt(code);
-                String select1="SELECT COUNT(tr_id), tr_cost FROM reservation INNER JOIN trip ON tr_id = res_tr_id WHERE tr_br_code=? GROUP BY tr_id;";
-                PreparedStatement slct1 = con.prepareStatement(select1);
-                slct1.setInt(1, i);
-                ResultSet rs1 = slct1.executeQuery();
-                String select2="SELECT br_street, br_num, br_city, wrk_name, wrk_lname FROM branch INNER JOIN worker ON br_code = wrk_br_code INNER JOIN admin ON wrk_AT = adm_AT INNER JOIN manages ON adm_AT = mng_adm_AT WHERE wrk_br_code="+i+"";
-                PreparedStatement slct2 = con.prepareStatement(select2);
-                ResultSet rs2 = slct2.executeQuery(select2);
-                tbModel.setRowCount(0);
-                while(rs1.next()){
-                    count = rs1.getInt("COUNT(tr_id)");
-                    count2 = count2 + rs1.getInt("COUNT(tr_id)");
-                    cost = cost + rs1.getFloat("tr_cost") * count;
-                }
-                while(rs2.next()){
-                    String street = rs2.getString("br_street");
-                    String num = rs2.getString("br_num");
-                    String city = rs2.getString("br_city");
-                    String name = rs2.getString("wrk_name");
-                    String ln = rs2.getString("wrk_lname");
-                    String costs = Float.toString(cost);
-                    String counts = Integer.toString(count2);
-                    String tb_data[]= {street, num, city, name, ln, counts, costs};
-                    tbModel.addRow(tb_data);
-                }
+            DefaultTableModel tbModel= (DefaultTableModel) BranchInfo.getModel();
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
+            String code = br_code.getSelectedItem().toString().replaceAll("[^0-9.]", "");
+            int i=Integer.parseInt(code);
+            String select1="SELECT COUNT(tr_id), tr_cost FROM reservation INNER JOIN trip ON tr_id = res_tr_id WHERE tr_br_code=? GROUP BY tr_id;";
+            PreparedStatement slct1 = con.prepareStatement(select1);
+            slct1.setInt(1, i);
+            ResultSet rs1 = slct1.executeQuery();
+            String select2="SELECT br_street, br_num, br_city, wrk_name, wrk_lname FROM branch INNER JOIN worker ON br_code = wrk_br_code INNER JOIN admin ON wrk_AT = adm_AT INNER JOIN manages ON adm_AT = mng_adm_AT WHERE wrk_br_code="+i+"";
+            PreparedStatement slct2 = con.prepareStatement(select2);
+            ResultSet rs2 = slct2.executeQuery(select2);
+            tbModel.setRowCount(0);
+            while(rs1.next()){
+                count = rs1.getInt("COUNT(tr_id)");
+                count2 = count2 + rs1.getInt("COUNT(tr_id)");
+                cost = cost + rs1.getFloat("tr_cost") * count;
+            }
+            while(rs2.next()){
+                String street = rs2.getString("br_street");
+                String num = rs2.getString("br_num");
+                String city = rs2.getString("br_city");
+                String name = rs2.getString("wrk_name");
+                String ln = rs2.getString("wrk_lname");
+                String costs = Float.toString(cost);
+                String counts = Integer.toString(count2);
+                String tb_data[]= {street, num, city, name, ln, counts, costs};
+                tbModel.addRow(tb_data);
+            }
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
