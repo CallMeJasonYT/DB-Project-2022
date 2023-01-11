@@ -316,8 +316,8 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
-                <StringItem index="0" value="Local"/>
-                <StringItem index="1" value="Abroad"/>
+                <StringItem index="0" value="LOCAL"/>
+                <StringItem index="1" value="ABROAD"/>
               </StringArray>
             </Property>
             <Property name="labeText" type="java.lang.String" value=""/>

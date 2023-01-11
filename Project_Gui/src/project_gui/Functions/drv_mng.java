@@ -167,7 +167,7 @@ public class drv_mng extends javax.swing.JFrame {
 
         wrk_AT.setLabeText("");
 
-        drv_route.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Local", "Abroad" }));
+        drv_route.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LOCAL", "ABROAD" }));
         drv_route.setLabeText("");
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
