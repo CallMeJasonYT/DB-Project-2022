@@ -254,8 +254,7 @@ public class branch extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 public void updateTable(){
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String select="SELECT * FROM branch;";
@@ -289,8 +288,7 @@ public void updateTable(){
     }//GEN-LAST:event_BranchTableMouseClicked
 
     private void InsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertActionPerformed
-        try
-        {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
             String insert="INSERT INTO branch(br_code,br_street,br_num,br_city) VALUES(null,?,?,?)";
@@ -345,13 +343,7 @@ public void updateTable(){
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_UpdateActionPerformed
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new branch().setVisible(true);
-            }
-        });
-    }
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new branch().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private project_gui.swing.Table1 BranchTable;
     private project_gui.swing.CustomButton Cancel;

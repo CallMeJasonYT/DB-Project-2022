@@ -167,85 +167,85 @@ public class Insert_Selection extends javax.swing.JFrame {
         String select = Selection1.getSelectedItem().toString();
         switch(select){
             case "branch":
-            dispose();
-            branch inspage1 = new branch();
-            inspage1.show();
-            break;
+                dispose();
+                branch inspage1 = new branch();
+                inspage1.show();
+                break;
             case "phones":
-            dispose();
-            phones inspage2 = new phones();
-            inspage2.show();
-            break;
+                dispose();
+                phones inspage2 = new phones();
+                inspage2.show();
+                break;
             case "worker":
-            dispose();
-            wrk inspage3 = new wrk();
-            inspage3.show();
-            break;
+                dispose();
+                wrk inspage3 = new wrk();
+                inspage3.show();
+                break;
             case "it":
-            dispose();
-            it inspage4 = new it();
-            inspage4.show();
-            break;
+                dispose();
+                it inspage4 = new it();
+                inspage4.show();
+                break;
             case "driver":
-            dispose();
-            drv inspage5 = new drv();
-            inspage5.show();
-            break;
+                dispose();
+                drv inspage5 = new drv();
+                inspage5.show();
+                break;
             case "admin":
-            dispose();
-            adm inspage6 = new adm();
-            inspage6.show();
-            break;
+                dispose();
+                adm inspage6 = new adm();
+                inspage6.show();
+                break;
             case "manages":
-            dispose();
-            mngs inspage7 = new mngs();
-            inspage7.show();
-            break;
+                dispose();
+                mngs inspage7 = new mngs();
+                inspage7.show();
+                break;
             case "guide":
-            dispose();
-            gui inspage8 = new gui();
-            inspage8.show();
-            break;
+                dispose();
+                gui inspage8 = new gui();
+                inspage8.show();
+                break;
             case "languages":
-            dispose();
-            lang inspage9 = new lang();
-            inspage9.show();
-            break;
+                dispose();
+                lang inspage9 = new lang();
+                inspage9.show();
+                break;
             case "trip":
             dispose();
-            trip inspage10 = new trip();
+                trip inspage10 = new trip();
             inspage10.show();
             break;
             case "event":
-            dispose();
-            evt inspage11 = new evt();
-            inspage11.show();
-            break;
+                dispose();
+                evt inspage11 = new evt();
+                inspage11.show();
+                break;
             case "destination":
-            dispose();
-            dst inspage12 = new dst();
-            inspage12.show();
-            break;
+                dispose();
+                dst inspage12 = new dst();
+                inspage12.show();
+                break;
             case "travel_to":
                 dispose();
                 trvl inspage13 = new trvl();
                 inspage13.show();
-            break;
+                break;
             case "reservation":
                 dispose();
                 rsv inspage14 = new rsv();
                 inspage14.show();
-            break;
+                break;
             case "offers":
                 dispose();
                 off inspage15 = new off();
                 inspage15.show();
-            break;
+                break;
             case "reservation_offers":
                 dispose();
                 ResOff inspage16 = new ResOff();
                 inspage16.show();
-            break;
+                break;
         }
     }//GEN-LAST:event_Selection1ActionPerformed
 

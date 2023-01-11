@@ -530,13 +530,7 @@ public class evt extends javax.swing.JFrame {
         }else{JOptionPane.showMessageDialog(this, "You cannot Update the Event Start Date! Try Using Insert/Delete Instead.");}
     }//GEN-LAST:event_UpdateActionPerformed
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new evt().setVisible(true);
-            }
-        });
-    }
+    public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new evt().setVisible(true);}});}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private project_gui.swing.CustomButton Cancel;

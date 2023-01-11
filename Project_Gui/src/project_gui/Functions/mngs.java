@@ -2,7 +2,6 @@ package project_gui.Functions;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import static project_gui.Functions.rsv.seatnum;
 import project_gui.Insert_Selection;
 import project_gui.Login;
 import project_gui.event.EventMenuSelected;
