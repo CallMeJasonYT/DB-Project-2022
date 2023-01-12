@@ -1,10 +1,11 @@
 package project_gui.form;
-
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import project_gui.model.Model_Card;
 import project_gui.model.StatusType;
+import project_gui.swing.ScrollBar;
 
 public class Form_Home extends javax.swing.JPanel {
     static float profit = 0;
@@ -13,6 +14,8 @@ public class Form_Home extends javax.swing.JPanel {
         initComponents();
         cost = 0;
         profit = 0;
+        jScrollPane1.setVerticalScrollBar(new ScrollBar());
+        jScrollPane1.getVerticalScrollBar().setBackground(Color.WHITE);
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");

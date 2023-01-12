@@ -1,4 +1,5 @@
 package project_gui.Functions;
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -6,11 +7,14 @@ import project_gui.Insert_Selection;
 import project_gui.Login;
 import project_gui.event.EventMenuSelected;
 import project_gui.main.Main;
+import project_gui.swing.ScrollBar;
 
 public class mngs extends javax.swing.JFrame {
     public mngs() {
         initComponents();
         menu.initMoving(mngs.this);
+        jScrollPane3.setVerticalScrollBar(new ScrollBar());
+        jScrollPane3.getVerticalScrollBar().setBackground(Color.WHITE);
         menu.addEventMenuSelected(new EventMenuSelected(){
             @Override
             public void selected(int index) {
@@ -72,15 +76,15 @@ public class mngs extends javax.swing.JFrame {
         Insert = new project_gui.swing.CustomButton();
         Delete = new project_gui.swing.CustomButton();
         Update = new project_gui.swing.CustomButton();
-        adm_AT = new combobox.CustomJCombo();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        br_code = new combobox.CustomJCombo();
         Cancel = new project_gui.swing.CustomButton();
         jLabel3 = new javax.swing.JLabel();
         mng_pass = new javax.swing.JTextField();
         mng_username = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        adm_AT = new project_gui.swing.CustomJCombo();
+        br_code = new project_gui.swing.CustomJCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -158,15 +162,11 @@ public class mngs extends javax.swing.JFrame {
             }
         });
 
-        adm_AT.setLabeText("");
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Manager AT:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Branch Code:");
-
-        br_code.setLabeText("");
 
         Cancel.setText("Cancel");
         Cancel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -182,6 +182,15 @@ public class mngs extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Username:");
+
+        adm_AT.setLabeText("");
+
+        br_code.setLabeText("");
+        br_code.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                br_codeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
@@ -207,8 +216,8 @@ public class mngs extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(mng_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,18 +233,17 @@ public class mngs extends javax.swing.JFrame {
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(26, 26, 26)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mng_username, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(mng_username, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(adm_AT, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(mng_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(mng_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(adm_AT, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(43, 43, 43)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,7 +262,8 @@ public class mngs extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,6 +394,10 @@ public class mngs extends javax.swing.JFrame {
             }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_UpdateActionPerformed
 
+    private void br_codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_br_codeActionPerformed
+        updateTable();
+    }//GEN-LAST:event_br_codeActionPerformed
+
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new mngs().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private project_gui.swing.CustomButton Cancel;
@@ -392,8 +405,8 @@ public class mngs extends javax.swing.JFrame {
     private project_gui.swing.CustomButton Insert;
     private project_gui.swing.Table1 ManagesTable;
     private project_gui.swing.CustomButton Update;
-    private combobox.CustomJCombo adm_AT;
-    private combobox.CustomJCombo br_code;
+    private project_gui.swing.CustomJCombo adm_AT;
+    private project_gui.swing.CustomJCombo br_code;
     private project_gui.component.Header header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

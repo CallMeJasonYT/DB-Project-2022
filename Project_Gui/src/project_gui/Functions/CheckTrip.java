@@ -1,4 +1,5 @@
 package project_gui.Functions;
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -7,11 +8,14 @@ import project_gui.Insert_Selection;
 import project_gui.Login;
 import project_gui.event.EventMenuSelected;
 import project_gui.main.Main;
+import project_gui.swing.ScrollBar;
 
 public class CheckTrip extends javax.swing.JFrame {
     public CheckTrip() {
         initComponents();
         menu.initMoving(CheckTrip.this);
+        jScrollPane2.setVerticalScrollBar(new ScrollBar());
+        jScrollPane2.getVerticalScrollBar().setBackground(Color.WHITE);
         menu.addEventMenuSelected(new EventMenuSelected(){
             @Override
             public void selected(int index) {
@@ -79,7 +83,7 @@ public class CheckTrip extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        br_code = new combobox.CustomJCombo();
+        br_code = new project_gui.swing.CustomJCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -171,8 +175,8 @@ public class CheckTrip extends javax.swing.JFrame {
                     .addGroup(panelBorder1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
+                        .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
                         .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelBorder1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
@@ -310,7 +314,7 @@ public class CheckTrip extends javax.swing.JFrame {
     private project_gui.swing.CustomButton Cancel1;
     private project_gui.swing.Table1 CheckTripTable;
     private project_gui.swing.CustomButton Search1;
-    private combobox.CustomJCombo br_code;
+    private project_gui.swing.CustomJCombo br_code;
     private project_gui.component.Header header1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;

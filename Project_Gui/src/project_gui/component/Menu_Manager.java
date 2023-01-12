@@ -33,12 +33,9 @@ public class Menu_Manager extends javax.swing.JPanel {
         listMenu1.addItem(new Model_Menu("modify", "Modify Data", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("employees", "Employees", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("", " ", Model_Menu.MenuType.EMPTY));
-        
         listMenu1.addItem(new Model_Menu("", "More", Model_Menu.MenuType.TITLE));
-        
         listMenu1.addItem(new Model_Menu("logout", "Log Out", Model_Menu.MenuType.MENU));
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -100,7 +97,6 @@ public class Menu_Manager extends javax.swing.JPanel {
     
     private int x;
     private int y;
-    
     
     public void initMoving(JFrame fram){
         panelMoving.addMouseListener(new MouseAdapter() {

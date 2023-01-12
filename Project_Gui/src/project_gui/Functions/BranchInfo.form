@@ -62,7 +62,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="br_code" min="-2" pref="159" max="-2" attributes="0"/>
+                          <Component id="br_code" min="-2" pref="138" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="customButton1" min="-2" pref="117" max="-2" attributes="0"/>
                       </Group>
@@ -79,9 +79,9 @@
                   <Component id="header1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="br_code" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="customButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="br_code" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="panelBorder2" min="-2" max="-2" attributes="0"/>
@@ -98,14 +98,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Branch Code:"/>
           </Properties>
-        </Component>
-        <Component class="combobox.CustomJCombo" name="br_code">
-          <Properties>
-            <Property name="labeText" type="java.lang.String" value=""/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="br_codeActionPerformed"/>
-          </Events>
         </Component>
         <Component class="project_gui.swing.CustomButton" name="customButton1">
           <Properties>
@@ -218,6 +210,14 @@
           </SubComponents>
         </Container>
         <Component class="project_gui.component.Header" name="header1">
+        </Component>
+        <Component class="project_gui.swing.CustomJCombo" name="br_code">
+          <Properties>
+            <Property name="labeText" type="java.lang.String" value=""/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="br_codeActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

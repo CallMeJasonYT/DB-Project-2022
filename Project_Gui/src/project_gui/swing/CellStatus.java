@@ -2,7 +2,6 @@ package project_gui.swing;
 import project_gui.model.StatusType;
 
 public class CellStatus extends javax.swing.JPanel {
-
     public CellStatus(StatusType type) {
         initComponents();
         status.setType(type);
@@ -36,7 +35,6 @@ public class CellStatus extends javax.swing.JPanel {
                 .addGap(8, 8, 8))
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private project_gui.swing.TableStatus status;

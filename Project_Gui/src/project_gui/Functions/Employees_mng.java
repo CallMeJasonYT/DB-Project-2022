@@ -1,4 +1,5 @@
 package project_gui.Functions;
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -8,11 +9,14 @@ import project_gui.Login;
 import project_gui.event.EventMenuSelected;
 import project_gui.main.Main;
 import project_gui.main.Main_Mng;
+import project_gui.swing.ScrollBar;
 
 public class Employees_mng extends javax.swing.JFrame {
     public Employees_mng() {
         initComponents();
         menu.initMoving(Employees_mng.this);
+        jScrollPane2.setVerticalScrollBar(new ScrollBar());
+        jScrollPane2.getVerticalScrollBar().setBackground(Color.WHITE);
         menu.addEventMenuSelected(new EventMenuSelected(){
             @Override
             public void selected(int index) {

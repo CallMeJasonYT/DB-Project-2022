@@ -53,9 +53,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="panelBorder3" alignment="0" max="32767" attributes="0"/>
-                      <Component id="header" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="Insert" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
@@ -68,20 +67,21 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="wrk_AT" min="-2" pref="142" max="-2" attributes="0"/>
+                          <Component id="wrk_AT" min="-2" pref="144" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="drv_license" min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="drv_license" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="JLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="drv_route" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="drv_experience" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="header" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -93,22 +93,17 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="header" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="drv_experience" max="32767" attributes="0"/>
-                          <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="drv_license" alignment="1" pref="38" max="32767" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="wrk_AT" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="3" max="32767" attributes="0"/>
-                          <Component id="JLabel3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="drv_route" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="wrk_AT" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="drv_license" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="3" max="32767" attributes="0"/>
+                      <Component id="drv_route" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="JLabel3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
+                      <Component id="drv_experience" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jLabel1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Update" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Insert" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -293,7 +288,12 @@
             <Property name="text" type="java.lang.String" value="Worker AT:"/>
           </Properties>
         </Component>
-        <Component class="combobox.CustomJCombo" name="drv_license">
+        <Component class="project_gui.swing.CustomJCombo" name="wrk_AT">
+          <Properties>
+            <Property name="labeText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Component class="project_gui.swing.CustomJCombo" name="drv_license">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -306,12 +306,7 @@
             <Property name="labeText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class="combobox.CustomJCombo" name="wrk_AT">
-          <Properties>
-            <Property name="labeText" type="java.lang.String" value=""/>
-          </Properties>
-        </Component>
-        <Component class="combobox.CustomJCombo" name="drv_route">
+        <Component class="project_gui.swing.CustomJCombo" name="drv_route">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">

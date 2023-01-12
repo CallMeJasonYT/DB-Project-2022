@@ -1,5 +1,4 @@
-package combobox;
-
+package project_gui.swing;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FontMetrics;
@@ -31,7 +30,6 @@ import javax.swing.plaf.basic.ComboPopup;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
-import project_gui.swing.CustomScrollBar;
 
 public class CustomJCombo<E> extends JComboBox<E> {
 
@@ -170,7 +168,7 @@ public class CustomJCombo<E> extends JComboBox<E> {
                     list.setFixedCellHeight(30);
                     JScrollPane scroll = new JScrollPane(list);
                     scroll.setBackground(Color.WHITE);
-                    CustomScrollBar sb = new CustomScrollBar();
+                    ScrollBar sb = new ScrollBar();
                     sb.setUnitIncrement(30);
                     sb.setForeground(new Color(180, 180, 180));
                     scroll.setVerticalScrollBar(sb);

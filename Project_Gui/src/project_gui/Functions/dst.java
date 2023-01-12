@@ -1,4 +1,5 @@
 package project_gui.Functions;
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -6,12 +7,14 @@ import project_gui.Insert_Selection;
 import project_gui.Login;
 import project_gui.event.EventMenuSelected;
 import project_gui.main.Main;
+import project_gui.swing.ScrollBar;
 
 public class dst extends javax.swing.JFrame {
-
     public dst() {
         initComponents();
         menu.initMoving(dst.this);
+        jScrollPane3.setVerticalScrollBar(new ScrollBar());
+        jScrollPane3.getVerticalScrollBar().setBackground(Color.WHITE);
         menu.addEventMenuSelected(new EventMenuSelected(){
             @Override
             public void selected(int index) {
@@ -75,7 +78,6 @@ public class dst extends javax.swing.JFrame {
         Delete1 = new project_gui.swing.CustomButton();
         Update1 = new project_gui.swing.CustomButton();
         JLabel4 = new javax.swing.JLabel();
-        dst_rtype = new combobox.CustomJCombo();
         jLabel1 = new javax.swing.JLabel();
         dst_name = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -84,6 +86,7 @@ public class dst extends javax.swing.JFrame {
         dst_language = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         dst_location = new javax.swing.JTextField();
+        dst_rtype = new project_gui.swing.CustomJCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -173,9 +176,6 @@ public class dst extends javax.swing.JFrame {
         JLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         JLabel4.setText("Route:");
 
-        dst_rtype.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Local", "Abroad" }));
-        dst_rtype.setLabeText("");
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Destination:");
 
@@ -187,6 +187,9 @@ public class dst extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Location:");
+
+        dst_rtype.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ABROAD", "LOCAL" }));
+        dst_rtype.setLabeText("");
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
@@ -216,7 +219,7 @@ public class dst extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dst_rtype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dst_rtype, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -245,11 +248,12 @@ public class dst extends javax.swing.JFrame {
                             .addComponent(dst_descr, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(panelBorder1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(15, 15, 15)
                         .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(JLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dst_rtype, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dst_rtype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -399,7 +403,7 @@ public class dst extends javax.swing.JFrame {
     private javax.swing.JTextField dst_language;
     private javax.swing.JTextField dst_location;
     private javax.swing.JTextField dst_name;
-    private combobox.CustomJCombo dst_rtype;
+    private project_gui.swing.CustomJCombo dst_rtype;
     private project_gui.component.Header header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

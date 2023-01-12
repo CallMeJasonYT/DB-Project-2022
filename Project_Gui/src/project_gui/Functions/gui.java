@@ -1,4 +1,5 @@
 package project_gui.Functions;
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -7,11 +8,14 @@ import project_gui.Insert_Selection;
 import project_gui.Login;
 import project_gui.event.EventMenuSelected;
 import project_gui.main.Main;
+import project_gui.swing.ScrollBar;
 
 public class gui extends javax.swing.JFrame {
     public gui() {
         initComponents();
         menu.initMoving(gui.this);
+        jScrollPane3.setVerticalScrollBar(new ScrollBar());
+        jScrollPane3.getVerticalScrollBar().setBackground(Color.WHITE);
         menu.addEventMenuSelected(new EventMenuSelected(){
             @Override
             public void selected(int index) {
@@ -72,12 +76,12 @@ public class gui extends javax.swing.JFrame {
         header = new project_gui.component.Header();
         Insert = new project_gui.swing.CustomButton();
         Cancel = new project_gui.swing.CustomButton();
-        Delete1 = new project_gui.swing.CustomButton();
-        Update1 = new project_gui.swing.CustomButton();
+        Delete = new project_gui.swing.CustomButton();
+        Update = new project_gui.swing.CustomButton();
         jLabel1 = new javax.swing.JLabel();
         gui_cv = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        gui_AT = new combobox.CustomJCombo();
+        gui_AT = new project_gui.swing.CustomJCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -146,21 +150,21 @@ public class gui extends javax.swing.JFrame {
             }
         });
 
-        Delete1.setText("Delete");
-        Delete1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Delete1.setStyle(project_gui.swing.CustomButton.ButtonStyle.DELETE);
-        Delete1.addActionListener(new java.awt.event.ActionListener() {
+        Delete.setText("Delete");
+        Delete.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Delete.setStyle(project_gui.swing.CustomButton.ButtonStyle.DELETE);
+        Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Delete1ActionPerformed(evt);
+                DeleteActionPerformed(evt);
             }
         });
 
-        Update1.setText("Update");
-        Update1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Update1.setStyle(project_gui.swing.CustomButton.ButtonStyle.SECONDARY);
-        Update1.addActionListener(new java.awt.event.ActionListener() {
+        Update.setText("Update");
+        Update.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Update.setStyle(project_gui.swing.CustomButton.ButtonStyle.SECONDARY);
+        Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Update1ActionPerformed(evt);
+                UpdateActionPerformed(evt);
             }
         });
 
@@ -192,9 +196,9 @@ public class gui extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
                         .addComponent(Insert, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
-                        .addComponent(Update1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
-                        .addComponent(Delete1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -205,18 +209,18 @@ public class gui extends javax.swing.JFrame {
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(16, 16, 16)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gui_cv, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gui_AT, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                    .addComponent(gui_AT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Delete1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Insert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Update1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(32, 32, 32)
                 .addComponent(panelBorder3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -311,7 +315,7 @@ public class gui extends javax.swing.JFrame {
         main.show();
     }//GEN-LAST:event_CancelActionPerformed
 
-    private void Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete1ActionPerformed
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
@@ -324,9 +328,9 @@ public class gui extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Deleted Succesfully");
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
-    }//GEN-LAST:event_Delete1ActionPerformed
+    }//GEN-LAST:event_DeleteActionPerformed
 
-    private void Update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Update1ActionPerformed
+    private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
@@ -339,16 +343,16 @@ public class gui extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Updated Succesfully");
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
-    }//GEN-LAST:event_Update1ActionPerformed
+    }//GEN-LAST:event_UpdateActionPerformed
 
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new gui().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private project_gui.swing.CustomButton Cancel;
-    private project_gui.swing.CustomButton Delete1;
+    private project_gui.swing.CustomButton Delete;
     private project_gui.swing.Table1 GuiTable;
     private project_gui.swing.CustomButton Insert;
-    private project_gui.swing.CustomButton Update1;
-    private combobox.CustomJCombo gui_AT;
+    private project_gui.swing.CustomButton Update;
+    private project_gui.swing.CustomJCombo gui_AT;
     private javax.swing.JTextField gui_cv;
     private project_gui.component.Header header;
     private javax.swing.JLabel jLabel1;

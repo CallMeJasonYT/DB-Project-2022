@@ -48,7 +48,7 @@ public class Insert_Selection2 extends javax.swing.JFrame {
         panelBorder1 = new project_gui.swing.PanelBorder();
         header1 = new project_gui.component.Header();
         jLabel1 = new javax.swing.JLabel();
-        Selection1 = new combobox.CustomJCombo();
+        Selection1 = new project_gui.swing.CustomJCombo();
         menu = new project_gui.component.Menu_Manager();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,7 +59,6 @@ public class Insert_Selection2 extends javax.swing.JFrame {
         jLabel1.setText("Please Select the Table of your choice");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Selection1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Worker", "Driver", "Admin", "Guide", "Trip" }));
         Selection1.setLabeText("");
         Selection1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,14 +75,14 @@ public class Insert_Selection2 extends javax.swing.JFrame {
                 .addComponent(header1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBorder1Layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(jLabel1))
-                    .addGroup(panelBorder1Layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(Selection1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(108, 108, 108)
+                .addComponent(jLabel1)
                 .addGap(121, 125, Short.MAX_VALUE))
+            .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelBorder1Layout.createSequentialGroup()
+                    .addGap(219, 219, 219)
+                    .addComponent(Selection1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(220, Short.MAX_VALUE)))
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,9 +91,12 @@ public class Insert_Selection2 extends javax.swing.JFrame {
                 .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(138, 138, 138)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
-                .addComponent(Selection1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelBorder1Layout.createSequentialGroup()
+                    .addGap(291, 291, 291)
+                    .addComponent(Selection1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(291, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -111,7 +113,7 @@ public class Insert_Selection2 extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
         );
 
         pack();
@@ -152,7 +154,7 @@ public class Insert_Selection2 extends javax.swing.JFrame {
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new Insert_Selection2().setVisible(true);}});}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private combobox.CustomJCombo Selection1;
+    private project_gui.swing.CustomJCombo Selection1;
     private project_gui.component.Header header1;
     private javax.swing.JLabel jLabel1;
     private project_gui.component.Menu_Manager menu;

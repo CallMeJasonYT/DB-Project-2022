@@ -76,7 +76,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="JLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="dst_rtype" min="-2" max="-2" attributes="0"/>
+                          <Component id="dst_rtype" min="-2" pref="105" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -112,11 +112,13 @@
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="JLabel4" alignment="1" max="32767" attributes="0"/>
-                              <Component id="dst_rtype" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="dst_rtype" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -293,17 +295,6 @@
             <Property name="text" type="java.lang.String" value="Route:"/>
           </Properties>
         </Component>
-        <Component class="combobox.CustomJCombo" name="dst_rtype">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="Local"/>
-                <StringItem index="1" value="Abroad"/>
-              </StringArray>
-            </Property>
-            <Property name="labeText" type="java.lang.String" value=""/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -343,6 +334,17 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="dst_location">
+        </Component>
+        <Component class="project_gui.swing.CustomJCombo" name="dst_rtype">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="ABROAD"/>
+                <StringItem index="1" value="LOCAL"/>
+              </StringArray>
+            </Property>
+            <Property name="labeText" type="java.lang.String" value=""/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
