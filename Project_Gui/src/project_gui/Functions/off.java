@@ -78,19 +78,19 @@ public class off extends javax.swing.JFrame {
         OffersTable = new project_gui.swing.Table1();
         header = new project_gui.component.Header();
         Insert = new project_gui.swing.CustomButton();
-        Delete1 = new project_gui.swing.CustomButton();
-        Update1 = new project_gui.swing.CustomButton();
+        Delete = new project_gui.swing.CustomButton();
+        Update = new project_gui.swing.CustomButton();
         Cancel = new project_gui.swing.CustomButton();
-        jLabel2 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        PickTime1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        PickTime2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        cost = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         dest_id = new project_gui.swing.CustomJCombo();
+        TripStartText = new javax.swing.JLabel();
+        TripEndText = new javax.swing.JLabel();
+        CostText = new javax.swing.JLabel();
+        DestinationText = new javax.swing.JLabel();
+        TripStart = new com.toedter.calendar.JDateChooser();
+        TripEnd = new com.toedter.calendar.JDateChooser();
+        PickTime1 = new javax.swing.JTextField();
+        PickTime2 = new javax.swing.JTextField();
+        cost = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -150,21 +150,21 @@ public class off extends javax.swing.JFrame {
             }
         });
 
-        Delete1.setText("Delete");
-        Delete1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Delete1.setStyle(project_gui.swing.CustomButton.ButtonStyle.DELETE);
-        Delete1.addActionListener(new java.awt.event.ActionListener() {
+        Delete.setText("Delete");
+        Delete.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Delete.setStyle(project_gui.swing.CustomButton.ButtonStyle.DELETE);
+        Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Delete1ActionPerformed(evt);
+                DeleteActionPerformed(evt);
             }
         });
 
-        Update1.setText("Update");
-        Update1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Update1.setStyle(project_gui.swing.CustomButton.ButtonStyle.SECONDARY);
-        Update1.addActionListener(new java.awt.event.ActionListener() {
+        Update.setText("Update");
+        Update.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Update.setStyle(project_gui.swing.CustomButton.ButtonStyle.SECONDARY);
+        Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Update1ActionPerformed(evt);
+                UpdateActionPerformed(evt);
             }
         });
 
@@ -177,10 +177,28 @@ public class off extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Trip Start:");
+        dest_id.setLabeText("");
+        dest_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dest_idActionPerformed(evt);
+            }
+        });
 
-        jDateChooser1.setDateFormatString("yyyy-MM-dd");
+        TripStartText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        TripStartText.setText("Trip Start:");
+
+        TripEndText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        TripEndText.setText("Trip End:");
+
+        CostText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        CostText.setText("Cost:");
+
+        DestinationText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        DestinationText.setText("Destination:");
+
+        TripStart.setDateFormatString("yyyy-MM-dd");
+
+        TripEnd.setDateFormatString("yyyy-MM-dd");
 
         PickTime1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         PickTime1.setText("Set Time");
@@ -191,30 +209,12 @@ public class off extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Trip End:");
-
-        jDateChooser2.setDateFormatString("yyyy-MM-dd");
-
         PickTime2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         PickTime2.setText("Set Time");
         PickTime2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PickTime2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PickTime2MouseClicked(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Cost:");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Destination:");
-
-        dest_id.setLabeText("");
-        dest_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dest_idActionPerformed(evt);
             }
         });
 
@@ -226,70 +226,67 @@ public class off extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelBorder3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(header, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelBorder1Layout.createSequentialGroup()
-                            .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(panelBorder1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(PickTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(7, 7, 7)
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(PickTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cost, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panelBorder1Layout.createSequentialGroup()
-                                    .addComponent(Insert, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(113, 113, 113)
-                                    .addComponent(Update1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(135, 135, 135)
-                                    .addComponent(Delete1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(88, 88, 88)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(panelBorder1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(dest_id, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
+                        .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelBorder1Layout.createSequentialGroup()
+                                .addComponent(TripStartText)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TripStart, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(PickTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(TripEndText)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TripEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(PickTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CostText)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cost, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelBorder1Layout.createSequentialGroup()
+                                .addComponent(Insert, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(113, 113, 113)
+                                .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(135, 135, 135)
+                                .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(88, 88, 88)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelBorder1Layout.createSequentialGroup()
+                                .addComponent(DestinationText)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dest_id, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(33, 33, 33)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TripStart, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PickTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TripStartText, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBorder1Layout.createSequentialGroup()
-                            .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(PickTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cost, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(dest_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PickTime1)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                        .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CostText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cost, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DestinationText, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(TripEnd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                            .addComponent(TripEndText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(PickTime2, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(dest_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Update1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Insert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Delete1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(42, 42, 42)
                 .addComponent(panelBorder3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103))
         );
@@ -372,10 +369,10 @@ public class off extends javax.swing.JFrame {
         time1=time1.concat(":00");
         time2=time2.concat(":00");
         DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd ");
-        String strDate1 = dateFormat1.format(jDateChooser1.getDate());
+        String strDate1 = dateFormat1.format(TripStart.getDate());
         String date1 = strDate1.concat(time1);
         DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd ");
-        String strDate2 = dateFormat2.format(jDateChooser2.getDate());
+        String strDate2 = dateFormat2.format(TripEnd.getDate());
         String date2 = strDate2.concat(time2);
         t1 = java.sql.Timestamp.valueOf(date1);
         t2 = java.sql.Timestamp.valueOf(date2);
@@ -446,20 +443,17 @@ public class off extends javax.swing.JFrame {
         String end = tbModel.getValueAt(OffersTable.getSelectedRow(), 2).toString();
         String costs = tbModel.getValueAt(OffersTable.getSelectedRow(), 3).toString();
         String dest = tbModel.getValueAt(OffersTable.getSelectedRow(), 4).toString();
-
         cost.setText(costs);
         dest_id.setSelectedItem(Integer.valueOf(dest));
         String[] parts1 = start.split(" ");
         String part1s = parts1[0];
         String part2s = parts1[1];
-
-        jDateChooser1.setDate(java.sql.Date.valueOf(part1s));
+        TripStart.setDate(java.sql.Date.valueOf(part1s));
         PickTime1.setText(part2s);
-
         String[] parts2 = end.split(" ");
         String part1e = parts2[0];
         String part2e = parts2[1];
-        jDateChooser2.setDate(java.sql.Date.valueOf(part1e));
+        TripEnd.setDate(java.sql.Date.valueOf(part1e));
         PickTime2.setText(part2e);
     }//GEN-LAST:event_OffersTableMouseClicked
 
@@ -480,7 +474,7 @@ public class off extends javax.swing.JFrame {
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_InsertActionPerformed
 
-    private void Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete1ActionPerformed
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             DefaultTableModel tbModel= (DefaultTableModel) OffersTable.getModel();
@@ -490,17 +484,17 @@ public class off extends javax.swing.JFrame {
             dlt.setInt(1, Integer.parseInt(tbModel.getValueAt(OffersTable.getSelectedRow(), 0).toString()));
             dlt.executeUpdate();
             updateTable();
-            jDateChooser1.setDate(null);
-            jDateChooser2.setDate(null);
+            TripStart.setDate(null);
+            TripEnd.setDate(null);
             PickTime1.setText("");
             PickTime2.setText("");
             cost.setText("");
             JOptionPane.showMessageDialog(this, "Deleted Succesfully");
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
-    }//GEN-LAST:event_Delete1ActionPerformed
+    }//GEN-LAST:event_DeleteActionPerformed
 
-    private void Update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Update1ActionPerformed
+    private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
         convertTimeStamp();
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -518,7 +512,7 @@ public class off extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Updated Succesfully");
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
-    }//GEN-LAST:event_Update1ActionPerformed
+    }//GEN-LAST:event_UpdateActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         dispose();
@@ -529,26 +523,24 @@ public class off extends javax.swing.JFrame {
     private void dest_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dest_idActionPerformed
         updateTable();
     }//GEN-LAST:event_dest_idActionPerformed
-
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new off().setVisible(true);}});}
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private project_gui.swing.CustomButton Cancel;
-    private project_gui.swing.CustomButton Delete1;
+    private javax.swing.JLabel CostText;
+    private project_gui.swing.CustomButton Delete;
+    private javax.swing.JLabel DestinationText;
     private project_gui.swing.CustomButton Insert;
     private project_gui.swing.Table1 OffersTable;
     private javax.swing.JTextField PickTime1;
     private javax.swing.JTextField PickTime2;
-    private project_gui.swing.CustomButton Update1;
+    private com.toedter.calendar.JDateChooser TripEnd;
+    private javax.swing.JLabel TripEndText;
+    private com.toedter.calendar.JDateChooser TripStart;
+    private javax.swing.JLabel TripStartText;
+    private project_gui.swing.CustomButton Update;
     private javax.swing.JTextField cost;
     private project_gui.swing.CustomJCombo dest_id;
     private project_gui.component.Header header;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane3;
     private project_gui.component.Menu1 menu;
     private project_gui.swing.PanelBorder panelBorder1;

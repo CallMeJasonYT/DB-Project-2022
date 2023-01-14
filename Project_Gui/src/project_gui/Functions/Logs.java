@@ -69,11 +69,11 @@ public class Logs extends javax.swing.JFrame {
 
         menu = new project_gui.component.Menu1();
         panelBorder1 = new project_gui.swing.PanelBorder();
-        Cancel2 = new project_gui.swing.CustomButton();
+        Cancel = new project_gui.swing.CustomButton();
         panelBorder3 = new project_gui.swing.PanelBorder();
         jScrollPane3 = new javax.swing.JScrollPane();
         LogsTable = new project_gui.swing.Table1();
-        header2 = new project_gui.component.Header();
+        header = new project_gui.component.Header();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -83,12 +83,12 @@ public class Logs extends javax.swing.JFrame {
             }
         });
 
-        Cancel2.setText("Cancel");
-        Cancel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Cancel2.setStyle(project_gui.swing.CustomButton.ButtonStyle.DESTRUCTIVE);
-        Cancel2.addActionListener(new java.awt.event.ActionListener() {
+        Cancel.setText("Cancel");
+        Cancel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Cancel.setStyle(project_gui.swing.CustomButton.ButtonStyle.DESTRUCTIVE);
+        Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cancel2ActionPerformed(evt);
+                CancelActionPerformed(evt);
             }
         });
 
@@ -135,22 +135,20 @@ public class Logs extends javax.swing.JFrame {
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addGap(256, 256, 256)
-                .addComponent(Cancel2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelBorder3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(header2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelBorder3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(header2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(Cancel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
                 .addComponent(panelBorder3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(46, Short.MAX_VALUE))
@@ -183,11 +181,11 @@ public class Logs extends javax.swing.JFrame {
         updateTable();
     }//GEN-LAST:event_formWindowOpened
 
-    private void Cancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel2ActionPerformed
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         dispose();
         Main main = new Main();
         main.show();
-    }//GEN-LAST:event_Cancel2ActionPerformed
+    }//GEN-LAST:event_CancelActionPerformed
     public void updateTable(){
         try{
                 DefaultTableModel tbModel= (DefaultTableModel) LogsTable.getModel();
@@ -208,13 +206,11 @@ public class Logs extends javax.swing.JFrame {
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }
-    
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new Logs().setVisible(true);}});}
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private project_gui.swing.CustomButton Cancel2;
+    private project_gui.swing.CustomButton Cancel;
     private project_gui.swing.Table1 LogsTable;
-    private project_gui.component.Header header2;
+    private project_gui.component.Header header;
     private javax.swing.JScrollPane jScrollPane3;
     private project_gui.component.Menu1 menu;
     private project_gui.swing.PanelBorder panelBorder1;

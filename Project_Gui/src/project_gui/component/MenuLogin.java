@@ -1,5 +1,4 @@
 package project_gui.component;
-
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -11,7 +10,6 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.JFrame;
 
 public class MenuLogin extends javax.swing.JPanel {
-
     public MenuLogin() {
         initComponents();
         setOpaque(false);
@@ -75,7 +73,6 @@ public class MenuLogin extends javax.swing.JPanel {
     private int x;
     private int y;
     
-    
     public void initMoving(JFrame fram){
         panelMoving.addMouseListener(new MouseAdapter() {
             @Override
@@ -91,7 +88,6 @@ public class MenuLogin extends javax.swing.JPanel {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelMoving;

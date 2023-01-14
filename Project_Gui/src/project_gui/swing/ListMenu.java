@@ -1,5 +1,4 @@
 package project_gui.swing;
-
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -13,15 +12,12 @@ import project_gui.event.EventMenuSelected;
 import project_gui.model.Model_Menu;
 
 public class ListMenu<E extends Object> extends JList<E>{
-    
     private final DefaultListModel model;
     private int selectedIndex=-1;
     private int overIndex = -1;
     private EventMenuSelected event;
     
-    public void addEventMenuSelected(EventMenuSelected event){
-        this.event = event;
-    }
+    public void addEventMenuSelected(EventMenuSelected event){this.event = event;}
     
     public ListMenu(){
         model=new DefaultListModel();
@@ -36,9 +32,7 @@ public class ListMenu<E extends Object> extends JList<E>{
                         Model_Menu menu = (Model_Menu) o;
                         if(menu.getType()==Model_Menu.MenuType.MENU){
                             selectedIndex=index;
-                            if(event!=null){
-                                event.selected(index);
-                            }
+                            if(event!=null){event.selected(index);}
                         }
                     }else {selectedIndex = index;} repaint();
                 }
@@ -58,15 +52,13 @@ public class ListMenu<E extends Object> extends JList<E>{
                     Object o = model.getElementAt(index);
                     if(o instanceof Model_Menu){
                          Model_Menu menu = (Model_Menu) o;
-                         if(menu.getType()==Model_Menu.MenuType.MENU){
-                             overIndex = index;
-                         }else{overIndex = -1;}
+                         if(menu.getType()==Model_Menu.MenuType.MENU){overIndex = index;}
+                         else{overIndex = -1;}
                          repaint();
                     }
                 }
             }   
         });
-        
     }
 
     @Override
@@ -75,11 +67,8 @@ public class ListMenu<E extends Object> extends JList<E>{
             @Override
             public Component getListCellRendererComponent(JList<?> jlist, Object o, int index, boolean selected, boolean focus) {
                 Model_Menu data;
-                if(o instanceof Model_Menu){
-                    data = (Model_Menu)o;
-                }else{
-                    data = new Model_Menu("", o+"", Model_Menu.MenuType.EMPTY);
-                }
+                if(o instanceof Model_Menu){data = (Model_Menu)o;}
+                else{data = new Model_Menu("", o+"", Model_Menu.MenuType.EMPTY);}
                 MenuItem item = new MenuItem(data);
                 item.setSelected(selectedIndex == index);
                 item.setOver(overIndex == index);
@@ -87,7 +76,5 @@ public class ListMenu<E extends Object> extends JList<E>{
             }
         };
     }
-    public void addItem(Model_Menu data){
-        model.addElement(data);
-    }
+    public void addItem(Model_Menu data){model.addElement(data);}
 }

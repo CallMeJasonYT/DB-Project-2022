@@ -72,17 +72,17 @@ public class CheckTrip extends javax.swing.JFrame {
         timePicker2 = new com.raven.swing.TimePicker();
         menu = new project_gui.component.Menu1();
         panelBorder1 = new project_gui.swing.PanelBorder();
-        Cancel1 = new project_gui.swing.CustomButton();
+        Cancel = new project_gui.swing.CustomButton();
         panelBorder2 = new project_gui.swing.PanelBorder();
         jScrollPane2 = new javax.swing.JScrollPane();
         CheckTripTable = new project_gui.swing.Table1();
-        header1 = new project_gui.component.Header();
-        Search1 = new project_gui.swing.CustomButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        header = new project_gui.component.Header();
+        Search = new project_gui.swing.CustomButton();
+        BranchCodeText = new javax.swing.JLabel();
+        StartDateText = new javax.swing.JLabel();
+        EndDateText = new javax.swing.JLabel();
+        StartDate = new com.toedter.calendar.JDateChooser();
+        EndDate = new com.toedter.calendar.JDateChooser();
         br_code = new project_gui.swing.CustomJCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,12 +94,12 @@ public class CheckTrip extends javax.swing.JFrame {
             }
         });
 
-        Cancel1.setText("Cancel");
-        Cancel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Cancel1.setStyle(project_gui.swing.CustomButton.ButtonStyle.DESTRUCTIVE);
-        Cancel1.addActionListener(new java.awt.event.ActionListener() {
+        Cancel.setText("Cancel");
+        Cancel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Cancel.setStyle(project_gui.swing.CustomButton.ButtonStyle.DESTRUCTIVE);
+        Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cancel1ActionPerformed(evt);
+                CancelActionPerformed(evt);
             }
         });
 
@@ -140,26 +140,26 @@ public class CheckTrip extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Search1.setText("Search");
-        Search1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Search1.addActionListener(new java.awt.event.ActionListener() {
+        Search.setText("Search");
+        Search.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Search1ActionPerformed(evt);
+                SearchActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Branch Code:");
+        BranchCodeText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BranchCodeText.setText("Branch Code:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Start Date:");
+        StartDateText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        StartDateText.setText("Start Date:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("End Date:");
+        EndDateText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        EndDateText.setText("End Date:");
 
-        jDateChooser1.setDateFormatString("yyyy-MM-dd");
+        StartDate.setDateFormatString("yyyy-MM-dd");
 
-        jDateChooser2.setDateFormatString("yyyy-MM-dd");
+        EndDate.setDateFormatString("yyyy-MM-dd");
 
         br_code.setLabeText("");
 
@@ -170,50 +170,50 @@ public class CheckTrip extends javax.swing.JFrame {
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(header1, javax.swing.GroupLayout.DEFAULT_SIZE, 1071, Short.MAX_VALUE)
-                    .addComponent(panelBorder2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelBorder2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelBorder1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(BranchCodeText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(90, 90, 90)
                         .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelBorder1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(EndDateText)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(EndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelBorder1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(StartDateText)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(StartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 545, Short.MAX_VALUE))
                     .addGroup(panelBorder1Layout.createSequentialGroup()
-                        .addComponent(Search1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Cancel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addComponent(header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BranchCodeText, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(br_code, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelBorder1Layout.createSequentialGroup()
                         .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(StartDateText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(StartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(EndDateText, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(19, 19, 19)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cancel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -227,7 +227,7 @@ public class CheckTrip extends javax.swing.JFrame {
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +243,6 @@ public class CheckTrip extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     static java.sql.Date t1 = null;
     static java.sql.Date t2 = null;
-    
     public void updateTable(){
         try{
                 DefaultTableModel tbModel= (DefaultTableModel) CheckTripTable.getModel();
@@ -295,32 +294,31 @@ public class CheckTrip extends javax.swing.JFrame {
         updateCombo();
     }//GEN-LAST:event_formWindowOpened
 
-    private void Cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel1ActionPerformed
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         dispose();
         Main main = new Main();
         main.show();
-    }//GEN-LAST:event_Cancel1ActionPerformed
+    }//GEN-LAST:event_CancelActionPerformed
 
-    private void Search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search1ActionPerformed
-        if(jDateChooser2.getDate() != null || jDateChooser1.getDate() != null){
-            t1 = new java.sql.Date(jDateChooser1.getDate().getTime());        
-            t2 = new java.sql.Date(jDateChooser2.getDate().getTime());
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        if(EndDate.getDate() != null || StartDate.getDate() != null){
+            t1 = new java.sql.Date(StartDate.getDate().getTime());        
+            t2 = new java.sql.Date(EndDate.getDate().getTime());
             updateTable();
         }else JOptionPane.showMessageDialog(this, "Please Fill all the Fields in order to proceed!");
-    }//GEN-LAST:event_Search1ActionPerformed
-
+    }//GEN-LAST:event_SearchActionPerformed
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new CheckTrip().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private project_gui.swing.CustomButton Cancel1;
+    private javax.swing.JLabel BranchCodeText;
+    private project_gui.swing.CustomButton Cancel;
     private project_gui.swing.Table1 CheckTripTable;
-    private project_gui.swing.CustomButton Search1;
+    private com.toedter.calendar.JDateChooser EndDate;
+    private javax.swing.JLabel EndDateText;
+    private project_gui.swing.CustomButton Search;
+    private com.toedter.calendar.JDateChooser StartDate;
+    private javax.swing.JLabel StartDateText;
     private project_gui.swing.CustomJCombo br_code;
-    private project_gui.component.Header header1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private project_gui.component.Header header;
     private javax.swing.JScrollPane jScrollPane2;
     private project_gui.component.Menu1 menu;
     private project_gui.swing.PanelBorder panelBorder1;

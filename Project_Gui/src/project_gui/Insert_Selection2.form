@@ -46,20 +46,16 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="header1" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="Text" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="121" pref="125" max="32767" attributes="0"/>
               </Group>
+              <Component id="header" alignment="1" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
-                      <Component id="Selection1" min="-2" pref="223" max="-2" attributes="0"/>
+                      <Component id="Selection" min="-2" pref="223" max="-2" attributes="0"/>
                       <EmptySpace pref="220" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -68,16 +64,15 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                  <Component id="header1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="78" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="header" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
+                  <Component id="Text" min="-2" pref="78" max="-2" attributes="0"/>
+                  <EmptySpace pref="354" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="291" max="-2" attributes="0"/>
-                      <Component id="Selection1" min="-2" max="-2" attributes="0"/>
+                      <Component id="Selection" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="291" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -85,9 +80,9 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="project_gui.component.Header" name="header1">
+        <Component class="project_gui.component.Header" name="header">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="Text">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -97,12 +92,12 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
         </Component>
-        <Component class="project_gui.swing.CustomJCombo" name="Selection1">
+        <Component class="project_gui.swing.CustomJCombo" name="Selection">
           <Properties>
             <Property name="labeText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Selection1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SelectionActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

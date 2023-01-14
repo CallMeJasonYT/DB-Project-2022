@@ -32,11 +32,10 @@ import project_gui.event.EventMenuSelected;
 import project_gui.main.Main;
 
 public class Insert_Selection extends javax.swing.JFrame {
-
     public Insert_Selection() {
         initComponents();
-        menu1.initMoving(Insert_Selection.this);
-        menu1.addEventMenuSelected(new EventMenuSelected(){
+        menu.initMoving(Insert_Selection.this);
+        menu.addEventMenuSelected(new EventMenuSelected(){
             @Override
             public void selected(int index) {
                 switch (index) {
@@ -88,11 +87,11 @@ public class Insert_Selection extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menu1 = new project_gui.component.Menu1();
+        menu = new project_gui.component.Menu1();
         panelBorder1 = new project_gui.swing.PanelBorder();
-        header1 = new project_gui.component.Header();
-        jLabel1 = new javax.swing.JLabel();
-        Selection1 = new project_gui.swing.CustomJCombo();
+        header = new project_gui.component.Header();
+        Text = new javax.swing.JLabel();
+        Selection = new project_gui.swing.CustomJCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -102,15 +101,15 @@ public class Insert_Selection extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Please Select the Table of your choice");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Text.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Text.setText("Please Select the Table of your choice");
+        Text.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Selection1.setLabeText("");
-        Selection1.addActionListener(new java.awt.event.ActionListener() {
+        Selection.setLabeText("");
+        Selection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Selection1ActionPerformed(evt);
+                SelectionActionPerformed(evt);
             }
         });
 
@@ -119,27 +118,23 @@ public class Insert_Selection extends javax.swing.JFrame {
         panelBorder1Layout.setHorizontalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(header1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addGap(108, 108, 108)
-                .addComponent(jLabel1)
+                .addComponent(Text)
                 .addGap(121, 133, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Selection1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Selection, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(216, 216, 216))
+            .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(138, 138, 138)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(152, 152, 152)
+                .addComponent(Text, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(Selection1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Selection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -148,22 +143,21 @@ public class Insert_Selection extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Selection1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Selection1ActionPerformed
-        String select = Selection1.getSelectedItem().toString();
+    private void SelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectionActionPerformed
+        String select = Selection.getSelectedItem().toString();
         switch(select){
             case "branch":
                 dispose();
@@ -246,7 +240,7 @@ public class Insert_Selection extends javax.swing.JFrame {
                 inspage16.show();
                 break;
         }
-    }//GEN-LAST:event_Selection1ActionPerformed
+    }//GEN-LAST:event_SelectionActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try{
@@ -264,18 +258,16 @@ public class Insert_Selection extends javax.swing.JFrame {
                     mod.addElement(tables.getString("TABLE_NAME"));
                 }
             }
-            Selection1.setModel(mod);
+            Selection.setModel(mod);
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
     }//GEN-LAST:event_formWindowOpened
-
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new Insert_Selection().setVisible(true);}});}
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private project_gui.swing.CustomJCombo Selection1;
-    private project_gui.component.Header header1;
-    private javax.swing.JLabel jLabel1;
-    private project_gui.component.Menu1 menu1;
+    private project_gui.swing.CustomJCombo Selection;
+    private javax.swing.JLabel Text;
+    private project_gui.component.Header header;
+    private project_gui.component.Menu1 menu;
     private project_gui.swing.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables
 }

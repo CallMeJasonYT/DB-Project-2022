@@ -55,85 +55,77 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="panelBorder3" max="32767" attributes="0"/>
-                      <Component id="header" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="Insert" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                          <Component id="Update1" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="Update" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                          <Component id="Delete1" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="Delete" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="Cancel" min="-2" pref="120" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="DestinationText" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="dst_name" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="DescriptionText" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="dst_descr" min="-2" pref="133" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="JLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="RouteText" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="dst_rtype" min="-2" pref="105" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="LanguageText" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="dst_language" min="-2" pref="84" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <Component id="LocationText" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="dst_location" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
+              <Component id="header" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Component id="header" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
-                              <Component id="dst_name" alignment="1" max="32767" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="dst_language" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="dst_location" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="dst_descr" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jLabel3" alignment="1" max="32767" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="DestinationText" alignment="1" max="32767" attributes="0"/>
+                          <Component id="dst_name" alignment="1" max="32767" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="dst_language" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="dst_location" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="LocationText" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="dst_descr" alignment="1" max="32767" attributes="0"/>
+                          <Component id="DescriptionText" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="JLabel4" alignment="1" max="32767" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="dst_rtype" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="LanguageText" alignment="1" max="32767" attributes="0"/>
+                          <Component id="dst_rtype" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="RouteText" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="Cancel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="Insert" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Update1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Delete1" alignment="3" max="32767" attributes="0"/>
+                          <Component id="Update" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Delete" alignment="3" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="panelBorder3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -234,6 +226,17 @@
         </Container>
         <Component class="project_gui.component.Header" name="header">
         </Component>
+        <Component class="project_gui.swing.CustomJCombo" name="dst_rtype">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="ABROAD"/>
+                <StringItem index="1" value="LOCAL"/>
+              </StringArray>
+            </Property>
+            <Property name="labeText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
         <Component class="project_gui.swing.CustomButton" name="Insert">
           <Properties>
             <Property name="text" type="java.lang.String" value="Insert"/>
@@ -259,7 +262,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelActionPerformed"/>
           </Events>
         </Component>
-        <Component class="project_gui.swing.CustomButton" name="Delete1">
+        <Component class="project_gui.swing.CustomButton" name="Delete">
           <Properties>
             <Property name="text" type="java.lang.String" value="Delete"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -270,10 +273,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Delete1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteActionPerformed"/>
           </Events>
         </Component>
-        <Component class="project_gui.swing.CustomButton" name="Update1">
+        <Component class="project_gui.swing.CustomButton" name="Update">
           <Properties>
             <Property name="text" type="java.lang.String" value="Update"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -284,10 +287,18 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Update1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="JLabel4">
+        <Component class="javax.swing.JTextField" name="dst_name">
+        </Component>
+        <Component class="javax.swing.JTextField" name="dst_descr">
+        </Component>
+        <Component class="javax.swing.JTextField" name="dst_language">
+        </Component>
+        <Component class="javax.swing.JTextField" name="dst_location">
+        </Component>
+        <Component class="javax.swing.JLabel" name="RouteText">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -295,17 +306,7 @@
             <Property name="text" type="java.lang.String" value="Route:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Destination:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="dst_name">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="DescriptionText">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -313,9 +314,7 @@
             <Property name="text" type="java.lang.String" value="Description:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="dst_descr">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="LanguageText">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -323,9 +322,7 @@
             <Property name="text" type="java.lang.String" value="Language:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="dst_language">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="LocationText">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -333,17 +330,12 @@
             <Property name="text" type="java.lang.String" value="Location:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="dst_location">
-        </Component>
-        <Component class="project_gui.swing.CustomJCombo" name="dst_rtype">
+        <Component class="javax.swing.JLabel" name="DestinationText">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="ABROAD"/>
-                <StringItem index="1" value="LOCAL"/>
-              </StringArray>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
             </Property>
-            <Property name="labeText" type="java.lang.String" value=""/>
+            <Property name="text" type="java.lang.String" value="Destination:"/>
           </Properties>
         </Component>
       </SubComponents>

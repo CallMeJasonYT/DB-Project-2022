@@ -1,5 +1,4 @@
 package project_gui.component;
-
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -13,7 +12,6 @@ import project_gui.event.EventMenuSelected;
 import project_gui.model.Model_Menu;
 
 public class Menu_Manager extends javax.swing.JPanel {
-
    private EventMenuSelected event;
     
     public void addEventMenuSelected(EventMenuSelected event){
@@ -113,7 +111,6 @@ public class Menu_Manager extends javax.swing.JPanel {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private project_gui.swing.ListMenu<String> listMenu1;

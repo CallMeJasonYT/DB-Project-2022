@@ -79,17 +79,17 @@ public class trvl extends javax.swing.JFrame {
         Insert = new project_gui.swing.CustomButton();
         Delete1 = new project_gui.swing.CustomButton();
         Update1 = new project_gui.swing.CustomButton();
-        Cancel = new project_gui.swing.CustomButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        PickTime1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        PickTime2 = new javax.swing.JTextField();
         to_tr_id = new project_gui.swing.CustomJCombo();
         to_dst_id = new project_gui.swing.CustomJCombo();
+        Cancel = new project_gui.swing.CustomButton();
+        TripText = new javax.swing.JLabel();
+        DestinationtText = new javax.swing.JLabel();
+        ArrivalText = new javax.swing.JLabel();
+        DepartureText = new javax.swing.JLabel();
+        Arrival = new com.toedter.calendar.JDateChooser();
+        Departure = new com.toedter.calendar.JDateChooser();
+        PickTime1 = new javax.swing.JTextField();
+        PickTime2 = new javax.swing.JTextField();
         menu = new project_gui.component.Menu1();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -168,6 +168,10 @@ public class trvl extends javax.swing.JFrame {
             }
         });
 
+        to_tr_id.setLabeText("");
+
+        to_dst_id.setLabeText("");
+
         Cancel.setText("Cancel");
         Cancel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Cancel.setStyle(project_gui.swing.CustomButton.ButtonStyle.DESTRUCTIVE);
@@ -177,16 +181,21 @@ public class trvl extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Trip:");
+        TripText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        TripText.setText("Trip:");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Destination:");
+        DestinationtText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        DestinationtText.setText("Destination:");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Arrival:");
+        ArrivalText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ArrivalText.setText("Arrival:");
 
-        jDateChooser1.setDateFormatString("yyyy-MM-dd");
+        DepartureText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        DepartureText.setText("Departure:");
+
+        Arrival.setDateFormatString("yyyy-MM-dd");
+
+        Departure.setDateFormatString("yyyy-MM-dd");
 
         PickTime1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         PickTime1.setText("Set Time");
@@ -197,11 +206,6 @@ public class trvl extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Departure:");
-
-        jDateChooser2.setDateFormatString("yyyy-MM-dd");
-
         PickTime2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         PickTime2.setText("Set Time");
         PickTime2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -210,10 +214,6 @@ public class trvl extends javax.swing.JFrame {
                 PickTime2MouseClicked(evt);
             }
         });
-
-        to_tr_id.setLabeText("");
-
-        to_dst_id.setLabeText("");
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
@@ -232,46 +232,45 @@ public class trvl extends javax.swing.JFrame {
                         .addGap(175, 175, 175)
                         .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBorder1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(TripText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(to_tr_id, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
+                        .addComponent(DestinationtText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(to_dst_id, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
+                        .addComponent(ArrivalText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Arrival, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PickTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
+                        .addComponent(DepartureText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Departure, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PickTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(PickTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(33, 33, 33)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Departure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ArrivalText, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TripText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DestinationtText, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(to_tr_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(to_dst_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PickTime2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DepartureText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PickTime1)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Arrival, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Update1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,10 +359,10 @@ public class trvl extends javax.swing.JFrame {
         time1=time1.concat(":00");
         time2=time2.concat(":00");
         DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd ");
-        String strDate1 = dateFormat1.format(jDateChooser1.getDate());
+        String strDate1 = dateFormat1.format(Arrival.getDate());
         String date1 = strDate1.concat(time1);
         DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd ");
-        String strDate2 = dateFormat2.format(jDateChooser2.getDate());
+        String strDate2 = dateFormat2.format(Departure.getDate());
         String date2 = strDate2.concat(time2);
         t1 = java.sql.Timestamp.valueOf(date1);
         t2 = java.sql.Timestamp.valueOf(date2);
@@ -443,22 +442,18 @@ public class trvl extends javax.swing.JFrame {
         String dstid = tbModel.getValueAt(TravelToTable.getSelectedRow(), 1).toString();
         String arr = tbModel.getValueAt(TravelToTable.getSelectedRow(), 2).toString();
         String dep = tbModel.getValueAt(TravelToTable.getSelectedRow(), 3).toString();
-
         to_tr_id.setSelectedItem(Integer.valueOf(trid));
         to_dst_id.setSelectedItem(Integer.valueOf(dstid));
         temp = Integer.parseInt(tbModel.getValueAt(TravelToTable.getSelectedRow(), 1).toString());
-        
         String[] parts1 = arr.split(" ");
         String part1s = parts1[0];
         String part2s = parts1[1];
-
-        jDateChooser1.setDate(java.sql.Date.valueOf(part1s));
+        Arrival.setDate(java.sql.Date.valueOf(part1s));
         PickTime1.setText(part2s);
-
         String[] parts2 = dep.split(" ");
         String part1e = parts2[0];
         String part2e = parts2[1];
-        jDateChooser2.setDate(java.sql.Date.valueOf(part1e));
+        Departure.setDate(java.sql.Date.valueOf(part1e));
         PickTime2.setText(part2e);
     }//GEN-LAST:event_TravelToTableMouseClicked
 
@@ -489,8 +484,8 @@ public class trvl extends javax.swing.JFrame {
             dlt.setInt(2, Integer.parseInt(to_dst_id.getSelectedItem().toString()));
             dlt.executeUpdate();
             updateTable();
-            jDateChooser1.setDate(null);
-            jDateChooser2.setDate(null);
+            Arrival.setDate(null);
+            Departure.setDate(null);
             PickTime1.setText("");
             PickTime2.setText("");
             JOptionPane.showMessageDialog(this, "Deleted Succesfully");
@@ -523,23 +518,22 @@ public class trvl extends javax.swing.JFrame {
         Main main = new Main();
         main.show();
     }//GEN-LAST:event_CancelActionPerformed
-
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run(){new trvl().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser Arrival;
+    private javax.swing.JLabel ArrivalText;
     private project_gui.swing.CustomButton Cancel;
     private project_gui.swing.CustomButton Delete1;
+    private com.toedter.calendar.JDateChooser Departure;
+    private javax.swing.JLabel DepartureText;
+    private javax.swing.JLabel DestinationtText;
     private project_gui.swing.CustomButton Insert;
     private javax.swing.JTextField PickTime1;
     private javax.swing.JTextField PickTime2;
     private project_gui.swing.Table1 TravelToTable;
+    private javax.swing.JLabel TripText;
     private project_gui.swing.CustomButton Update1;
     private project_gui.component.Header header;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane3;
     private project_gui.component.Menu1 menu;
     private project_gui.swing.PanelBorder panelBorder1;

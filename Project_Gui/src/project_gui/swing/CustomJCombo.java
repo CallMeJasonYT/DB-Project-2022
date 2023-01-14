@@ -33,21 +33,11 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 public class CustomJCombo<E> extends JComboBox<E> {
 
-    public String getLabeText() {
-        return labeText;
-    }
+    public String getLabeText() {return labeText;}
+    public void setLabeText(String labeText) {this.labeText = labeText;}
 
-    public void setLabeText(String labeText) {
-        this.labeText = labeText;
-    }
-
-    public Color getLineColor() {
-        return lineColor;
-    }
-
-    public void setLineColor(Color lineColor) {
-        this.lineColor = lineColor;
-    }
+    public Color getLineColor() {return lineColor;}
+    public void setLineColor(Color lineColor) {this.lineColor = lineColor;}
 
     private String labeText = "Label";
     private Color lineColor = new Color(3, 155, 216);
@@ -62,16 +52,13 @@ public class CustomJCombo<E> extends JComboBox<E> {
             public Component getListCellRendererComponent(JList<?> jlist, Object o, int i, boolean bln, boolean bln1) {
                 Component com = super.getListCellRendererComponent(jlist, o, i, bln, bln1);
                 setBorder(new EmptyBorder(5, 5, 5, 5));
-                if (bln) {
-                    com.setBackground(new Color(240, 240, 240));
-                }
+                if (bln) {com.setBackground(new Color(240, 240, 240));}
                 return com;
             }
         });
     }
 
     private class ComboUI extends BasicComboBoxUI {
-
         private final Animator animator;
         private boolean animateHinText = true;
         private float location;
@@ -95,48 +82,33 @@ public class CustomJCombo<E> extends JComboBox<E> {
             });
             addFocusListener(new FocusAdapter() {
                 @Override
-                public void focusGained(FocusEvent fe) {
-                    showing(false);
-                }
+                public void focusGained(FocusEvent fe) {showing(false);}
 
                 @Override
-                public void focusLost(FocusEvent fe) {
-                    showing(true);
-                }
+                public void focusLost(FocusEvent fe) {showing(true);}
             });
             addItemListener(new ItemListener() {
                 @Override
                 public void itemStateChanged(ItemEvent ie) {
                     if (!isFocusOwner()) {
-                        if (getSelectedIndex() == -1) {
-                            showing(true);
-                        } else {
-                            showing(false);
-                        }
+                        if (getSelectedIndex() == -1) {showing(true);} 
+                        else {showing(false);}
                     }
                 }
             });
             addPopupMenuListener(new PopupMenuListener() {
                 @Override
-                public void popupMenuWillBecomeVisible(PopupMenuEvent pme) {
-                    arrowButton.setBackground(new Color(200, 200, 200));
-                }
+                public void popupMenuWillBecomeVisible(PopupMenuEvent pme) {arrowButton.setBackground(new Color(200, 200, 200));}
 
                 @Override
-                public void popupMenuWillBecomeInvisible(PopupMenuEvent pme) {
-                    arrowButton.setBackground(new Color(150, 150, 150));
-                }
+                public void popupMenuWillBecomeInvisible(PopupMenuEvent pme) {arrowButton.setBackground(new Color(150, 150, 150));}
 
                 @Override
-                public void popupMenuCanceled(PopupMenuEvent pme) {
-                    arrowButton.setBackground(new Color(150, 150, 150));
-                }
+                public void popupMenuCanceled(PopupMenuEvent pme) {arrowButton.setBackground(new Color(150, 150, 150));}
             });
             TimingTarget target = new TimingTargetAdapter() {
                 @Override
-                public void begin() {
-                    animateHinText = getSelectedIndex() == -1;
-                }
+                public void begin() {animateHinText = getSelectedIndex() == -1;}
 
                 @Override
                 public void timingEvent(float fraction) {
@@ -151,14 +123,10 @@ public class CustomJCombo<E> extends JComboBox<E> {
         }
 
         @Override
-        public void paintCurrentValueBackground(Graphics grphcs, Rectangle rctngl, boolean bln) {
-
-        }
+        public void paintCurrentValueBackground(Graphics grphcs, Rectangle rctngl, boolean bln) {}
 
         @Override
-        protected JButton createArrowButton() {
-            return new ArrowButton();
-        }
+        protected JButton createArrowButton() {return new ArrowButton();}
 
         @Override
         protected ComboPopup createPopup() {
@@ -187,11 +155,8 @@ public class CustomJCombo<E> extends JComboBox<E> {
             g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
             int width = getWidth();
             int height = getHeight();
-            if (mouseOver) {
-                g2.setColor(lineColor);
-            } else {
-                g2.setColor(new Color(150, 150, 150));
-            }
+            if (mouseOver) {g2.setColor(lineColor);} 
+            else {g2.setColor(new Color(150, 150, 150));}
             g2.fillRect(2, height - 1, width - 4, 1);
             createHintText(g2);
             createLineStyle(g2);
@@ -207,14 +172,9 @@ public class CustomJCombo<E> extends JComboBox<E> {
             double textY = (height - r2.getHeight()) / 2;
             double size;
             if (animateHinText) {
-                if (show) {
-                    size = 18 * (1 - location);
-                } else {
-                    size = 18 * location;
-                }
-            } else {
-                size = 18;
-            }
+                if (show) {size = 18 * (1 - location);} 
+                else {size = 18 * location;}
+            } else {size = 18;}
             g2.drawString(combo.getLabeText(), in.right, (int) (in.top + textY + ft.getAscent() - size));
         }
 
@@ -224,22 +184,16 @@ public class CustomJCombo<E> extends JComboBox<E> {
                 int height = getHeight();
                 g2.setColor(lineColor);
                 double size;
-                if (show) {
-                    size = width * (1 - location);
-                } else {
-                    size = width * location;
-                }
+                if (show) {size = width * (1 - location);} 
+                else {size = width * location;}
                 double x = (width - size) / 2;
                 g2.fillRect((int) (x + 2), height - 2, (int) size, 2);
             }
         }
 
         private void showing(boolean action) {
-            if (animator.isRunning()) {
-                animator.stop();
-            } else {
-                location = 1;
-            }
+            if (animator.isRunning()) {animator.stop();} 
+            else {location = 1;}
             animator.setStartFraction(1f - location);
             show = action;
             location = 1f - location;
@@ -247,7 +201,6 @@ public class CustomJCombo<E> extends JComboBox<E> {
         }
 
         private class ArrowButton extends JButton {
-
             public ArrowButton() {
                 setContentAreaFilled(false);
                 setBorder(new EmptyBorder(5, 5, 5, 5));

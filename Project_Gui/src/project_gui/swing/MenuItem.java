@@ -1,5 +1,4 @@
 package project_gui.swing;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -8,7 +7,6 @@ import java.awt.RenderingHints;
 import project_gui.model.Model_Menu;
 
 public class MenuItem extends javax.swing.JPanel {
-
     private boolean selected;
     private boolean over;
   
@@ -22,9 +20,7 @@ public class MenuItem extends javax.swing.JPanel {
             lbIcon.setText(data.getName());
             lbIcon.setFont(new Font("Segoe UI", 1, 18));
             lbName.setVisible(false);
-        }else {
-            lbName.setText(" ");
-        }
+        }else {lbName.setText(" ");}
     }
 
     public void setSelected(boolean selected) {
@@ -73,14 +69,12 @@ public class MenuItem extends javax.swing.JPanel {
         if(selected || over){
             Graphics2D g2=(Graphics2D)grphcs;
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            if(selected){
-                g2.setColor(new Color(255,255,255,80));
-            }else g2.setColor(new Color (255,255,255,20));
+            if(selected){g2.setColor(new Color(255,255,255,80));}
+            else g2.setColor(new Color (255,255,255,20));
             g2.fillRoundRect(10, 0, getWidth() - 20, getHeight(), 15, 15);
         }
         super.paintComponent(grphcs);
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lbIcon;
     private javax.swing.JLabel lbName;

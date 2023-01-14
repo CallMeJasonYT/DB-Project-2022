@@ -1,5 +1,4 @@
 package project_gui.component;
-
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -13,9 +12,7 @@ import project_gui.event.EventMenuSelected;
 import project_gui.model.Model_Menu;
 
 public class Menu1 extends javax.swing.JPanel {
-    
     private EventMenuSelected event;
-    
     public void addEventMenuSelected(EventMenuSelected event){
         this.event = event;
         listMenu1.addEventMenuSelected(event);
@@ -36,14 +33,10 @@ public class Menu1 extends javax.swing.JPanel {
         listMenu1.addItem(new Model_Menu("info", "Branch Info", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("employees", "Employees", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("", " ", Model_Menu.MenuType.EMPTY));
-        
         listMenu1.addItem(new Model_Menu("", "More", Model_Menu.MenuType.TITLE));
-        
         listMenu1.addItem(new Model_Menu("logs", "Logs", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("logout", "Log Out", Model_Menu.MenuType.MENU));
     }
-    
-        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -92,7 +85,6 @@ public class Menu1 extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
     @Override
     protected void paintChildren(Graphics grphcs){
         Graphics2D g2=(Graphics2D)grphcs;
@@ -106,8 +98,7 @@ public class Menu1 extends javax.swing.JPanel {
     
     private int x;
     private int y;
-    
-    
+
     public void initMoving(JFrame fram){
         panelMoving.addMouseListener(new MouseAdapter() {
             @Override

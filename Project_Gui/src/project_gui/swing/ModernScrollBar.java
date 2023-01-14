@@ -10,7 +10,6 @@ import javax.swing.JScrollBar;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
 public class ModernScrollBar extends BasicScrollBarUI {
-
     private static final int SCROLL_BAR_ALPHA_ROLLOVER = 100;
     private static final int SCROLL_BAR_ALPHA = 50;
     private static final int THUMB_SIZE = 8;
@@ -19,18 +18,13 @@ public class ModernScrollBar extends BasicScrollBarUI {
     public ModernScrollBar() {}
 
     @Override
-    protected JButton createDecreaseButton(int orientation) {
-        return new InvisibleScrollBarButton();
-    }
+    protected JButton createDecreaseButton(int orientation) {return new InvisibleScrollBarButton();}
 
     @Override
-    protected JButton createIncreaseButton(int orientation) {
-        return new InvisibleScrollBarButton();
-    }
+    protected JButton createIncreaseButton(int orientation) {return new InvisibleScrollBarButton();}
 
     @Override
-    protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
-    }
+    protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {}
 
     @Override
     protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {

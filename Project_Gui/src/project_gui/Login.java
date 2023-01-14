@@ -7,7 +7,6 @@ import project_gui.main.Main;
 import project_gui.main.Main_Mng;
 
 public class Login extends javax.swing.JFrame {
-
     public static int getBranch() {return branch;}
     
     public Login() {
@@ -22,12 +21,12 @@ public class Login extends javax.swing.JFrame {
         menu = new project_gui.component.MenuLogin();
         panelBorder1 = new project_gui.swing.PanelBorder();
         Password = new javax.swing.JPasswordField();
-        clear = new project_gui.swing.CustomButton();
+        Clear = new project_gui.swing.CustomButton();
         Username = new javax.swing.JTextField();
-        Jlabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        login = new project_gui.swing.CustomButton();
-        exit = new project_gui.swing.CustomButton();
+        UsernameText = new javax.swing.JLabel();
+        PasswordText = new javax.swing.JLabel();
+        Login = new project_gui.swing.CustomButton();
+        Exit = new project_gui.swing.CustomButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(660, 600));
@@ -37,37 +36,37 @@ public class Login extends javax.swing.JFrame {
 
         Password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        clear.setText("Clear");
-        clear.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        clear.setStyle(project_gui.swing.CustomButton.ButtonStyle.SECONDARY);
-        clear.addActionListener(new java.awt.event.ActionListener() {
+        Clear.setText("Clear");
+        Clear.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Clear.setStyle(project_gui.swing.CustomButton.ButtonStyle.SECONDARY);
+        Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearActionPerformed(evt);
+                ClearActionPerformed(evt);
             }
         });
 
         Username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        Jlabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Jlabel1.setText("Username:");
+        UsernameText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        UsernameText.setText("Username:");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Password:");
+        PasswordText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        PasswordText.setText("Password:");
 
-        login.setText("Login");
-        login.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        login.addActionListener(new java.awt.event.ActionListener() {
+        Login.setText("Login");
+        Login.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginActionPerformed(evt);
+                LoginActionPerformed(evt);
             }
         });
 
-        exit.setText("Exit");
-        exit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        exit.setStyle(project_gui.swing.CustomButton.ButtonStyle.DESTRUCTIVE);
-        exit.addActionListener(new java.awt.event.ActionListener() {
+        Exit.setText("Exit");
+        Exit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Exit.setStyle(project_gui.swing.CustomButton.ButtonStyle.DESTRUCTIVE);
+        Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitActionPerformed(evt);
+                ExitActionPerformed(evt);
             }
         });
 
@@ -76,38 +75,38 @@ public class Login extends javax.swing.JFrame {
         panelBorder1Layout.setHorizontalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addGap(121, 121, 121)
+                .addGap(125, 125, 125)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(Jlabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PasswordText)
+                    .addComponent(UsernameText, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
-                        .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(128, Short.MAX_VALUE))
+                        .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(125, 125, 125))
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addGap(160, 160, 160)
+                .addGap(161, 161, 161)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Jlabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UsernameText, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(154, 154, 154))
+                    .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(161, 161, 161))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,32 +118,31 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(582, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 268, Short.MAX_VALUE)
+                    .addGap(0, 267, Short.MAX_VALUE)
                     .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(850, 514));
+        setSize(new java.awt.Dimension(850, 522));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     String lname = "";
     public static int branch = 0;
-    
-    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_exitActionPerformed
+    }//GEN-LAST:event_ExitActionPerformed
 
-    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
         Username.setText("");
         Password.setText("");
-    }//GEN-LAST:event_clearActionPerformed
+    }//GEN-LAST:event_ClearActionPerformed
 
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
@@ -183,18 +181,16 @@ public class Login extends javax.swing.JFrame {
             }
             con.close();
         }catch (HeadlessException | ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}
-    }//GEN-LAST:event_loginActionPerformed
-
+    }//GEN-LAST:event_LoginActionPerformed
     public static void main(String args[]) {java.awt.EventQueue.invokeLater(new Runnable() {public void run() {new Login().setVisible(true);}});}
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Jlabel1;
+    private project_gui.swing.CustomButton Clear;
+    private project_gui.swing.CustomButton Exit;
+    private project_gui.swing.CustomButton Login;
     private javax.swing.JPasswordField Password;
+    private javax.swing.JLabel PasswordText;
     private javax.swing.JTextField Username;
-    private project_gui.swing.CustomButton clear;
-    private project_gui.swing.CustomButton exit;
-    private javax.swing.JLabel jLabel2;
-    private project_gui.swing.CustomButton login;
+    private javax.swing.JLabel UsernameText;
     private project_gui.component.MenuLogin menu;
     private project_gui.swing.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables

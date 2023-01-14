@@ -1,14 +1,11 @@
 package project_gui.swing;
 import java.awt.Color;
 import java.awt.Component;
-import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import project_gui.model.StatusType;
 
-public class Table1 extends JTable {
-    
+public class Table1 extends JTable { 
     public Table1(){
         setShowHorizontalLines(true);
         setGridColor(new Color(230,230,230));
@@ -29,9 +26,8 @@ public class Table1 extends JTable {
                     Component com = super.getTableCellRendererComponent(jtable, o, selected, bln1, i, i1);
                     com.setBackground(Color.WHITE);
                     setBorder(noFocusBorder);
-                    if(selected){
-                        com.setForeground(new Color(15,89,140));
-                    }else com.setForeground(new Color(102,102,102));
+                    if(selected){com.setForeground(new Color(15,89,140));}
+                    else com.setForeground(new Color(102,102,102));
                     return com;
                 }else{
                     Component com = super.getTableCellRendererComponent(jtable, o, selected, bln1, i, i1);

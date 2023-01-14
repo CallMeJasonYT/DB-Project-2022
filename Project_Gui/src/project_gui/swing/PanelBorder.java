@@ -1,5 +1,4 @@
 package project_gui.swing;
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;

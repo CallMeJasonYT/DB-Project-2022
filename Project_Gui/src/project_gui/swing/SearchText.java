@@ -13,6 +13,7 @@ public class SearchText extends JTextField{
         setBorder(new EmptyBorder(5,5,5,5));
         setSelectionColor(new Color(220, 204, 182));
     }
+    
     private final String hint="Search here...";
     @Override
     public void paint(Graphics g) {

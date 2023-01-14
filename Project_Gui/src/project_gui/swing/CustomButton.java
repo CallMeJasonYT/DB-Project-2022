@@ -1,5 +1,4 @@
 package project_gui.swing;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,10 +15,7 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 import org.jdesktop.animation.timing.interpolation.PropertySetter;
 
 public class CustomButton extends JButton {
-
-    public ButtonStyle getStyle() {
-        return style;
-    }
+    public ButtonStyle getStyle() {return style;}
 
     public void setStyle(ButtonStyle style) {
         if (this.style != style) {
@@ -31,10 +27,7 @@ public class CustomButton extends JButton {
         }
     }
 
-    public int getRound() {
-        return round;
-    }
-
+    public int getRound() {return round;}
     public void setRound(int round) {
         this.round = round;
         repaint();
@@ -53,24 +46,16 @@ public class CustomButton extends JButton {
         initAnimation();
         addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseEntered(MouseEvent me) {
-                animationHover.start(currentStyle.backgroundHover, getStyle().backgroundHover);
-            }
+            public void mouseEntered(MouseEvent me) {animationHover.start(currentStyle.backgroundHover, getStyle().backgroundHover);}
 
             @Override
-            public void mouseExited(MouseEvent me) {
-                animationHover.start(currentStyle.backgroundHover, getStyle().background);
-            }
+            public void mouseExited(MouseEvent me) {animationHover.start(currentStyle.backgroundHover, getStyle().background);}
 
             @Override
-            public void mousePressed(MouseEvent me) {
-                animationPress.start(currentStyle.background, getStyle().backgroundPress);
-            }
+            public void mousePressed(MouseEvent me) {animationPress.start(currentStyle.background, getStyle().backgroundPress);}
 
             @Override
-            public void mouseReleased(MouseEvent me) {
-                animationPress.start(currentStyle.background, getStyle().background);
-            }
+            public void mouseReleased(MouseEvent me) {animationPress.start(currentStyle.background, getStyle().background);}
         });
     }
 
@@ -78,19 +63,14 @@ public class CustomButton extends JButton {
         animationHover = new AnimationStyle(300, currentStyle, "backgroundHover");
         animationHover.addTarget(new TimingTargetAdapter() {
             @Override
-            public void timingEvent(float fraction) {
-                repaint();
-            }
+            public void timingEvent(float fraction) {repaint();}
         });
         animationPress = new AnimationStyle(200, currentStyle, "background");
         animationPress.addTarget(new TimingTargetAdapter() {
             @Override
-            public void timingEvent(float fraction) {
-                repaint();
-            }
+            public void timingEvent(float fraction) {repaint();}
         });
     }
-
     @Override
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs.create();
@@ -129,45 +109,21 @@ public class CustomButton extends JButton {
 
     protected class ButtonColor {
 
-        public Color getBackground() {
-            return background;
-        }
+        public Color getBackground() {return background;}
+        public void setBackground(Color background) {this.background = background;}
 
-        public void setBackground(Color background) {
-            this.background = background;
-        }
+        public Color getForeground() {return foreground;}
+        public void setForeground(Color foreground) {this.foreground = foreground;}
 
-        public Color getForeground() {
-            return foreground;
-        }
+        public Color getBackgroundHover() {return backgroundHover;}
+        public void setBackgroundHover(Color backgroundHover) {this.backgroundHover = backgroundHover;}
 
-        public void setForeground(Color foreground) {
-            this.foreground = foreground;
-        }
+        public Color getBackgroundPress() {return backgroundPress;}
+        public void setBackgroundPress(Color backgroundPress) {this.backgroundPress = backgroundPress;}
 
-        public Color getBackgroundHover() {
-            return backgroundHover;
-        }
+        public ButtonColor(ButtonStyle style) {changeStyle(style);}
 
-        public void setBackgroundHover(Color backgroundHover) {
-            this.backgroundHover = backgroundHover;
-        }
-
-        public Color getBackgroundPress() {
-            return backgroundPress;
-        }
-
-        public void setBackgroundPress(Color backgroundPress) {
-            this.backgroundPress = backgroundPress;
-        }
-
-        public ButtonColor(ButtonStyle style) {
-            changeStyle(style);
-        }
-
-        public ButtonColor() {
-        }
-
+        public ButtonColor() {}
         private Color background;
         private Color foreground;
         private Color backgroundHover;
