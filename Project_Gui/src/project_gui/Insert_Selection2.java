@@ -58,6 +58,7 @@ public class Insert_Selection2 extends javax.swing.JFrame {
         Text.setText("Please Select the Table of your choice");
         Text.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        Selection.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Worker", "Driver", "Admin", "Guide", "Trip" }));
         Selection.setLabeText("");
         Selection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

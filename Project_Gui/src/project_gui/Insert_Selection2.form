@@ -94,6 +94,15 @@
         </Component>
         <Component class="project_gui.swing.CustomJCombo" name="Selection">
           <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Worker"/>
+                <StringItem index="1" value="Driver"/>
+                <StringItem index="2" value="Admin"/>
+                <StringItem index="3" value="Guide"/>
+                <StringItem index="4" value="Trip"/>
+              </StringArray>
+            </Property>
             <Property name="labeText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
