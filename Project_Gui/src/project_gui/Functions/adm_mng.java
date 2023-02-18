@@ -250,7 +250,7 @@ public class adm_mng extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT * FROM admin;";
+            String select="SELECT * FROM admin INNER JOIN worker ON adm_AT=wrk_AT WHERE wrk_br_code="+Login.getBranch()+"";
             Statement slct = con.createStatement();
             ResultSet rs = slct.executeQuery(select);
             DefaultTableModel tbModel= (DefaultTableModel) AdminTable.getModel();
@@ -258,7 +258,7 @@ public class adm_mng extends javax.swing.JFrame {
             while(rs.next()){
                 String at = rs.getString("adm_AT");
                 String language = rs.getString("adm_type"); 
-                String diploma = rs.getString("adm_diploma"); 
+                String diploma = rs.getString("adm_diploma");
                 String tb_data[]= {at,language,diploma};
                 tbModel.addRow(tb_data);
             }
@@ -269,7 +269,7 @@ public class adm_mng extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select ="SELECT wrk_AT FROM worker;";
+            String select ="SELECT wrk_AT FROM worker WHERE wrk_br_code="+Login.getBranch()+";";
             Statement slct = con.createStatement();
             ResultSet rs = slct.executeQuery(select);
             DefaultComboBoxModel mod = new DefaultComboBoxModel();

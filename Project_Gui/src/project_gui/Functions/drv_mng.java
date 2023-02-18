@@ -256,7 +256,7 @@ public class drv_mng extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT * FROM driver;";
+            String select="SELECT * FROM driver INNER JOIN worker ON drv_AT=wrk_AT WHERE wrk_br_code="+Login.getBranch()+";";
             Statement slct = con.createStatement();
             ResultSet rs = slct.executeQuery(select);
             DefaultTableModel tbModel= (DefaultTableModel) DriverTable.getModel();
@@ -276,7 +276,7 @@ public class drv_mng extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT wrk_AT FROM worker;";
+            String select="SELECT wrk_AT FROM worker WHERE wrk_br_code="+Login.getBranch()+";";
             Statement slct = con.createStatement();
             ResultSet rs = slct.executeQuery(select);
             DefaultComboBoxModel mod = new DefaultComboBoxModel();

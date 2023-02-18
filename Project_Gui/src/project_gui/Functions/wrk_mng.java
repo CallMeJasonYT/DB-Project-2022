@@ -261,7 +261,7 @@ public class wrk_mng extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT * FROM worker;";
+            String select="SELECT * FROM worker WHERE wrk_br_code="+Login.getBranch()+";";
             Statement slct = con.createStatement();
             ResultSet rs = slct.executeQuery(select);
             DefaultTableModel tbModel= (DefaultTableModel) WorkerTable.getModel();
@@ -287,10 +287,7 @@ public class wrk_mng extends javax.swing.JFrame {
             ResultSet rs = slct.executeQuery(select);
             DefaultComboBoxModel mod = new DefaultComboBoxModel();
             mod.removeAllElements();
-            while(rs.next()){
-                String box = "Branch: "+rs.getInt("br_code")+"";
-                mod.addElement(box);
-            }
+            mod.addElement("Branch: "+Login.getBranch()+"");
             wrk_br_code.setModel(mod);
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}

@@ -413,7 +413,7 @@ public class trip_mng extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT * FROM trip;";
+            String select="SELECT * FROM trip WHERE tr_br_code="+Login.getBranch()+";";
             Statement slct = con.createStatement();
             ResultSet rs = slct.executeQuery(select);
             DefaultTableModel tbModel= (DefaultTableModel) TripTable.getModel();
@@ -439,16 +439,10 @@ public class trip_mng extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT br_code FROM branch;";
-            Statement slct = con.createStatement();
-            ResultSet rs = slct.executeQuery(select);
             DefaultComboBoxModel mod = new DefaultComboBoxModel();
             mod.removeAllElements();
             mod.addElement("");
-            while(rs.next()){
-                int box = rs.getInt("br_code");
-                mod.addElement(box);
-            }
+            mod.addElement(Login.getBranch());
             tr_br_code.setModel(mod);
             con.close();
         }catch(ClassNotFoundException | SQLException e){JOptionPane.showMessageDialog(this, e.getMessage());}

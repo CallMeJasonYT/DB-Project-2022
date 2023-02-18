@@ -606,8 +606,8 @@ BEGIN
     (drvAT, first_name, last_name, salary, min_br);
     INSERT INTO driver VALUES
     (drvAT, license, dr_route, experience);
-    /*--SELECT * FROM worker WHERE wrk_br_code=min_br;
-    --SELECT * FROM driver;*/
+    /*SELECT * FROM worker WHERE wrk_br_code=min_br;
+    SELECT * FROM driver;*/
 END$
 DELIMITER ; 
 /*SELECT wrk_br_code AS Branch_Code, COUNT(*) AS Number_Of_Drivers FROM driver 

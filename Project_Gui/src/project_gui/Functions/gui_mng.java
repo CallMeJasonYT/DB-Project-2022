@@ -234,7 +234,7 @@ public class gui_mng extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select2="SELECT * FROM guide;";
+            String select2="SELECT * FROM guide INNER JOIN worker ON gui_AT=wrk_AT WHERE wrk_br_code="+Login.getBranch()+";";
             Statement slct2 = con.createStatement();
             ResultSet rs2 = slct2.executeQuery(select2);
             DefaultTableModel tbModel= (DefaultTableModel) GuiTable.getModel();
@@ -253,7 +253,7 @@ public class gui_mng extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travel_agency?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root");
-            String select="SELECT wrk_AT FROM worker;";
+            String select="SELECT wrk_AT FROM worker WHERE wrk_br_code="+Login.getBranch()+";";
             Statement slct = con.createStatement();
             ResultSet rs = slct.executeQuery(select);
             DefaultComboBoxModel mod = new DefaultComboBoxModel();

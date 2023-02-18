@@ -355,8 +355,6 @@ public class adm extends javax.swing.JFrame {
             CallableStatement cs = con.prepareCall(s);
             cs.execute();
             ResultSet rs3 = cs.getResultSet();
-            System.out.println(fname);
-            System.out.println(lname);
             if(rs3 != null)rs3.next();
             if(rs3.getString(1).equals(msg)){
                 JOptionPane.showMessageDialog(this, msg);
