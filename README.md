@@ -22,5 +22,7 @@ A Java-based GUI has been implemented to interact with the database seamlessly. 
 - User-friendly approach to visualize and operate the database, making it accessible for administrators and end-users without SQL expertise.
 
 ## Tech Stack
+
 **Database**: MySQL
+
 **Development Tools**: Java (Swing), SQL Workbench, GitHub
